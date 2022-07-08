@@ -1,0 +1,123 @@
+/* html {
+  scroll-behavior: smooth;
+} */
+
+body {
+  padding: 8rem;
+}
+
+h1 {
+  color: deepskyblue;
+}
+
+:root {
+  --infobox-color: deepskyblue;
+  --infobox-pointer-size: 20px;
+}
+
+.table-wrapper {
+  transition: transform 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: relative;
+}
+
+.table-wrapper:hover {
+  transform: scale(1.025);
+}
+
+.table-wrapper:hover .info-box {
+  transform: scale(1.015);
+}
+
+.table {
+  width: 100%;
+  border: 1px solid black;
+  border-collapse: collapse;
+  box-shadow: 5px 5px 10px #00000010;
+}
+
+.table th, .table td, .table tr {
+  border-style: solid;
+}
+
+.table th, .table td {
+  padding: 4px;
+}
+
+.table th {
+  font-weight: normal;
+}
+
+.table .row-bold * {
+  font-weight: bold;
+}
+
+.row-center {
+  text-align: center;
+}
+
+.cell-span-empty {
+  width: 7%;
+}
+
+.info-box {
+  position: absolute;
+  transition: 0.2s;
+  background-color: var(--infobox-color);
+  color: white;
+  border-radius: 0.5rem;
+  right: 10%;
+  top: 0;
+  z-index: 10;
+  padding: 1rem;
+  max-width: 15rem;
+  transition: 0.4s;
+  opacity: 0;
+  animation: fadeIn 0.5s 0.2s ease;
+}
+
+.info-close {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: white;
+  position: absolute;
+  right: -16px;
+  top: -12px;
+}
+
+.info-header {
+  padding-bottom: 0.25rem;
+}
+
+.info-text, .info-header {
+  margin: 0;
+}
+
+.info-div {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.info-triangle {
+  width: 0; 
+  height: 0; 
+  border-left: var(--infobox-pointer-size) solid transparent;
+  border-right: var(--infobox-pointer-size) solid transparent;
+  border-bottom: var(--infobox-pointer-size) solid var(--infobox-color);
+  position: absolute;
+  top: calc((var(--infobox-pointer-size) * 1.75) * -1);
+}
+
+
+[data-id="info"] {
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+[data-id="info"]:hover, .active {
+  background-color: rgba(0, 0, 0, 0.075);
+}
