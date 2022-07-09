@@ -7,12 +7,13 @@ body {
 }
 
 h1 {
-  color: deepskyblue;
+  color: #00bfff;
 }
 
 :root {
-  --infobox-color: deepskyblue;
+  --infobox-color: #00bfff;
   --infobox-pointer-size: 20px;
+  --active-color: #00bfff22;
 }
 
 .table-wrapper {
@@ -21,6 +22,7 @@ h1 {
   flex-direction: column;
   gap: 2rem;
   position: relative;
+  max-width: 45rem;
 }
 
 .table-wrapper:hover {
@@ -118,6 +120,7 @@ h1 {
   transition: background-color 0.2s;
 }
 
+/* active class */
 [data-id="info"]:hover, .active {
-  background-color: rgba(0, 0, 0, 0.075);
+  background-color: var(--active-color);
 }
