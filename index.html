@@ -13,27 +13,23 @@
 		<h1>Lønseddel Privat Virksomhed</h1>
 		<div class="table-wrapper" data-id="table-wrapper">
 			<table class="table">
-				<tr>
-					<td>
+				<tr
+					class="active"
+					data-id="info"
+					data-info-header="Vigtig info"
+					data-info-data="Ligesom andre vigtige dokumenter skal huske at gemme dine lønsedler et sted, hvor du kan finde dem de næste 5 år. De kan være nødvendig dokumentation, såfremt du senere har et krav mod virksomheden, eller hvis du har en sag ved kommunen eller en anden offentlig myndighed."
+				>
+					<th>
 						Virksomhedens Navn<br />
 						Virksomhedens adresse
-					</td>
-					<!-- Tekst -->
-					<td class="cell-span-empty"></td>
-					<!-- Tom Celle -->
+					</th>
 					<td></td>
-					<!-- Grundlag -->
 					<td></td>
-					<!-- Enheder -->
 					<td></td>
-					<!-- Sats -->
 					<td></td>
-					<!-- Beløb (+) -->
 					<td></td>
-					<!-- Beløb (-) -->
 				</tr>
 				<tr>
-					<td></td>
 					<td></td>
 					<td></td>
 					<td></td>
@@ -44,13 +40,11 @@
 					<td></td>
 					<td></td>
 					<td></td>
-					<td></td>
 					<td>Side 1</td>
 					<td></td>
 				</tr>
 				<tr>
 					<td>Fornavn Efternavn</td>
-					<td></td>
 					<td></td>
 					<td></td>
 					<td>mv.</td>
@@ -62,32 +56,28 @@
 					<td></td>
 					<td></td>
 					<td></td>
-					<td></td>
 				</tr>
 				<tr
-					class="active"
 					data-id="info"
 					data-info-header="Lønperioden"
 					data-info-data="Din lønseddel skal angive hvilken lønperiode den dækker over. En lønperiode kan gå på tværs af månedsskiftet, f.eks. Fra den 15. i den ene måned til den 14. i den næste måned, eller den kan følge måneden, ligesom den også kan vare for en mindre periode, f.eks. Hvis du er 14-dages lønnet."
 				>
-					<th colspan="7">Lønseddel for perioden xxx</th>
+					<th colspan="7" scope="col">Lønseddel for perioden xxx</th>
 				</tr>
 				<tr>
-					<th>Tekst</th>
-					<th></th>
-					<th>Grundlag</th>
-					<th>Enheder</th>
-					<th>Sats</th>
-					<th>Beløb(+)</th>
-					<th>Beløb(-)</th>
+					<th scope="col">Tekst</th>
+					<th scope="col">Grundlag</th>
+					<th scope="col">Enheder</th>
+					<th scope="col">Sats</th>
+					<th scope="col">Beløb(+)</th>
+					<th scope="col">Beløb(-)</th>
 				</tr>
 				<tr
 					data-id="info"
 					data-info-header="Månedsløn"
 					data-info-data="Her står din bruttoløn, dvs. din løn før skat, og den løn du har aftalt med din arbejdsgiver eksklusiv eventuel arbejdsgiver betalt pension."
 				>
-					<th>Månedsløn</th>
-					<td class="cell-span-empty"></td>
+					<th scope="row">Månedsløn</th>
 					<td></td>
 					<td>160,33</td>
 					<td></td>
@@ -99,8 +89,7 @@
 					data-info-header="Fri telefon"
 					data-info-data="Får du helt eller delvist vederlagsfrit stillet en telefon til rådighed, som du også må bruge privat, så skal godet beskattes efter SKATs gældende regler. Her lægges den skattemæssige værdi til, som fratrækkes igen, når skatten er beregnet."
 				>
-					<th>Fri telefon mm.</th>
-					<td></td>
+					<th scope="row">Fri telefon mm.</th>
 					<td></td>
 					<td></td>
 					<td></td>
@@ -112,8 +101,7 @@
 					data-info-header="Sundhedsforsikring"
 					data-info-data="Ligesom med fri telefon betaler du også skat af værdien af en arbejdsgiverbetalt sundhedsforsikring. Værdien fastsættes typisk ud fra sundhedsordningens markedsværdi."
 				>
-					<th>Sundhedsforsikring</th>
-					<td></td>
+					<th scope="row">Sundhedsforsikring</th>
 					<td></td>
 					<td></td>
 					<td></td>
@@ -125,8 +113,7 @@
 					data-info-header="Ferietilæg"
 					data-info-data="Som månedslønnet har du udover løn under ferie, også ret til et ferietillæg. Som privatansat udgør dit ferietillæg 1 % af din ferieberettiget løn i ferieåret, hvilket er din løn samt alle øvrige skattepligtige løndele. Tillægget kan også være aftalt højere, hvilket vil fremgå af din kontrakt eller overenskomst. Arbejdsgiver kan udbetale ferietillægget på to måder: enten løbende, når du holder ferien, eller 2 gange om året, hvilket er den mest anvendte måde. Her udbetales det: med lønnen for maj for ferietillæg optjent 1. september-31. maj og ferietillæg for den sidste del af ferieåret med lønnen for august."
 				>
-					<th>Ferietilæg</th>
-					<td></td>
+					<th scope="row">Ferietilæg</th>
 					<td></td>
 					<td></td>
 					<td></td>
@@ -138,8 +125,7 @@
 					data-info-header="Pension, eget bidrag"
 					data-info-data="Her fremgår det beløb, du selv betaler til din pensionsopsparing. Pensionsbidraget bliver typisk beregnet som en procentdel af din bruttoløn, som trækkes fra din løn, før der beregnes AM- bidrag og A-skat. Beløbet indbetales til det pensionsselskab, der er aftalt med arbejdsgiver. Hvorvidt du har pension, vil typisk fremgå af din kontrakt eller overenskomst. Ofte vil der være et set up, hvor din arbejdsgiver betaler 2/3 og du betaler 1/3 til pension."
 				>
-					<th>Pension eget bidrag</th>
-					<td></td>
+					<th scope="row">Pension eget bidrag</th>
 					<td>41.055,00</td>
 					<td></td>
 					<td>5%</td>
@@ -151,8 +137,7 @@
 					data-info-header="ATP af løn"
 					data-info-data="ATP, står for Arbejdsmarkedets tillægspension, og er en lovpligtig pensionsordning, som betales af alle lønmodtagere over 16 år, der arbejder over 9 timer om ugen. Din arbejdsgiver indbetaler 2/3 af beløbet, mens du selv betaler 1/3. Du kan se den aktuelle sats på borger.dk. Her kan du også se meget du har indbetalt, og hvor meget du kan forvente at få i pension fra ATP."
 				>
-					<th>ATP af løn</th>
-					<td></td>
+					<th scope="row">ATP af løn</th>
 					<td></td>
 					<td></td>
 					<td></td>
@@ -164,8 +149,7 @@
 					data-info-header="AM-indkomst, løn"
 					data-info-data="AM-indkomst er den del af lønnen, som der skal betales AM-bidrag af, hvilket er din månedsløn inkl. tillæg og skattepligtige goder, efter at ATP og eget pensionsbidrag er trukket fra."
 				>
-					<th>AM-indkomst, løn</th>
-					<td></td>
+					<th scope="row">AM-indkomst, løn</th>
 					<td></td>
 					<td></td>
 					<td></td>
@@ -177,8 +161,7 @@
 					data-info-header="AM-bidrag, løn"
 					data-info-data="AM-bidrag står for arbejdsmarkedsbidrag, og er en lovpligtig 8% skat, som alle lønmodtagere og selvstændige skal betale. AM-bidraget beregnes af AM-indkomsten. AM-bidraget går til at betale statens udgifter til arbejdsmarkedet, og går f.eks. til sygedagpenge og barselsdagpenge mv. AM-bidraget anføres uden ørebeløb på lønsedlen."
 				>
-					<th>AM-bidrag, løn</th>
-					<td></td>
+					<th scope="row">AM-bidrag, løn</th>
 					<td>43.051,01</td>
 					<td></td>
 					<td>8%</td>
@@ -190,8 +173,7 @@
 					data-info-header="Skattefradrag"
 					data-info-data="Skattefradrag/månedsfradrag er dit personlige fradrag, som trækkes fra, lige inden din A-skat beregnes, og lægges herefter til igen. Dit fradrag er beregnet af SKAT på baggrund af din forskudsregistrering. Det er ikke altid, at det står så eksplicit på lønseddel, som i dette eksempel, ligesom det også kan fremgå andre steder på lønsedlen. Du kan tjekke dit fradrag på skat.dk."
 				>
-					<th>Skattefradrag</th>
-					<td></td>
+					<th scope="row">Skattefradrag</th>
 					<td>7.032,00</td>
 					<td></td>
 					<td></td>
@@ -203,8 +185,7 @@
 					data-info-header="A-skat"
 					data-info-data="A-skat er skatten, alle almindelige lønmodtagere betaler af deres primære indtægt. Hvor meget du betaler i A-skat, afhænger af din trækprocent. Vi har i Danmark et progressivt skattesystem, hvorefter jo højere din indtægt er, desto højere er din trækprocent. Din trækprocent bliver beregnet på baggrund af din forskudsopgørelse og afhænger af din indkomst, fradrag og hvilken kommune du bor i. Du kan se din trækprocent på skat.dk. A-skatten trækkes af din A-indkomst, som udgør din løn fratrukket pension, ATP og AM-bidrag. A-skat anføres uden ørebeløb på lønsedlen."
 				>
-					<th>A-skat</th>
-					<td></td>
+					<th scope="row">A-skat</th>
 					<td>32.575,01</td>
 					<td></td>
 					<td>36%</td>
@@ -212,8 +193,7 @@
 					<td>-11.727,00</td>
 				</tr>
 				<tr>
-					<th>Kantine</th>
-					<td></td>
+					<th scope="row">Kantine</th>
 					<td></td>
 					<td></td>
 					<td></td>
@@ -226,8 +206,7 @@
 					data-info-data="Her bliver værdien af den fri telefon og sundhedsforsikring mm. fratrukket igen. Det er ikke altid at dette fremgår tydeligt af lønseddel, som i dette eksempel."
 				>
 					<tr>
-						<th>Fri telefon mm. efter skat</th>
-						<td></td>
+						<th scope="row">Fri telefon mm. efter skat</th>
 						<td></td>
 						<td></td>
 						<td></td>
@@ -235,8 +214,7 @@
 						<td>-250,00</td>
 					</tr>
 					<tr>
-						<th>Sundhedsforsikring efter skat</th>
-						<td></td>
+						<th scope="row">Sundhedsforsikring efter skat</th>
 						<td></td>
 						<td></td>
 						<td></td>
@@ -249,20 +227,11 @@
 					data-info-header="Nettoløn"
 					data-info-data="Nettolønnen er den løn du får indbetalt på din lønkonto."
 				>
-					<th>Nettoløn</th>
-					<td></td>
+					<th scope="row">Nettoløn</th>
 					<td></td>
 					<td></td>
 					<td></td>
 					<td>27.175,36</td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>&nbsp;</td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
 					<td></td>
 				</tr>
 				<tr>
@@ -279,20 +248,18 @@
 						30-05-2022
 					</td>
 				</tr>
-			</table>
-			<table class="table">
 				<tr
 					class="row-bold"
 					data-id="info"
 					data-info-header="Saldi, periode og år til dato (overblik)"
 					data-info-data="Nederst på lønsedlen ser du et samlet overblik over alle de vigtige elementer i din lønseddel. Her vises både beløb for indeværende periode, dvs. den pågældende lønseddel, samt År til dato, som er det akkumuleret beløb siden januar. Bemærk, at de samlede feriepengesaldi opgøres for ferieåret, dvs. fra september-august."
 				>
-					<th>Saldi</th>
-					<th>Periode</th>
-					<th>År til dato</th>
-					<th>Saldi</th>
-					<th>Periode</th>
-					<th>År til dato</th>
+					<th scope="col">Saldi</th>
+					<th scope="col">Periode</th>
+					<th scope="col">År til dato</th>
+					<th scope="col">Saldi</th>
+					<th scope="col">Periode</th>
+					<th scope="col">År til dato</th>
 				</tr>
 				<tr
 					data-id="info"
@@ -356,7 +323,7 @@
 						<td>5</td>
 					</tr>
 					<tr>
-						<th>Værdi sundhedsforsikring</th>
+						<th scope="row">Værdi sundhedsforsikring</th>
 						<td>161,45</td>
 						<td>807,25</td>
 						<td>Feriedage rest</td>
@@ -369,7 +336,7 @@
 					data-info-header="Feriefritimer"
 					data-info-data="Feriefritimer også kaldet feriefridage er betalte fridage ud over de 5 ugers ferie der følger af ferieloven. De omtales også som den 6. ferieuge. Hvis du har feriefridage, så vil din løbende opsparing typisk fremgå af din lønseddel. Feriefridage er ikke reguleret ved lov, men udelukkende ved aftale. Derfor er det vigtigt, at du er opmærksom på, hvordan dagene optjenes, afvikles, og hvad der sker med dem, hvis du fratræder uden at de er afholdt. I mange virksomheder går feriefridagene tabt, hvis ikke de bliver brugt i løbet af ferieåret."
 				>
-					<th>Værdi af fri telefon</th>
+					<th scope="row">Værdi af fri telefon</th>
 					<td>250,00</td>
 					<td>1.250,00</td>
 					<td>Feriefri timer</td>
@@ -381,7 +348,7 @@
 					data-info-header="Fritvalgskonto"
 					data-info-data="Fritvalgskonto er en opsparing af din ferieberettiget løn, hvor der hver måned indbetales en fast procentdel. Pengene på kontoen kan du så frit vælge om du vil bruge på f.eks. mere pension, løn eller frihed/ferie. Hvorvidt du er opfattet af en fritvalgsordning, og hvor meget der indbetales, afhænger af din kontrakt og overenskomst. Regler om fritvalgskonto ses oftest ved overenskomstdækkede ansættelsesforhold."
 				>
-					<th>Fritvalgskonto 4%</th>
+					<th scope="row">Fritvalgskonto 4%</th>
 					<td>1.642,20</td>
 					<td>8.211,00</td>
 					<td>G-dage (ledighedsdage)</td>
