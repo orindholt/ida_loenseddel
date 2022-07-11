@@ -110,15 +110,17 @@ h1 {
   transition: background-color 0.2s;
 }
 
-/* active class */
-[data-id="info"]:hover, .active {
-  background-color: var(--hover-color);
-}
-.active, .active:hover {
+.active {
   background-color: var(--active-color);
 }
 
 @media screen and (min-width: 480px) {
+  [data-id="info"]:hover {
+    background-color: var(--hover-color);
+  }
+  .active:hover {
+    background-color: var(--active-color);
+  }
   .table-wrapper:hover {
     transform: scale(1.025);
   }
@@ -130,7 +132,10 @@ h1 {
 
 @media screen and (max-width: 480px) {
   .table {
-    font-size: 70%;
+    font-size: 50%;
     text-align: center;
+  }
+  .info-box {
+    right: 0;
   }
 }
