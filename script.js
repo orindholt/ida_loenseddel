@@ -31,44 +31,45 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	if (deviceType() === "desktop") {
 		// Scroll logic
+		let prevTime = Date.now();
 
 		function scrollEvent(e) {
-			const activeEl = wrapper.querySelector(".active");
-			const nextIndex = Array.from(infoElements).indexOf(activeEl) + 1;
-			const prevIndex = Array.from(infoElements).indexOf(activeEl) + -1;
-			const nextEl = infoElements[nextIndex];
-			const prevEl = infoElements[prevIndex];
-
-			if (e.deltaY > 0) {
-				if (nextEl) {
-					moveInfoBox(nextEl);
-					scrollToTarget(nextEl);
-				}
-			} else if (e.deltaY < 0) {
-				if (prevEl) {
-					moveInfoBox(prevEl);
-					scrollToTarget(prevEl);
+			if (Date.now() > prevTime + 300) {
+				prevTime = Date.now();
+				const activeEl = wrapper.querySelector(".active");
+				const nextIndex = Array.from(infoElements).indexOf(activeEl) + 1;
+				const prevIndex = Array.from(infoElements).indexOf(activeEl) + -1;
+				const nextEl = infoElements[nextIndex];
+				const prevEl = infoElements[prevIndex];
+				if (e.deltaY > 0) {
+					if (nextEl) {
+						moveInfoBox(nextEl);
+						scrollToTarget(nextEl);
+					}
+				} else if (e.deltaY < 0) {
+					if (prevEl) {
+						moveInfoBox(prevEl);
+						scrollToTarget(prevEl);
+					}
 				}
 			}
-			// To prevent JQuery animate wobble
 			e.preventDefault();
 			e.stopPropagation();
-
 			return false;
 		}
 
 		// Hover logic
 		const isHover = e => e.parentElement.querySelector(":hover") === e;
 
-		document.addEventListener("mousemove", function checkHover() {
+		document.addEventListener("mousemove", function () {
 			const hovered = isHover(wrapper);
-			if (hovered !== checkHover.hovered) {
-				checkHover.hovered = hovered;
+			if (hovered !== this.hovered) {
+				this.hovered = hovered;
 				if (!hovered) {
-					// Adds eventlistener when table is hovered
+					// Removes eventlistener when table is unhovered
 					wrapper.removeEventListener("wheel", scrollEvent);
 				} else {
-					// Removes eventlistener when table is unhovered
+					// Adds eventlistener when table is hovered
 					wrapper.addEventListener("wheel", scrollEvent, false);
 				}
 			}
@@ -77,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		// Mobile touch events
 		const elementsInView = [];
 		function handleTouch() {
-			infoElements.forEach((el, i) => {
+			infoElements.forEach(el => {
 				if (window.scrollY > el.offsetTop) {
 					if (!elementsInView.includes(el)) elementsInView.push(el);
 					if (elementsInView.length)
