@@ -1,12 +1,28 @@
 document.addEventListener("DOMContentLoaded", () => {
 	const wrapper = document.querySelector("[data-id='table-wrapper']");
-
+	const langButtonElements = document.querySelectorAll(
+		"[data-id='lang-button']"
+	);
+	const typeSelectElement = document.querySelector("[data-id='select-type']");
 	const infoElements = wrapper.querySelectorAll("[data-id='info']");
 	const infoBoxElement = wrapper.querySelector("[data-id='info-box']");
 	const infoTextElement = infoBoxElement.querySelector("[data-id='info-text']");
 	const infoHeaderElement = infoBoxElement.querySelector(
 		"[data-id='info-header']"
 	);
+	const infoHeaderAltElement = infoBoxElement.querySelector(
+		"[data-id='info-header-alt']"
+	);
+
+	let currentLang = langButtonElements[0].getAttribute("data-lang");
+	let currentType = typeSelectElement.value.toLowerCase();
+
+	// Type select
+	typeSelectElement.addEventListener("input", e => {
+		let target = e.target;
+		currentType = target.value.toLowerCase();
+		console.log(currentType);
+	});
 
 	const deviceType = () => {
 		const ua = navigator.userAgent;
@@ -23,7 +39,8 @@ document.addEventListener("DOMContentLoaded", () => {
 	};
 
 	function scrollToTarget(target) {
-		const scrollAmount = target.offsetTop;
+		const rect = target.getBoundingClientRect();
+		const scrollAmount = rect.top + window.scrollY - window.innerHeight / 4;
 		$("html, body").stop().animate({
 			scrollTop: scrollAmount,
 		});
@@ -36,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		function scrollEvent(e) {
 			const isMouseScroll = () => e.deltaY === 200 || e.deltaY === -200;
 			const throttleAmount = () => (isMouseScroll() ? 300 : 450);
-			console.log(throttleAmount());
+
 			if (Date.now() > prevTime + throttleAmount()) {
 				prevTime = Date.now();
 				const activeEl = wrapper.querySelector(".active");
@@ -44,6 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
 				const prevIndex = Array.from(infoElements).indexOf(activeEl) + -1;
 				const nextEl = infoElements[nextIndex];
 				const prevEl = infoElements[prevIndex];
+
 				if (e.deltaY > 0) {
 					if (nextEl) {
 						moveInfoBox(nextEl);
@@ -83,7 +101,11 @@ document.addEventListener("DOMContentLoaded", () => {
 		const elementsInView = [];
 		function handleTouch() {
 			infoElements.forEach(el => {
-				if (window.scrollY > el.offsetTop) {
+				if (
+					window.scrollY >
+					el.offsetTop +
+						window.innerHeight / (deviceType() === "tablet" ? 4 : 1)
+				) {
 					if (!elementsInView.includes(el)) elementsInView.push(el);
 					if (elementsInView.length)
 						moveInfoBox(elementsInView[elementsInView.length - 1]);
@@ -94,7 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		}
 		document.addEventListener("touchmove", handleTouch);
 	}
-
+	console.log(deviceType());
 	// Infobox logic
 
 	// Initial info box position
@@ -102,7 +124,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	// Clears the active class off all the info fields
 	function clearActive() {
-		infoElements.forEach(el => el.classList.remove("active"));
+		infoElements.forEach(el => {
+			el.classList.remove("active");
+			if (!el.classList.length) el.removeAttribute("class");
+		});
 	}
 
 	// Opens the info box
@@ -128,13 +153,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	// Moves the info box
 	function moveInfoBox(target) {
-		const infoText = target.getAttribute("data-info-data");
-		const infoHeader = target.getAttribute("data-info-header");
+		const infoText =
+			currentLang === "dk"
+				? target.getAttribute("data-info-dk")
+				: target.getAttribute("data-info-en");
+		const infoHeader =
+			currentLang === "dk"
+				? target.getAttribute("data-header-dk")
+				: target.getAttribute("data-header-en");
+		const infoHeaderAlt =
+			currentLang === "dk"
+				? target.getAttribute("data-header-en")
+				: target.getAttribute("data-header-dk");
 		const elementPosY = Math.floor(target.offsetTop + 70);
 
 		infoTextElement.textContent = infoText;
 		infoHeaderElement.textContent = infoHeader;
+		infoHeaderAltElement.textContent = infoHeaderAlt;
 		infoBoxElement.style.top = `${elementPosY}px`;
+
 		clearActive();
 		target.classList.add("active");
 		openInfoBox();
@@ -152,4 +189,13 @@ document.addEventListener("DOMContentLoaded", () => {
 			scrollToTarget(target);
 		})
 	);
+
+	langButtonElements.forEach(el => {
+		el.addEventListener("click", e => {
+			const activeEl = wrapper.querySelector(".active");
+			let target = e.currentTarget;
+			currentLang = target.getAttribute("data-lang");
+			moveInfoBox(activeEl);
+		});
+	});
 });
