@@ -34,7 +34,10 @@ document.addEventListener("DOMContentLoaded", () => {
 		let prevTime = Date.now();
 
 		function scrollEvent(e) {
-			if (Date.now() > prevTime + 300) {
+			const isMouseScroll = () => e.deltaY === 200 || e.deltaY === -200;
+			const throttleAmount = () => (isMouseScroll() ? 300 : 450);
+			console.log(throttleAmount());
+			if (Date.now() > prevTime + throttleAmount()) {
 				prevTime = Date.now();
 				const activeEl = wrapper.querySelector(".active");
 				const nextIndex = Array.from(infoElements).indexOf(activeEl) + 1;
@@ -59,7 +62,8 @@ document.addEventListener("DOMContentLoaded", () => {
 		}
 
 		// Hover logic
-		const isHover = e => e.parentElement.querySelector(":hover") === e;
+		const isHover = target =>
+			target.parentElement.querySelector(":hover") === target;
 
 		document.addEventListener("mousemove", function () {
 			const hovered = isHover(wrapper);
