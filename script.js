@@ -51,10 +51,10 @@ document.addEventListener("DOMContentLoaded", () => {
 		let prevTime = Date.now();
 
 		function scrollEvent(e) {
-			const isMouseScroll = () => e.deltaY === 200 || e.deltaY === -200;
-			const throttleAmount = () => (isMouseScroll() ? 300 : 450);
+			const throttleAmount = 300;
+			console.log(e);
 
-			if (Date.now() > prevTime + throttleAmount()) {
+			if (Date.now() > prevTime + throttleAmount) {
 				prevTime = Date.now();
 				const activeEl = wrapper.querySelector(".active");
 				const nextIndex = Array.from(infoElements).indexOf(activeEl) + 1;
