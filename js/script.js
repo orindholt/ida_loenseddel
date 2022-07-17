@@ -52,7 +52,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 		function scrollEvent(e) {
 			const throttleAmount = 300;
-			console.log(e);
 
 			if (Date.now() > prevTime + throttleAmount) {
 				prevTime = Date.now();
@@ -116,9 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		}
 		document.addEventListener("touchmove", handleTouch);
 	}
-	console.log(deviceType());
 	// Infobox logic
-
 	// Initial info box position
 	moveInfoBox(infoElements[0]);
 

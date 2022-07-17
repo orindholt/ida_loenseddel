@@ -15,14 +15,14 @@
 			href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap"
 			rel="stylesheet"
 		/>
-		<script src="script.js"></script>
+		<script src="js/script.js" defer></script>
 	</head>
 	<body>
-		<div class="wrapper">
-			<div class="lang-button-group">
+		<div class="max-w-4xl mx-auto">
+			<div class="flex justify-end gap-2">
 				<button
 					type="button"
-					class="lang-button"
+					class="bg-transparent border-0 cursor-pointer transition-transform md:hover:scale-110"
 					data-id="lang-button"
 					data-lang="dk"
 				>
@@ -40,7 +40,7 @@
 				</button>
 				<button
 					type="button"
-					class="lang-button"
+					class="bg-transparent border-0 pointer transition-transform md:hover:scale-110"
 					data-id="lang-button"
 					data-lang="en"
 				>
@@ -65,9 +65,11 @@
 					</svg>
 				</button>
 			</div>
-			<h1>Tjek din lønseddel</h1>
-			<h2>Før du starter</h2>
-			<p class="start-paragraph">
+			<h1 class="text-blue uppercase text-5xl text-center font-bold">
+				Tjek din lønseddel
+			</h1>
+			<h2 class="font-medium text-center">Før du starter</h2>
+			<p class="leading-7">
 				Det er en rigtig god ide, at du husker at tjekke din lønseddel. Det kan
 				nemlig ske, at arbejdsgiver har lavet en fejl på din lønseddel, som kan
 				betyde, at du gå glip af nogle penge. Vi har derfor lavet det her
@@ -81,12 +83,14 @@
 				lønseddel, så er du meget velkommen til at sende den ind til IDA, og så
 				vil vores dygtige juridiske rådgivere stå klar til at hjælpe dig
 			</p>
-			<h2>Vælg lønseddel type</h2>
-			<div class="select-wrapper">
+			<h2 class="font-medium text-center mb-2">Vælg lønseddel type</h2>
+			<div
+				class="relative grid items-center max-w-[12rem] grid-template-select dropdown-triangle mx-auto"
+			>
 				<select
 					name="loenseddel-type"
 					id="loenseddel-type"
-					class="select-type"
+					class="appearance-none border-none grid-area-select cursor-pointer w-full h-10 font-bold rounded-md px-3 text-2xl bg-blue text-white grid-area-select shadow-sm"
 					data-id="select-type"
 				>
 					<option value="Privat" selected>Privat</option>
@@ -94,55 +98,63 @@
 					<option value="Offentlig">Offentlig</option>
 				</select>
 			</div>
-			<div class="table-wrapper" data-id="table-wrapper">
-				<table class="table">
+			<div
+				class="transition-transform ease-in-out duration-[400ms] flex flex-col gap-8 relative my-8 w-full md:hover:scale-[1.025] bg-white"
+				data-id="table-wrapper"
+			>
+				<table
+					class="w-full text-[45%] sm:text-sm border-collapse break-words border border-solid border-black"
+				>
+					<tbody class="no-border">
+						<tr
+							class="active"
+							data-id="info"
+							data-header-dk="Vigtig info"
+							data-header-en="Important info"
+							data-info-en="Like other important documents, remember to store your payslips somewhere where you can find them for the next 5 years. They may be necessary documentation if you later have a claim against the company."
+							data-info-dk="Ligesom andre vigtige dokumenter skal huske at gemme dine lønsedler et sted, hvor du kan finde dem de næste 5 år. De kan være nødvendig dokumentation, såfremt du senere har et krav mod virksomheden, eller hvis du har en sag ved kommunen eller en anden offentlig myndighed."
+						>
+							<th>
+								Virksomhedens Navn<br />
+								Virksomhedens adresse
+							</th>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>Lønafregning</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>Side 1</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>Fornavn Efternavn</td>
+							<td></td>
+							<td></td>
+							<td>mv.</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>Din adresse</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</tbody>
 					<tr
-						class="active"
-						data-id="info"
-						data-header-dk="Vigtig info"
-						data-header-en="Important info"
-						data-info-en="Like other important documents, remember to store your payslips somewhere where you can find them for the next 5 years. They may be necessary documentation if you later have a claim against the company."
-						data-info-dk="Ligesom andre vigtige dokumenter skal huske at gemme dine lønsedler et sted, hvor du kan finde dem de næste 5 år. De kan være nødvendig dokumentation, såfremt du senere har et krav mod virksomheden, eller hvis du har en sag ved kommunen eller en anden offentlig myndighed."
-					>
-						<th>
-							Virksomhedens Navn<br />
-							Virksomhedens adresse
-						</th>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td>Lønafregning</td>
-						<td></td>
-					</tr>
-					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td>Side 1</td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Fornavn Efternavn</td>
-						<td></td>
-						<td></td>
-						<td>mv.</td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Din adresse</td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr
+						class="border-y border-solid border-black text-center"
 						data-id="info"
 						data-header-dk="Lønperioden"
 						data-header-en="Payslip"
@@ -151,7 +163,7 @@
 					>
 						<th colspan="7" scope="col">Lønseddel for perioden xxx</th>
 					</tr>
-					<tr>
+					<tr class="border-b border-solid border-black">
 						<th scope="col">Tekst</th>
 						<th scope="col">Grundlag</th>
 						<th scope="col">Enheder</th>
@@ -354,14 +366,17 @@
 						<td></td>
 						<td></td>
 					</tr>
-					<tr class="row-center">
-						<td colspan="7">
+					<tr>
+						<td
+							colspan="7"
+							class="text-center border-y border-solid border-black"
+						>
 							Nettolønnen 27.175,36 overført via NemKonto med dispositions dato
 							30-05-2022
 						</td>
 					</tr>
 					<tr
-						class="row-bold"
+						class="border-b border-solid border-black"
 						data-id="info"
 						data-header-dk="Saldi, periode og år til dato (overblik)"
 						data-header-en="Balance, period and year to date (overview)"
@@ -501,10 +516,19 @@
 						<td colspan="2">0</td>
 					</tr>
 				</table>
-				<aside data-id="info-box" class="info-box">
-					<div class="info-div">
-						<div class="info-triangle"></div>
-						<button type="button" class="info-close" data-id="info-close">
+				<aside
+					data-id="info-box"
+					class="absolute bg-blue text-white rounded-lg sm:right-[8%] sm:left-auto top-0 z-10 p-4 max-w-xs transition-all duration-500 shadow-md left-0 right-0"
+				>
+					<div class="relative flex flex-col">
+						<div
+							class="w-0 h-0 border-l-[20px] border-r-[20px] border-b-[20px] border-solid border-x-transparent border-b-blue absolute top-[calc(20px_*_1.75_*_-1)] left-[10%]"
+						></div>
+						<button
+							type="button"
+							class="bg-transparent border-none pointer text-white absolute -right-[16px] -top-[12px]"
+							data-id="info-close"
+						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								width="24px"
@@ -518,9 +542,15 @@
 								/>
 							</svg>
 						</button>
-						<h2 data-id="info-header" class="info-header"></h2>
-						<h3 data-id="info-header-alt" class="info-header-alt"></h3>
-						<p data-id="info-text" class="info-text"></p>
+						<h2
+							data-id="info-header"
+							class="font-bold text-sm sm:text-base md:text-lg"
+						></h2>
+						<h3
+							data-id="info-header-alt"
+							class="font-medium opacity-50 text-sm sm:text-base md:text-lg"
+						></h3>
+						<p data-id="info-text" class="text-xs sm:text-sm md:text-base"></p>
 					</div>
 				</aside>
 			</div>
