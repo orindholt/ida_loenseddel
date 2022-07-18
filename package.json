@@ -7,7 +7,7 @@
 		"tailwindcss": "^3.1.6"
 	},
 	"scripts": {
-		"build:tw": "npx tailwindcss -i ./css/base.css -o ./style.css --watch"
+		"build:tw": "npx tailwindcss -i ./css/main.css -o ./style.min.css --watch --minify"
 	},
 	"repository": {
 		"type": "git",

@@ -162,7 +162,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			currentLang === "dk"
 				? target.getAttribute("data-header-en")
 				: target.getAttribute("data-header-dk");
-		const elementPosY = Math.floor(target.offsetTop + 70);
+		const elementPosY = Math.floor(target.offsetTop + 50);
 
 		infoTextElement.textContent = infoText;
 		infoHeaderElement.textContent = infoHeader;

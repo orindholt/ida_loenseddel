@@ -6,9 +6,9 @@ module.exports = {
 			colors: {
 				tan: "rgb(242, 242, 242)",
 				blue: "rgb(15, 69, 204)",
-				info: "rgb(15, 69, 204, 0.1)",
-				active: "rgb(15, 69, 204, 0.3)",
-				hover: "rgba(0, 0, 0, 0.15)",
+				info: "rgb(15, 69, 204, 0.05)",
+				active: "rgb(15, 69, 204, 0.25)",
+				hover: "rgb(15, 69, 204, 0.15)",
 			},
 			fontFamily: {
 				montserrat: "'Montserrat', sans-serif",
