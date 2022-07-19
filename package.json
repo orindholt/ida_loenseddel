@@ -1,0 +1,23 @@
+{
+	"name": "ida_loenseddel",
+	"description": "[Github Pages Link](https://orindholt.github.io/ida_loenseddel/)",
+	"version": "1.0.0",
+	"main": "tailwind.config.js",
+	"devDependencies": {
+		"tailwindcss": "^3.1.6"
+	},
+	"scripts": {
+		"build:tw": "npx tailwindcss -i ./css/main.css -o ./style.min.css --watch --minify"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/orindholt/ida_loenseddel.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/orindholt/ida_loenseddel/issues"
+	},
+	"homepage": "https://github.com/orindholt/ida_loenseddel#readme"
+}

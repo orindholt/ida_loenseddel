@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-tan font-montserrat;
+  }
+  th, td {
+    @apply border-x border-solid border-black py-1 text-left;
+  }
+  th {
+    @apply font-semibold;
+  }
+  tr > *:first-child {
+    @apply border-l-0;
+  }
+  tr > *:last-child {
+    @apply border-r-0;
+  }
+  [data-id="info"] {
+    @apply cursor-pointer relative after:content-[""] after:rounded-md after:bg-info after:absolute after:left-0 after:right-0 after:top-[3px] after:bottom-0.5 after:transition-colors after:duration-200 after:pointer-events-none md:after:hover:bg-hover;
+  }
+  [data-id="info-box"] a {
+    @apply underline;
+  }
+}
+
+@layer components {
+  .grid-template-select {
+    grid-template-areas: "select";
+  }
+  .grid-area-select {
+    grid-area: select;
+  }
+  .no-border * {
+    @apply border-none;
+  }
+  table .active::after {
+    @apply !bg-active;
+  }
+  table.active {
+    @apply !table;
+  }
+  .dropdown-triangle::after {
+    @apply content-[""] w-3 h-2 bg-white grid-area-select justify-self-end pointer-events-none mr-2;
+    clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+  }
+  .inactive {
+    @apply opacity-20 cursor-not-allowed;
+  }
+}
