@@ -68,7 +68,7 @@
 			<h1 class="text-blue uppercase text-5xl text-center font-bold">
 				Tjek din lønseddel
 			</h1>
-			<h2 class="font-medium text-center">Før du starter</h2>
+			<h2 class="font-medium text-center mt-2">Før du starter</h2>
 			<p class="leading-7">
 				Det er en rigtig god ide, at du husker at tjekke din lønseddel. Det kan
 				nemlig ske, at arbejdsgiver har lavet en fejl på din lønseddel, som kan
@@ -83,9 +83,9 @@
 				lønseddel, så er du meget velkommen til at sende den ind til IDA, og så
 				vil vores dygtige juridiske rådgivere stå klar til at hjælpe dig
 			</p>
-			<h2 class="font-medium text-center mb-2">Vælg lønseddel type</h2>
+			<h2 class="font-medium text-center my-2">Vælg lønseddel type</h2>
 			<div
-				class="relative grid items-center max-w-[12rem] grid-template-select dropdown-triangle mx-auto"
+				class="relative grid items-center max-w-xs grid-template-select dropdown-triangle mx-auto"
 			>
 				<select
 					name="loenseddel-type"
@@ -93,17 +93,25 @@
 					class="appearance-none border-none grid-area-select cursor-pointer w-full h-10 font-bold rounded-md px-3 text-2xl bg-blue text-white grid-area-select shadow-sm"
 					data-id="select-type"
 				>
-					<option value="Privat" selected>Privat</option>
-					<option value="Erhverv">Erhverv</option>
-					<option value="Offentlig">Offentlig</option>
+					<option value="privat" selected>Privat</option>
+					<option value="staten">Staten</option>
+					<option value="silkeborg">Kommune - Silkeborg</option>
+					<option value="kmd">Kommune - KMD</option>
 				</select>
 			</div>
 			<div
-				class="transition-transform ease-in-out duration-[400ms] flex flex-col gap-8 relative my-8 w-full md:hover:scale-[1.025] bg-white"
+				class="transition-transform ease-in-out duration-[400ms] flex flex-col gap-8 relative my-8 w-full md:hover:scale-[1.025] bg-white px-4 py-5 shadow-md rounded-sm"
 				data-id="table-wrapper"
 			>
+				<p class="hidden text-right font-medium text-sm" data-id="page-number">
+					<span data-id="page-current">0</span> /
+					<span data-id="page-max">0</span>
+				</p>
+				<!-- Privat Loenseddel -->
 				<table
-					class="w-full text-[45%] sm:text-sm border-collapse break-words border border-solid border-black"
+					class="w-full text-[45%] sm:text-sm border-collapse break-words blur-[0.4px] hidden active"
+					data-id="loenseddel-privat"
+					data-pagination="false"
 				>
 					<tbody class="no-border">
 						<tr
@@ -516,6 +524,370 @@
 						<td colspan="2">0</td>
 					</tr>
 				</table>
+				<!-- Privat Loenseddel End -->
+				<!-- Stat Loenseddel - 1 -->
+				<table
+					class="w-full text-[45%] sm:text-sm border-collapse break-words blur-[0.4px] hidden"
+					data-id="loenseddel-staten"
+					data-pagination="true"
+					data-page="1"
+				>
+					<tbody class="no-border text-right">
+						<tr>
+							<th class="text-2xl font-bold text-left" colspan="3">
+								Lønseddel
+							</th>
+							<td class="text-2xl font-bold text-right" colspan="2">
+								Anders And
+							</td>
+						</tr>
+						<tr>
+							<th scope="row" colspan="4" class="text-right">Lønnummer</th>
+							<td class="text-right">100480-0487 000</td>
+						</tr>
+						<tr>
+							<td>28/04/2022</td>
+						</tr>
+						<tr>
+							<td colspan="5">&nbsp;</td>
+						</tr>
+						<tr>
+							<td colspan="3">IT-medarbejder</td>
+							<td>Løngruppe 414</td>
+							<td>SE-nr 12345678</td>
+						</tr>
+						<tr>
+							<td colspan="3">Anders And</td>
+							<th scope="col">Arbejdsplads</th>
+							<td></td>
+						</tr>
+						<tr>
+							<td colspan="3">Paradisæblevej 111</td>
+							<td colspan="2">Andeby Margarinefabrik</td>
+						</tr>
+						<tr>
+							<td colspan="3"></td>
+							<td colspan="2">Æblevænget 10</td>
+						</tr>
+						<tr>
+							<td colspan="3">DK-1010 Andeby</td>
+							<td colspan="2">1010 Andeby</td>
+						</tr>
+						<tr>
+							<td colspan="5">&nbsp;</td>
+						</tr>
+						<tr>
+							<td colspan="3"></td>
+							<th>Kontakt</th>
+							<td>Margarinefabrik</td>
+						</tr>
+						<tr>
+							<td colspan="3"></td>
+							<th>Telefon</th>
+							<td>31446713</td>
+						</tr>
+						<tr>
+							<td colspan="3"></td>
+							<th>Mail</th>
+							<td>and@margarine.dk</td>
+						</tr>
+					</tbody>
+					<tbody
+						class="border-y border-solid border-black text-center no-border"
+					>
+						<tr
+							class="active"
+							data-id="info"
+							data-header-dk="Nemkento"
+							data-header-en="!"
+							data-info-en="!"
+							data-info-dk="Her fremgår datoen for, hvornår dine penge er til rådighed"
+						>
+							<th scope="row">Nettoløn til disposition</th>
+							<td colspan="4">30/07/2021</td>
+						</tr>
+						<tr
+							data-id="info"
+							data-header-dk="Nettoløn disposition"
+							data-header-en="!"
+							data-info-en="!"
+							data-info-dk="Her angives det endelige beløb som overføres til din bank. Beløbet udgør den totale forskel af beregningen nedenfor mellem '(+) beløb' og '(-) beløb'."
+						>
+							<th scope="row">via NemKonto</th>
+							<td colspan="4">34.076,00 kr.</td>
+						</tr>
+					</tbody>
+					<tbody class="border-y border-solid border-black no-border">
+						<tr>
+							<th colspan="6" scope="col">Lønoplysninger</th>
+						</tr>
+						<tr>
+							<th scope="col">Kode</th>
+							<th scope="col">Løndelstekst</th>
+							<th scope="col">Antal enh</th>
+							<th scope="col">Sats</th>
+							<th scope="col">(+) Beløb</th>
+							<th scope="col">(-) Beløb</th>
+						</tr>
+					</tbody>
+
+					<tr class="no-border">
+						<td></td>
+						<td colspan="4">Vedr. April 2022</td>
+					</tr>
+					<tr
+						class="no-border"
+						data-id="info"
+						data-header-dk="Basisløn"
+						data-header-en="!"
+						data-info-en="!"
+						data-info-dk="Her kan du se, hvad din basisløn er. Din basisløn er en minimumsløn aftalt i akademikeroverenskomsten. Størrelsen på din basisløn kan afhænge af din anciennitet og stillingstype.<br/><br/>Niveauet for din basisløn reguleres typisk 1-3 gange årligt afhængig af, hvad overenskomstens parter har aftalt for den givne overenskomstperiode. Hvornår der sker en regulering næste gang, kan du se her i vores <a href='#'>faktaark for OK21</a>. Hver gang der sker en regulering af lønniveauerne i det offentlige, så opdateres det i vores <a href='#'>løntabeller</a>. Din basisløn bør derfor være magen til lønniveauet i vores løntabeller."
+					>
+						<td>2000</td>
+						<td>Løn</td>
+						<td></td>
+						<td></td>
+						<td>30.335,08</td>
+						<td></td>
+					</tr>
+					<tbody
+						class="no-border"
+						data-id="info"
+						data-header-dk="Tillæg"
+						data-header-en="!"
+						data-info-en="!"
+						data-info-dk="Får du et tillæg udover din basisløn, så skal det fremgår her. Tillæggene kan opdeles i:<br>
+						<span class='underline'>Lokalaftalte tillæg</span>: Værdien af disse tillæg fremgår ikke af overenskomsten, men er i stedet noget der er aftalt lokalt. Det er typisk kvalifikations- og/eller funktionstillæg, men det kan fx også være et vagttillæg.<br/><span class='underline'>Centralaftalte tillæg</span>:
+						Du kan også få et centralt aftalt tillæg, hvis du fx er fuldmægtig, Ph.d., underviser osv. Værdien af disse tillæg kan du ligeledes løbende finde i vores løntabeller 
+						"
+					>
+						<tr>
+							<td>3810</td>
+							<td>Funktionstillæg, pensg.</td>
+							<td></td>
+							<td></td>
+							<td>1.018,44</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>3821</td>
+							<td>Kvalifikationstillæg, pensg.</td>
+							<td></td>
+							<td></td>
+							<td>5.555,15</td>
+							<td></td>
+						</tr>
+					</tbody>
+					<tbody class="no-border">
+						<tr>
+							<td>7045</td>
+							<td>ATP Pension, sats A pensg.</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>94,67</td>
+						</tr>
+						<tr>
+							<td>9845</td>
+							<td>AM-bidrag</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>2.945,00</td>
+						</tr>
+						<tr>
+							<td>9850</td>
+							<td>AM-bidrag</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>9.793,00</td>
+						</tr>
+						<tr class="border-y border-solid border-black">
+							<td></td>
+							<th scope="row" colspan="3">Total</th>
+							<td>36.908,67</td>
+							<td>12.832,67</td>
+						</tr>
+					</tbody>
+
+					<tr>
+						<td class="font-bold pb-4 pt-2">Bemærk</td>
+					</tr>
+					<tbody class="border-y border-solid border-black">
+						<tr>
+							<th scope="col">Skatteoplysninger</th>
+						</tr>
+						<tr>
+							<th scope="row">Skattekort</th>
+						</tr>
+						<tr
+							class="no-border"
+							data-id="info"
+							data-header-dk="Fradrag"
+							data-header-en="!"
+							data-info-en="!"
+							data-info-dk="Skattefradrag/månedsfradrag er dit personlige fradrag, som trækkes fra, lige inden din A-skat beregnes, og lægges herefter til igen. Dit fradrag er beregnet af SKAT på baggrund af din forskudsregistrering. Du kan tjekke dit fradrag på skat.dk."
+						>
+							<th scope="col">Fradrag</th>
+							<td>7.399</td>
+						</tr>
+						<tr
+							class="no-border"
+							data-id="info"
+							data-header-dk="Træk Procent"
+							data-header-en="!"
+							data-info-en="!"
+							data-info-dk="A-skat er skatten, alle almindelige lønmodtagere betaler af deres primære indtægt. Hvor meget du betaler i A-skat, afhænger af din trækprocent. Vi har i Danmark et progressivt skattesystem, hvorefter jo højere din indtægt er, desto højere er din trækprocent. Din trækprocent bliver beregnet på baggrund af din forskudsopgørelse og afhænger af din indkomst, fradrag og hvilken kommune du bor i. Du kan se din trækprocent på skat.dk. A-skatten trækkes af din A-indkomst, som udgør din løn fratrukket pension, ATP og AM-bidrag. A-skat anføres uden ørebeløb på lønsedlen."
+						>
+							<th scope="row">Træk %</th>
+							<td>37</td>
+						</tr>
+					</tbody>
+					<tbody class="no-border">
+						<tr>
+							<th scope="col">Ansættelseoplysninger</th>
+						</tr>
+						<tr>
+							<th scope="row">Personalekategori</th>
+							<td>44</td>
+							<td>Ingeniører</td>
+						</tr>
+						<tr>
+							<th scope="row">Personalekategori</th>
+							<td>74</td>
+							<td>Civilingeniører m.fl</td>
+						</tr>
+						<tr>
+							<th scope="row">Trin</th>
+							<td>3</td>
+						</tr>
+					</tbody>
+					<tbody
+						class="no-border"
+						data-id="info"
+						data-header-dk="Basisløntrin/Skalatrin"
+						data-header-en="!"
+						data-info-en="!"
+						data-info-dk="Hvilket basisløntrin/skalatrin du indplaceres på afgøres typisk af 2 faktorer: uddannelsesmæssige baggrund og tid med akademisk arbejde efter endt uddannelse. Hold derfor øje med, at der står det rigtige trin (1-8) ud foran ”Skalatrin” på din lønseddel.<br/>Hvis og hvornår du skal stige yderligere bør fremgå ud foran ”Oprykningsdato”.<br/>Du kan også være ansat i en stilling, hvor det ikke er din uddannelse og erhvervserfaring, der er afgørende for basislønnen. Det kan fx være som specialkonsulent, chefkonsulent, Ph.d. osv. Hvis du er ansat i en stilling udenfor de normale løntrin, så vil der fx kunne stå 19 eller 20 foran ”Skalatrin” . Der vil i disse tilfælde ikke fremgå en ”Oprykningsdato”.<br/>Hvis du vil vide mere om, hvilket løntrin du bør blive indplaceret på, så fremgår det både af vores <a href='#'>løntabeller</a>, og du kan også finde det i vores <a href='#'>artikel</a>, der ligeledes beskriver de basale elementer i det offentlige lønsystem."
+					>
+						<tr>
+							<th scope="row">Skalatrin</th>
+							<td>6</td>
+						</tr>
+						<tr>
+							<th scope="row">Oprykningsdato</th>
+							<td>01-04-2022</td>
+						</tr>
+					</tbody>
+				</table>
+				<!-- Stat Loenseddel - 1 End -->
+				<!-- Stat Loenseddel - 2 -->
+				<table
+					class="w-full text-[45%] sm:text-sm border-collapse break-words blur-[0.4px] hidden"
+					data-id="loenseddel-staten"
+					data-pagination="true"
+					data-page="2"
+				>
+					<tbody class="no-border">
+						<tr>
+							<th class="text-2xl font-bold text-left" colspan="3">
+								Lønseddel
+							</th>
+							<td class="text-2xl font-bold text-right" colspan="2">
+								Anders And
+							</td>
+						</tr>
+						<tr>
+							<th scope="row" colspan="4" class="text-right">Lønnummer</th>
+							<td class="text-right">100480-0487 000</td>
+						</tr>
+						<tr>
+							<td>28/04/2022</td>
+						</tr>
+						<tr>
+							<td colspan="5">&nbsp;</td>
+						</tr>
+						<tr>
+							<th scope="col">Pensionsbidrag</th>
+						</tr>
+						<tr>
+							<th colspan="2" scope="col">Pensionsbetaling</th>
+							<th scope="col">Procent</th>
+							<th scope="col">Salmet pens</th>
+							<th scope="col">Indbetalt pens</th>
+						</tr>
+					</tbody>
+					<tbody
+						class="active"
+						data-id="info"
+						data-header-dk="Pensionsbidrag"
+						data-header-en="!"
+						data-info-dk="Pensionsprocenten er fastlagt i den til enhver tid gældende overenskomst, og den opdateres i vores <a href='#'>løntabel</a>, hvis/når der sker en regulering. I 2022 er pensionsprocenten på 17,10% af alle løndele med få undtagelser som fx rådighedstillægget, der har 12,50%.<br/>
+					Arbejdsgiveren betaler hele pensionsbeløbet uanset, at der står 1/3 i eget bidrag. Eget bidraget bruges i særlige tilfælde fx ved beregning af særlig feriegodtgørelse.<br/>
+					Fritvalgsordning: Der er fritvalgsordning, hvorved en begrænset del af pensionsbidraget (alt over 16,8% 2022-tal)  kan udbetales løbende som løn. Vil du vide mere, så kontakt HR eller IDA.
+					"
+						data-info-en="!"
+					>
+						<tr>
+							<td colspan="2">17,10% pensionsbidrag</td>
+							<td></td>
+							<td>6.311,42</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td colspan="2">Heraf 1/3 eget bidrag</td>
+							<td></td>
+							<td>2.103,83</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td colspan="2">Sendt til P+ Pension</td>
+							<td></td>
+							<td></td>
+							<td>6.311,42</td>
+						</tr>
+					</tbody>
+				</table>
+				<!-- Stat Loenseddel - 2 End -->
+				<div class="justify-between w-full hidden" data-id="pagination">
+					<button
+						type="button"
+						class="rotate-180 inactive"
+						data-id="pagination-button"
+						data-direction="prev"
+					>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="30"
+							height="30"
+							viewBox="0 0 92 92"
+							xml:space="preserve"
+						>
+							<path
+								d="M63 46c0 1.1-.4 2.1-1.2 2.9l-26 25C35 74.6 34 75 33 75c-1.1 0-2.1-.4-2.9-1.2-1.5-1.6-1.5-4.1.1-5.7l23-22.1-23-22.1c-1.6-1.5-1.6-4.1-.1-5.7 1.5-1.6 4.1-1.6 5.7-.1l26 25c.8.8 1.2 1.8 1.2 2.9z"
+							/>
+						</svg>
+					</button>
+					<button
+						type="button"
+						data-id="pagination-button"
+						data-direction="next"
+					>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="30"
+							height="30"
+							viewBox="0 0 92 92"
+							xml:space="preserve"
+						>
+							<path
+								d="M63 46c0 1.1-.4 2.1-1.2 2.9l-26 25C35 74.6 34 75 33 75c-1.1 0-2.1-.4-2.9-1.2-1.5-1.6-1.5-4.1.1-5.7l23-22.1-23-22.1c-1.6-1.5-1.6-4.1-.1-5.7 1.5-1.6 4.1-1.6 5.7-.1l26 25c.8.8 1.2 1.8 1.2 2.9z"
+							/>
+						</svg>
+					</button>
+				</div>
+				<!-- Stat Loenseddel End -->
 				<aside
 					data-id="info-box"
 					class="absolute bg-blue text-white rounded-lg sm:right-[8%] sm:left-auto top-0 z-10 p-4 max-w-sm transition-all duration-500 shadow-md left-0 right-0"
@@ -526,7 +898,7 @@
 						></div>
 						<button
 							type="button"
-							class="bg-transparent border-none pointer text-white absolute -right-[16px] -top-[12px]"
+							class="bg-transparent border-none pointer text-white absolute -right-[10px] -top-[12px]"
 							data-id="info-close"
 						>
 							<svg
