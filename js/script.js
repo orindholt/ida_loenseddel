@@ -65,10 +65,15 @@ document.addEventListener("DOMContentLoaded", () => {
 	function changeTable(type, page = 0) {
 		const selectedTables = document.querySelectorAll(`[data-id='${type}']`);
 		if (selectedTables) {
+			let prevTableId = activeTable.getAttribute("data-id");
+
 			updateInfoElements();
 			activeTable.classList.remove("active");
 			selectedTables[page].classList.add("active");
 			updateInfoElements();
+
+			const activeTableId = activeTable.getAttribute("data-id");
+			if (prevTableId !== activeTableId) pageIndex = 0;
 			togglePagination();
 			moveInfoBox(infoElements[0]);
 		}
@@ -209,38 +214,42 @@ document.addEventListener("DOMContentLoaded", () => {
 			target.getAttribute("data-info-dk") &&
 			target.getAttribute("data-info-en")
 		) {
+			infoTextElement.style.removeProperty("display");
 			const infoText =
 				currentLang === "dk"
 					? target.getAttribute("data-info-dk")
 					: target.getAttribute("data-info-en");
 			infoTextElement.innerHTML = infoText;
-		}
+		} else infoTextElement.style.display = "none";
 		if (
 			target.getAttribute("data-header-dk") &&
 			target.getAttribute("data-header-en")
 		) {
+			infoHeaderElement.style.removeProperty("display");
 			const infoHeader =
 				currentLang === "dk"
 					? target.getAttribute("data-header-dk")
 					: target.getAttribute("data-header-en");
 			infoHeaderElement.textContent = infoHeader;
-		}
+		} else infoHeaderElement.style.display = "none";
 		if (
 			target.getAttribute("data-header-dk") &&
 			target.getAttribute("data-header-en")
 		) {
+			infoHeaderAltElement.style.removeProperty("display");
 			const infoHeaderAlt =
 				currentLang === "dk"
 					? target.getAttribute("data-header-en")
 					: target.getAttribute("data-header-dk");
 			infoHeaderAltElement.textContent = infoHeaderAlt;
-		}
+		} else infoHeaderAltElement.style.display = "none";
 	}
 	// Moves the info box
 	function moveInfoBox(target) {
 		changeInfoText(target);
 		const infoBoxHeight = infoBoxElement.clientHeight;
 		const windowHeight = window.innerHeight;
+		const targetHeight = target.clientHeight;
 		// Potential bug..
 		const isOverflowing =
 			infoBoxHeight > windowHeight / (deviceType() === "tablet" ? 4 : 1.5);
@@ -252,7 +261,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		} else if (infoBoxElement.style.maxWidth)
 			infoBoxElement.style.removeProperty("max-width");
 		// Absolutely a bug..
-		const elementPosY = Math.floor(target.offsetTop + 70);
+		const elementPosY = Math.floor(target.offsetTop + targetHeight + 20);
 		infoBoxElement.style.top = `${elementPosY}px`;
 
 		clearActive();
