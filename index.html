@@ -85,11 +85,11 @@
 			</p>
 			<h2 class="font-medium text-center my-2">Vælg lønseddel type</h2>
 			<div
-				class="relative grid items-center max-w-xs grid-template-select dropdown-triangle mx-auto"
+				class="relative grid items-center max-w-xs grid-template-select dropdown-triangle mx-auto z-20"
 			>
 				<select
-					name="loenseddel-type"
-					id="loenseddel-type"
+					name="paycheck-type"
+					id="paycheck-type"
 					class="appearance-none border-none grid-area-select cursor-pointer w-full h-10 font-bold rounded-md px-3 text-2xl bg-blue text-white grid-area-select shadow-sm"
 					data-id="select-type"
 				>
@@ -100,7 +100,7 @@
 				</select>
 			</div>
 			<div
-				class="transition-transform ease-in-out duration-[400ms] flex flex-col gap-8 my-8 w-full md:hover:scale-[1.025] bg-white px-4 py-5 shadow-md rounded-sm"
+				class="transition-transform ease-in-out duration-[400ms] flex flex-col gap-8 my-8 w-full md:hover:scale-[1.01] bg-white px-4 py-5 shadow-md rounded-sm"
 				data-id="table-wrapper"
 			>
 				<p class="hidden text-right font-medium text-sm" data-id="page-number">
@@ -108,877 +108,1413 @@
 					<span data-id="page-max">0</span>
 				</p>
 				<div class="relative">
-					<!-- Privat Loenseddel -->
-					<table
-						class="w-full text-[45%] sm:text-sm border-collapse break-words blur-[0.4px] hidden active"
-						data-id="loenseddel-privat"
+					<!-- Privat Paycheck -->
+					<div
+						class="hidden blur-[0.4px] text-[45%] sm:text-sm"
+						data-id="paycheck"
+						data-type="privat"
 						data-pagination="false"
 					>
-						<tbody class="no-border">
+						<table
+							class="w-full border-collapse break-words"
+							data-id="paycheck-table"
+						>
+							<tbody class="cell-border-none">
+								<tr
+									class="active"
+									data-id="info"
+									data-header-dk="Vigtig info"
+									data-header-en="Important info"
+									data-info-en="Like other important documents, remember to store your payslips somewhere where you can find them for the next 5 years. They may be necessary documentation if you later have a claim against the company."
+									data-info-dk="Ligesom andre vigtige dokumenter skal huske at gemme dine lønsedler et sted, hvor du kan finde dem de næste 5 år. De kan være nødvendig dokumentation, såfremt du senere har et krav mod virksomheden, eller hvis du har en sag ved kommunen eller en anden offentlig myndighed."
+								>
+									<th>
+										Virksomhedens Navn<br />
+										Virksomhedens adresse
+									</th>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td>Lønafregning</td>
+									<td></td>
+								</tr>
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td>Side 1</td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>Fornavn Efternavn</td>
+									<td></td>
+									<td></td>
+									<td>mv.</td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>Din adresse</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+							</tbody>
 							<tr
-								class="active"
+								class="border-y border-solid border-black text-center"
 								data-id="info"
-								data-header-dk="Vigtig info"
-								data-header-en="Important info"
-								data-info-en="Like other important documents, remember to store your payslips somewhere where you can find them for the next 5 years. They may be necessary documentation if you later have a claim against the company."
-								data-info-dk="Ligesom andre vigtige dokumenter skal huske at gemme dine lønsedler et sted, hvor du kan finde dem de næste 5 år. De kan være nødvendig dokumentation, såfremt du senere har et krav mod virksomheden, eller hvis du har en sag ved kommunen eller en anden offentlig myndighed."
+								data-header-dk="Lønperioden"
+								data-header-en="Payslip"
+								data-info-en="Your payslip must indicate the pay period it covers. A pay period can go across the turn of the month, e.g. From the 15th of one month to the 14th of the next month, or it can follow the month, just as it can also last for a smaller period, e.g. If you are paid every 14 days."
+								data-info-dk="Din lønseddel skal angive hvilken lønperiode den dækker over. En lønperiode kan gå på tværs af månedsskiftet, f.eks. Fra den 15. i den ene måned til den 14. i den næste måned, eller den kan følge måneden, ligesom den også kan vare for en mindre periode, f.eks. Hvis du er 14-dages lønnet."
 							>
-								<th>
-									Virksomhedens Navn<br />
-									Virksomhedens adresse
-								</th>
+								<th colspan="7" scope="col">Lønseddel for perioden xxx</th>
+							</tr>
+							<tr class="border-b border-solid border-black">
+								<th scope="col">Tekst</th>
+								<th scope="col">Grundlag</th>
+								<th scope="col">Enheder</th>
+								<th scope="col">Sats</th>
+								<th scope="col">Beløb(+)</th>
+								<th scope="col">Beløb(-)</th>
+							</tr>
+							<tr
+								data-id="info"
+								data-header-dk="Månedsløn"
+								data-header-en="Salary"
+								data-info-en="Here is your gross salary stated, which is your salary before taxes. It should be the salary you have agreed with your employer, excluding any employer-paid pension."
+								data-info-dk="Her står din bruttoløn, dvs. din løn før skat, og den løn du har aftalt med din arbejdsgiver eksklusiv eventuel arbejdsgiver betalt pension."
+							>
+								<th scope="row">Månedsløn</th>
 								<td></td>
+								<td>160,33</td>
 								<td></td>
-								<td></td>
-								<td></td>
+								<td>41.055.00</td>
 								<td></td>
 							</tr>
-							<tr>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td>Lønafregning</td>
-								<td></td>
-							</tr>
-							<tr>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td>Side 1</td>
-								<td></td>
-							</tr>
-							<tr>
-								<td>Fornavn Efternavn</td>
-								<td></td>
-								<td></td>
-								<td>mv.</td>
-								<td></td>
-							</tr>
-							<tr>
-								<td>Din adresse</td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-							</tr>
-						</tbody>
-						<tr
-							class="border-y border-solid border-black text-center"
-							data-id="info"
-							data-header-dk="Lønperioden"
-							data-header-en="Payslip"
-							data-info-en="Your payslip must indicate the pay period it covers. A pay period can go across the turn of the month, e.g. From the 15th of one month to the 14th of the next month, or it can follow the month, just as it can also last for a smaller period, e.g. If you are paid every 14 days."
-							data-info-dk="Din lønseddel skal angive hvilken lønperiode den dækker over. En lønperiode kan gå på tværs af månedsskiftet, f.eks. Fra den 15. i den ene måned til den 14. i den næste måned, eller den kan følge måneden, ligesom den også kan vare for en mindre periode, f.eks. Hvis du er 14-dages lønnet."
-						>
-							<th colspan="7" scope="col">Lønseddel for perioden xxx</th>
-						</tr>
-						<tr class="border-b border-solid border-black">
-							<th scope="col">Tekst</th>
-							<th scope="col">Grundlag</th>
-							<th scope="col">Enheder</th>
-							<th scope="col">Sats</th>
-							<th scope="col">Beløb(+)</th>
-							<th scope="col">Beløb(-)</th>
-						</tr>
-						<tr
-							data-id="info"
-							data-header-dk="Månedsløn"
-							data-header-en="Salary"
-							data-info-en="Here is your gross salary stated, which is your salary before taxes. It should be the salary you have agreed with your employer, excluding any employer-paid pension."
-							data-info-dk="Her står din bruttoløn, dvs. din løn før skat, og den løn du har aftalt med din arbejdsgiver eksklusiv eventuel arbejdsgiver betalt pension."
-						>
-							<th scope="row">Månedsløn</th>
-							<td></td>
-							<td>160,33</td>
-							<td></td>
-							<td>41.055.00</td>
-							<td></td>
-						</tr>
-						<tr
-							data-id="info"
-							data-header-dk="Fri telefon"
-							data-header-en="Free phone"
-							data-info-en="If you are provided with a telephone in whole or in part free of charge, which you may also use privately, the goods must be taxed in accordance with SKAT's applicable rules. Here, the tax value is added, which is deducted again when the tax is calculated.
+							<tr
+								data-id="info"
+								data-header-dk="Fri telefon"
+								data-header-en="Free phone"
+								data-info-en="If you are provided with a telephone in whole or in part free of charge, which you may also use privately, the goods must be taxed in accordance with SKAT's applicable rules. Here, the tax value is added, which is deducted again when the tax is calculated.
 						"
-							data-info-dk="Får du helt eller delvist vederlagsfrit stillet en telefon til rådighed, som du også må bruge privat, så skal godet beskattes efter SKATs gældende regler. Her lægges den skattemæssige værdi til, som fratrækkes igen, når skatten er beregnet."
-						>
-							<th scope="row">Fri telefon mm.</th>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td>250,00</td>
-							<td></td>
-						</tr>
-						<tr
-							data-id="info"
-							data-header-dk="Sundhedsforsikring"
-							data-header-en="Healthcare insurance"
-							data-info-en="As with employer paid phone, you also pay tax of the value of an employer-paid health insurance policy. The value is typically determined based on the health scheme's market value."
-							data-info-dk="Ligesom med fri telefon betaler du også skat af værdien af en arbejdsgiverbetalt sundhedsforsikring. Værdien fastsættes typisk ud fra sundhedsordningens markedsværdi."
-						>
-							<th scope="row">Sundhedsforsikring</th>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td>161,45</td>
-							<td></td>
-						</tr>
-						<tr
-							data-id="info"
-							data-header-dk="Ferietilæg"
-							data-header-en="Holiday Supplement"
-							data-info-en="When you get your salary paid monthly, you have a right to salary during holiday in accordance to the Danish Holiday act. And in addition to that you are also entitled to a holiday supplement. As a private employee, your holiday supplement amounts to 1% of your holiday-eligible salary during the holiday year, which is your salary and all other taxable salary components. The supplement may also be agreed higher, which will be stated in your contract or collective agreement. The employer can pay the holiday supplement in two ways: either on an ongoing basis when you are on holiday, or twice a year, which is the most used way. Here the holiday supplement is paid with the salary for May for holiday allowance earned September 1-31. May and holiday allowance for the last part of the holiday year with the August salary."
-							data-info-dk="Som månedslønnet har du udover løn under ferie, også ret til et ferietillæg. Som privatansat udgør dit ferietillæg 1 % af din ferieberettiget løn i ferieåret, hvilket er din løn samt alle øvrige skattepligtige løndele. Tillægget kan også være aftalt højere, hvilket vil fremgå af din kontrakt eller overenskomst. Arbejdsgiver kan udbetale ferietillægget på to måder: enten løbende, når du holder ferien, eller 2 gange om året, hvilket er den mest anvendte måde. Her udbetales det: med lønnen for maj for ferietillæg optjent 1. september-31. maj og ferietillæg for den sidste del af ferieåret med lønnen for august."
-						>
-							<th scope="row">Ferietilæg</th>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td>3.731,96</td>
-							<td></td>
-						</tr>
-						<tr
-							data-id="info"
-							data-header-dk="Pension eget bidrag"
-							data-header-en="Pension Savings"
-							data-info-en="Here is the amount you pay for your pension savings. The pension contribution is typically calculated as a percentage of your gross salary, which is deducted from your salary before AM contribution and A-tax are calculated. The amount is paid to the pension company agreed with your employer. Whether you have a pension scheme will typically be stated in your contract or collective agreement. Often there will be a set up where your employer pays 2/3 and you pay 1/3 for retirement."
-							data-info-dk="Her fremgår det beløb, du selv betaler til din pensionsopsparing. Pensionsbidraget bliver typisk beregnet som en procentdel af din bruttoløn, som trækkes fra din løn, før der beregnes AM- bidrag og A-skat. Beløbet indbetales til det pensionsselskab, der er aftalt med arbejdsgiver. Hvorvidt du har pension, vil typisk fremgå af din kontrakt eller overenskomst. Ofte vil der være et set up, hvor din arbejdsgiver betaler 2/3 og du betaler 1/3 til pension."
-						>
-							<th scope="row">Pension eget bidrag</th>
-							<td>41.055,00</td>
-							<td></td>
-							<td>5%</td>
-							<td></td>
-							<td>-2.052,75</td>
-						</tr>
-						<tr
-							data-id="info"
-							data-header-dk="ATP af løn"
-							data-header-en="ATP of salary"
-							data-info-en="ATP stands for the Labor Market's supplementary pension, and is a statutory pension scheme, which is paid by all employees over the age of 16 who work more than 9 hours a week. Your employer pays 2/3 of the amount, while you pay 1/3 yourself. You can see the current rate on borger.dk. Here you can also see how much you have paid to ATP and how much you can expect to receive in retirement from ATP."
-							data-info-dk="ATP, står for Arbejdsmarkedets tillægspension, og er en lovpligtig pensionsordning, som betales af alle lønmodtagere over 16 år, der arbejder over 9 timer om ugen. Din arbejdsgiver indbetaler 2/3 af beløbet, mens du selv betaler 1/3. Du kan se den aktuelle sats på borger.dk. Her kan du også se meget du har indbetalt, og hvor meget du kan forvente at få i pension fra ATP."
-						>
-							<th scope="row">ATP af løn</th>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td>-94,65</td>
-						</tr>
-						<tr
-							data-id="info"
-							data-header-dk="AM-indkomst, løn"
-							data-header-en="AM income"
-							data-info-en="AM income is the part of the salary from which AM contributions must be paid, which is your monthly salary incl. supplements and taxable benefits but after ATP and own pension contribution have been deducted."
-							data-info-dk="AM-indkomst er den del af lønnen, som der skal betales AM-bidrag af, hvilket er din månedsløn inkl. tillæg og skattepligtige goder, efter at ATP og eget pensionsbidrag er trukket fra."
-						>
-							<th scope="row">AM-indkomst, løn</th>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td>43.051,01</td>
-							<td></td>
-						</tr>
-						<tr
-							data-id="info"
-							data-header-dk="AM-bidrag, løn"
-							data-header-en="AM contributions"
-							data-info-en="AM contributions stand for labor market contributions and are a statutory 8% tax that all employees and the self-employed must pay. The AM contribution is calculated by the AM income. The AM contribution goes to pay the state's expenses for the labor market, e.g. for sickness benefits and maternity benefits, etc. The AM contribution is stated without a penny amount on the payslip"
-							data-info-dk="AM-bidrag står for arbejdsmarkedsbidrag, og er en lovpligtig 8% skat, som alle lønmodtagere og selvstændige skal betale. AM-bidraget beregnes af AM-indkomsten. AM-bidraget går til at betale statens udgifter til arbejdsmarkedet, og går f.eks. til sygedagpenge og barselsdagpenge mv. AM-bidraget anføres uden ørebeløb på lønsedlen."
-						>
-							<th scope="row">AM-bidrag, løn</th>
-							<td>43.051,01</td>
-							<td></td>
-							<td>8%</td>
-							<td></td>
-							<td>-3.444,00</td>
-						</tr>
-						<tr
-							data-id="info"
-							data-header-dk="Skattefradrag"
-							data-header-en="Tax deduction"
-							data-info-en="Tax deduction / monthly deduction is your personal deduction, which is deducted just before your A-tax is calculated and then added again afterwards. Your deduction is calculated by SKAT based on your advance registration. The tax deduction is not always stated explicitly on your payslip as in this example, and it can also appear elsewhere on the payslip. You can check your deduction on skat.dk."
-							data-info-dk="Skattefradrag/månedsfradrag er dit personlige fradrag, som trækkes fra, lige inden din A-skat beregnes, og lægges herefter til igen. Dit fradrag er beregnet af SKAT på baggrund af din forskudsregistrering. Det er ikke altid, at det står så eksplicit på lønseddel, som i dette eksempel, ligesom det også kan fremgå andre steder på lønsedlen. Du kan tjekke dit fradrag på skat.dk."
-						>
-							<th scope="row">Skattefradrag</th>
-							<td>7.032,00</td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr
-							data-id="info"
-							data-header-dk="A-skat"
-							data-header-en="A-tax"
-							data-info-en="A-tax is the tax that all ordinary employees pay on their primary income. How much you pay in A-tax depends on your deduction percentage. In Denmark we have a progressive tax system, according to which the higher your income, the higher your deduction percentage. Your deduction percentage is calculated based on your preliminary income assessment and depends on your income, deductions, and which municipality you live in. You can see your deduction percentage on skat.dk. The A-tax is deducted from your A-income, which constitutes your salary with deduction of pension, ATP, and AM contributions. The A-tax is stated without a penny amount on the payslip."
-							data-info-dk="A-skat er skatten, alle almindelige lønmodtagere betaler af deres primære indtægt. Hvor meget du betaler i A-skat, afhænger af din trækprocent. Vi har i Danmark et progressivt skattesystem, hvorefter jo højere din indtægt er, desto højere er din trækprocent. Din trækprocent bliver beregnet på baggrund af din forskudsopgørelse og afhænger af din indkomst, fradrag og hvilken kommune du bor i. Du kan se din trækprocent på skat.dk. A-skatten trækkes af din A-indkomst, som udgør din løn fratrukket pension, ATP og AM-bidrag. A-skat anføres uden ørebeløb på lønsedlen."
-						>
-							<th scope="row">A-skat</th>
-							<td>32.575,01</td>
-							<td></td>
-							<td>36%</td>
-							<td></td>
-							<td>-11.727,00</td>
-						</tr>
-						<tr>
-							<th scope="row">Kantine</th>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td>-360,00</td>
-						</tr>
-						<tbody
-							data-id="info"
-							data-header-dk="Sundhedsforsikring, fri telefon efter skat"
-							data-header-en="Healthcare insurance, free phone after taxes"
-							data-info-en="Here the value of free phone, health insurance etc. is deducted from your salary. This is not always stated that clearly on the payslip, as in this example, but it will still be deducted."
-							data-info-dk="Her bliver værdien af den fri telefon og sundhedsforsikring mm. fratrukket igen. Det er ikke altid at dette fremgår tydeligt af lønseddel, som i dette eksempel."
-						>
-							<tr>
-								<th scope="row">Fri telefon mm. efter skat</th>
+								data-info-dk="Får du helt eller delvist vederlagsfrit stillet en telefon til rådighed, som du også må bruge privat, så skal godet beskattes efter SKATs gældende regler. Her lægges den skattemæssige værdi til, som fratrækkes igen, når skatten er beregnet."
+							>
+								<th scope="row">Fri telefon mm.</th>
 								<td></td>
 								<td></td>
 								<td></td>
+								<td>250,00</td>
 								<td></td>
-								<td>-250,00</td>
 							</tr>
-							<tr>
-								<th scope="row">Sundhedsforsikring efter skat</th>
+							<tr
+								data-id="info"
+								data-header-dk="Sundhedsforsikring"
+								data-header-en="Healthcare insurance"
+								data-info-en="As with employer paid phone, you also pay tax of the value of an employer-paid health insurance policy. The value is typically determined based on the health scheme's market value."
+								data-info-dk="Ligesom med fri telefon betaler du også skat af værdien af en arbejdsgiverbetalt sundhedsforsikring. Værdien fastsættes typisk ud fra sundhedsordningens markedsværdi."
+							>
+								<th scope="row">Sundhedsforsikring</th>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td>161,45</td>
+								<td></td>
+							</tr>
+							<tr
+								data-id="info"
+								data-header-dk="Ferietilæg"
+								data-header-en="Holiday Supplement"
+								data-info-en="When you get your salary paid monthly, you have a right to salary during holiday in accordance to the Danish Holiday act. And in addition to that you are also entitled to a holiday supplement. As a private employee, your holiday supplement amounts to 1% of your holiday-eligible salary during the holiday year, which is your salary and all other taxable salary components. The supplement may also be agreed higher, which will be stated in your contract or collective agreement. The employer can pay the holiday supplement in two ways: either on an ongoing basis when you are on holiday, or twice a year, which is the most used way. Here the holiday supplement is paid with the salary for May for holiday allowance earned September 1-31. May and holiday allowance for the last part of the holiday year with the August salary."
+								data-info-dk="Som månedslønnet har du udover løn under ferie, også ret til et ferietillæg. Som privatansat udgør dit ferietillæg 1 % af din ferieberettiget løn i ferieåret, hvilket er din løn samt alle øvrige skattepligtige løndele. Tillægget kan også være aftalt højere, hvilket vil fremgå af din kontrakt eller overenskomst. Arbejdsgiver kan udbetale ferietillægget på to måder: enten løbende, når du holder ferien, eller 2 gange om året, hvilket er den mest anvendte måde. Her udbetales det: med lønnen for maj for ferietillæg optjent 1. september-31. maj og ferietillæg for den sidste del af ferieåret med lønnen for august."
+							>
+								<th scope="row">Ferietilæg</th>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td>3.731,96</td>
+								<td></td>
+							</tr>
+							<tr
+								data-id="info"
+								data-header-dk="Pension eget bidrag"
+								data-header-en="Pension Savings"
+								data-info-en="Here is the amount you pay for your pension savings. The pension contribution is typically calculated as a percentage of your gross salary, which is deducted from your salary before AM contribution and A-tax are calculated. The amount is paid to the pension company agreed with your employer. Whether you have a pension scheme will typically be stated in your contract or collective agreement. Often there will be a set up where your employer pays 2/3 and you pay 1/3 for retirement."
+								data-info-dk="Her fremgår det beløb, du selv betaler til din pensionsopsparing. Pensionsbidraget bliver typisk beregnet som en procentdel af din bruttoløn, som trækkes fra din løn, før der beregnes AM- bidrag og A-skat. Beløbet indbetales til det pensionsselskab, der er aftalt med arbejdsgiver. Hvorvidt du har pension, vil typisk fremgå af din kontrakt eller overenskomst. Ofte vil der være et set up, hvor din arbejdsgiver betaler 2/3 og du betaler 1/3 til pension."
+							>
+								<th scope="row">Pension eget bidrag</th>
+								<td>41.055,00</td>
+								<td></td>
+								<td>5%</td>
+								<td></td>
+								<td>-2.052,75</td>
+							</tr>
+							<tr
+								data-id="info"
+								data-header-dk="ATP af løn"
+								data-header-en="ATP of salary"
+								data-info-en="ATP stands for the Labor Market's supplementary pension, and is a statutory pension scheme, which is paid by all employees over the age of 16 who work more than 9 hours a week. Your employer pays 2/3 of the amount, while you pay 1/3 yourself. You can see the current rate on borger.dk. Here you can also see how much you have paid to ATP and how much you can expect to receive in retirement from ATP."
+								data-info-dk="ATP, står for Arbejdsmarkedets tillægspension, og er en lovpligtig pensionsordning, som betales af alle lønmodtagere over 16 år, der arbejder over 9 timer om ugen. Din arbejdsgiver indbetaler 2/3 af beløbet, mens du selv betaler 1/3. Du kan se den aktuelle sats på borger.dk. Her kan du også se meget du har indbetalt, og hvor meget du kan forvente at få i pension fra ATP."
+							>
+								<th scope="row">ATP af løn</th>
 								<td></td>
 								<td></td>
 								<td></td>
 								<td></td>
 								<td>-94,65</td>
 							</tr>
-						</tbody>
-						<tr
-							data-id="info"
-							data-header-dk="Nettoløn"
-							data-header-en="Net salary"
-							data-info-dk="Nettolønnen er den løn du får indbetalt på din lønkonto."
-							data-info-en="The net salary is the salary that are paid into your bank account."
-						>
-							<th scope="row">Nettoløn</th>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td>27.175,36</td>
-							<td></td>
-						</tr>
-						<tr>
-							<td>&nbsp;</td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td
-								colspan="7"
-								class="text-center border-y border-solid border-black"
+							<tr
+								data-id="info"
+								data-header-dk="AM-indkomst, løn"
+								data-header-en="AM income"
+								data-info-en="AM income is the part of the salary from which AM contributions must be paid, which is your monthly salary incl. supplements and taxable benefits but after ATP and own pension contribution have been deducted."
+								data-info-dk="AM-indkomst er den del af lønnen, som der skal betales AM-bidrag af, hvilket er din månedsløn inkl. tillæg og skattepligtige goder, efter at ATP og eget pensionsbidrag er trukket fra."
 							>
-								Nettolønnen 27.175,36 overført via NemKonto med dispositions
-								dato 30-05-2022
-							</td>
-						</tr>
-						<tr
-							class="border-b border-solid border-black"
-							data-id="info"
-							data-header-dk="Saldi, periode og år til dato (overblik)"
-							data-header-en="Balance, period and year to date (overview)"
-							data-info-en="At the bottom of the payslip, you see a comprehensive overview of all the important elements in your payslip. Both amounts for the current period are shown here, ie. the payslip in question, as well as the Year to date, which is the accumulated amounts since January. Note that the total holiday pay balances may be calculated for the holiday year, ie. from September to August."
-							data-info-dk="Nederst på lønsedlen ser du et samlet overblik over alle de vigtige elementer i din lønseddel. Her vises både beløb for indeværende periode, dvs. den pågældende lønseddel, samt År til dato, som er det akkumuleret beløb siden januar. Bemærk, at de samlede feriepengesaldi opgøres for ferieåret, dvs. fra september-august."
-						>
-							<th scope="col" colspan="2">Saldi</th>
-							<th scope="col" colspan="2">Periode</th>
-							<th scope="col" colspan="2">År til dato</th>
-						</tr>
-						<tr
-							data-id="info"
-							data-header-dk="Ferieberettiget løn"
-							data-header-en="Holiday-eligible salary"
-							data-info-en="The holiday-eligible salary is the salary you earn your holiday pay of. The holiday-eligible salary is your monthly salary plus all other taxable salary components, such as Free phone."
-							data-info-dk="Den ferieberettiget løn er den løn du optjener ferie af. Den ferieberettiget løn er din månedsløn plus alle øvrige skattepligtige løndele, som f.eks. Fri telefon."
-						>
-							<th scope="row" colspan="2">Ferieberettiget Løn</th>
-							<td colspan="2">41.466,45</td>
-							<td colspan="2">207.332,25</td>
-						</tr>
-						<tr>
-							<th scope="row" colspan="2">AM-grundlag</th>
-							<td colspan="2">43.051,01</td>
-							<td colspan="2">185.725,94</td>
-						</tr>
-						<tr>
-							<th scope="row" colspan="2">A-skat</th>
-							<td colspan="2">11.727,00</td>
-							<td colspan="2">50.199,00</td>
-						</tr>
-						<tr>
-							<th scope="row" colspan="2">AM-bidrag</th>
-							<td colspan="2">3.444.00</td>
-							<td colspan="2">16.456,00</td>
-						</tr>
-						<tr>
-							<th scope="row" colspan="2">ATP-medarbejder</th>
-							<td colspan="2">-94,65</td>
-							<td colspan="2">-473,25</td>
-						</tr>
-						<tr>
-							<th scope="row" colspan="2">ATP-firma</th>
-							<td colspan="2">-189,35</td>
-							<td colspan="2">-946,75</td>
-						</tr>
-						<tr>
-							<th scope="row" colspan="2">Værdi sundhedsforsikring</th>
-							<td colspan="2">161,45</td>
-							<td colspan="2">807,25</td>
-						</tr>
-						<tr>
-							<th scope="row" colspan="2">Værdi af fri telefon</th>
-							<td colspan="2">250,00</td>
-							<td colspan="2">1.250,00</td>
-						</tr>
-						<tr
-							data-id="info"
-							data-header-dk="Fritvalgskonto"
-							data-header-en="Flexible spending account"
-							data-info-en="“Fritvalgskonto” (Flexible spending account) is a savings of a percentage of your holiday-eligible salary, where a fixed percentage is paid every month. You can then freely choose if you want to spend the money in the account on e.g. more pension, salary or freedom / holiday. Whether you have a flexible spending account and how much is paid depends on your contract and collective agreement. Rules on flexible spending account are most often seen in employments covered by a collective agreement."
-							data-info-dk="Fritvalgskonto er en opsparing af din ferieberettiget løn, hvor der hver måned indbetales en fast procentdel. Pengene på kontoen kan du så frit vælge om du vil bruge på f.eks. mere pension, løn eller frihed/ferie. Hvorvidt du er opfattet af en fritvalgsordning, og hvor meget der indbetales, afhænger af din kontrakt og overenskomst. Regler om fritvalgskonto ses oftest ved overenskomstdækkede ansættelsesforhold."
-						>
-							<th scope="row" colspan="2">Fritvalgskonto 4%</th>
-							<td colspan="2">1.642,20</td>
-							<td colspan="2">8.211,00</td>
-						</tr>
-						<tr>
-							<th scope="row" colspan="2">Pension medarbejder</th>
-							<td colspan="2">2.052,75</td>
-							<td colspan="2">10.263,75</td>
-						</tr>
-						<tr>
-							<th scope="row" colspan="2">Pension firma</th>
-							<td colspan="2">4.516,05</td>
-							<td colspan="2">22.580,25</td>
-						</tr>
-						<tr>
-							<th scope="row" colspan="2">Pension samlet</th>
-							<td colspan="2">6.568,80</td>
-							<td colspan="2">32.844,00</td>
-						</tr>
-						<tr
-							data-id="info"
-							data-header-dk="Feriepenge grundlag"
-							data-header-en="Holiday pay basis"
-							data-info-en="This is the basis for calculating holiday pay and constitutes your holiday-eligible salary minus paid holiday taken during the period. Holidays taken are deducted with 4,8% of the holiday pay per. vacation day."
-							data-info-dk="Dette er grundlaget for beregning af feriepenge, og udgør din ferieberettiget løn fratrukket afholdt ferie med løn i perioden. Afholdt ferie fratrækkes med 4,8% af den ferieberettiget løn pr. feriedag."
-						>
-							<th scope="row" colspan="2">Feriepenge grundlag</th>
-							<td colspan="2">41.466,45</td>
-							<td colspan="2">357.274,93</td>
-						</tr>
-						<tbody
-							data-id="info"
-							data-header-dk="Feriedage"
-							data-header-en="Vacation days"
-							data-info-en="On your payslip there will typically also be a holiday account of some sort. Here you can see how many vacation days you have earned, how many you have held, and how many you have left right now. This way, you can continuously follow the use of your holidays. You earn 2,08 vacation days per month that you can use already the following month. The holiday year runs from September-August, where the actual holiday period runs all the way to December, ie. an extra 4 months."
-							data-info-dk="På din lønseddel vil der også være et ferieregnskab. Her kan du se hvor mange feriedage, du har optjent, hvor mange du har afholdt, og hvor mange du lige nu har tilbage. På den måde kan du løbende følge med i brugen af dine feriedage. Du optjener 2,08 feriedage pr. måned, som du kan bruge af allerede den efterfølgende måned. Ferieåret løber fra september-august, hvor selve ferieafholdelsesperioden løber helt frem til december, dvs. yderligere 4 måneder."
-						>
-							<tr>
-								<th scope="row" colspan="2">Feriedage optjent</th>
-								<td colspan="2">2,08</td>
-								<td colspan="2">18,72</td>
+								<th scope="row">AM-indkomst, løn</th>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td>43.051,01</td>
+								<td></td>
+							</tr>
+							<tr
+								data-id="info"
+								data-header-dk="AM-bidrag, løn"
+								data-header-en="AM contributions"
+								data-info-en="AM contributions stand for labor market contributions and are a statutory 8% tax that all employees and the self-employed must pay. The AM contribution is calculated by the AM income. The AM contribution goes to pay the state's expenses for the labor market, e.g. for sickness benefits and maternity benefits, etc. The AM contribution is stated without a penny amount on the payslip"
+								data-info-dk="AM-bidrag står for arbejdsmarkedsbidrag, og er en lovpligtig 8% skat, som alle lønmodtagere og selvstændige skal betale. AM-bidraget beregnes af AM-indkomsten. AM-bidraget går til at betale statens udgifter til arbejdsmarkedet, og går f.eks. til sygedagpenge og barselsdagpenge mv. AM-bidraget anføres uden ørebeløb på lønsedlen."
+							>
+								<th scope="row">AM-bidrag, løn</th>
+								<td>43.051,01</td>
+								<td></td>
+								<td>8%</td>
+								<td></td>
+								<td>-3.444,00</td>
+							</tr>
+							<tr
+								data-id="info"
+								data-header-dk="Skattefradrag"
+								data-header-en="Tax deduction"
+								data-info-en="Tax deduction / monthly deduction is your personal deduction, which is deducted just before your A-tax is calculated and then added again afterwards. Your deduction is calculated by SKAT based on your advance registration. The tax deduction is not always stated explicitly on your payslip as in this example, and it can also appear elsewhere on the payslip. You can check your deduction on skat.dk."
+								data-info-dk="Skattefradrag/månedsfradrag er dit personlige fradrag, som trækkes fra, lige inden din A-skat beregnes, og lægges herefter til igen. Dit fradrag er beregnet af SKAT på baggrund af din forskudsregistrering. Det er ikke altid, at det står så eksplicit på lønseddel, som i dette eksempel, ligesom det også kan fremgå andre steder på lønsedlen. Du kan tjekke dit fradrag på skat.dk."
+							>
+								<th scope="row">Skattefradrag</th>
+								<td>7.032,00</td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr
+								data-id="info"
+								data-header-dk="A-skat"
+								data-header-en="A-tax"
+								data-info-en="A-tax is the tax that all ordinary employees pay on their primary income. How much you pay in A-tax depends on your deduction percentage. In Denmark we have a progressive tax system, according to which the higher your income, the higher your deduction percentage. Your deduction percentage is calculated based on your preliminary income assessment and depends on your income, deductions, and which municipality you live in. You can see your deduction percentage on skat.dk. The A-tax is deducted from your A-income, which constitutes your salary with deduction of pension, ATP, and AM contributions. The A-tax is stated without a penny amount on the payslip."
+								data-info-dk="A-skat er skatten, alle almindelige lønmodtagere betaler af deres primære indtægt. Hvor meget du betaler i A-skat, afhænger af din trækprocent. Vi har i Danmark et progressivt skattesystem, hvorefter jo højere din indtægt er, desto højere er din trækprocent. Din trækprocent bliver beregnet på baggrund af din forskudsopgørelse og afhænger af din indkomst, fradrag og hvilken kommune du bor i. Du kan se din trækprocent på skat.dk. A-skatten trækkes af din A-indkomst, som udgør din løn fratrukket pension, ATP og AM-bidrag. A-skat anføres uden ørebeløb på lønsedlen."
+							>
+								<th scope="row">A-skat</th>
+								<td>32.575,01</td>
+								<td></td>
+								<td>36%</td>
+								<td></td>
+								<td>-11.727,00</td>
 							</tr>
 							<tr>
-								<th scope="row" colspan="2">Feriedage afholdt</th>
-								<td colspan="2">0</td>
+								<th scope="row">Kantine</th>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td>-360,00</td>
+							</tr>
+							<tbody
+								data-id="info"
+								data-header-dk="Sundhedsforsikring, fri telefon efter skat"
+								data-header-en="Healthcare insurance, free phone after taxes"
+								data-info-en="Here the value of free phone, health insurance etc. is deducted from your salary. This is not always stated that clearly on the payslip, as in this example, but it will still be deducted."
+								data-info-dk="Her bliver værdien af den fri telefon og sundhedsforsikring mm. fratrukket igen. Det er ikke altid at dette fremgår tydeligt af lønseddel, som i dette eksempel."
+							>
+								<tr>
+									<th scope="row">Fri telefon mm. efter skat</th>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td>-250,00</td>
+								</tr>
+								<tr>
+									<th scope="row">Sundhedsforsikring efter skat</th>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td>-94,65</td>
+								</tr>
+							</tbody>
+							<tr
+								data-id="info"
+								data-header-dk="Nettoløn"
+								data-header-en="Net salary"
+								data-info-dk="Nettolønnen er den løn du får indbetalt på din lønkonto."
+								data-info-en="The net salary is the salary that are paid into your bank account."
+							>
+								<th scope="row">Nettoløn</th>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td>27.175,36</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td
+									colspan="7"
+									class="text-center border-y border-solid border-black"
+								>
+									Nettolønnen 27.175,36 overført via NemKonto med dispositions
+									dato 30-05-2022
+								</td>
+							</tr>
+							<tr
+								class="border-b border-solid border-black"
+								data-id="info"
+								data-header-dk="Saldi, periode og år til dato (overblik)"
+								data-header-en="Balance, period and year to date (overview)"
+								data-info-en="At the bottom of the payslip, you see a comprehensive overview of all the important elements in your payslip. Both amounts for the current period are shown here, ie. the payslip in question, as well as the Year to date, which is the accumulated amounts since January. Note that the total holiday pay balances may be calculated for the holiday year, ie. from September to August."
+								data-info-dk="Nederst på lønsedlen ser du et samlet overblik over alle de vigtige elementer i din lønseddel. Her vises både beløb for indeværende periode, dvs. den pågældende lønseddel, samt År til dato, som er det akkumuleret beløb siden januar. Bemærk, at de samlede feriepengesaldi opgøres for ferieåret, dvs. fra september-august."
+							>
+								<th scope="col" colspan="2">Saldi</th>
+								<th scope="col" colspan="2">Periode</th>
+								<th scope="col" colspan="2">År til dato</th>
+							</tr>
+							<tr
+								data-id="info"
+								data-header-dk="Ferieberettiget løn"
+								data-header-en="Holiday-eligible salary"
+								data-info-en="The holiday-eligible salary is the salary you earn your holiday pay of. The holiday-eligible salary is your monthly salary plus all other taxable salary components, such as Free phone."
+								data-info-dk="Den ferieberettiget løn er den løn du optjener ferie af. Den ferieberettiget løn er din månedsløn plus alle øvrige skattepligtige løndele, som f.eks. Fri telefon."
+							>
+								<th scope="row" colspan="2">Ferieberettiget Løn</th>
+								<td colspan="2">41.466,45</td>
+								<td colspan="2">207.332,25</td>
+							</tr>
+							<tr>
+								<th scope="row" colspan="2">AM-grundlag</th>
+								<td colspan="2">43.051,01</td>
+								<td colspan="2">185.725,94</td>
+							</tr>
+							<tr>
+								<th scope="row" colspan="2">A-skat</th>
+								<td colspan="2">11.727,00</td>
+								<td colspan="2">50.199,00</td>
+							</tr>
+							<tr>
+								<th scope="row" colspan="2">AM-bidrag</th>
+								<td colspan="2">3.444.00</td>
+								<td colspan="2">16.456,00</td>
+							</tr>
+							<tr>
+								<th scope="row" colspan="2">ATP-medarbejder</th>
+								<td colspan="2">-94,65</td>
+								<td colspan="2">-473,25</td>
+							</tr>
+							<tr>
+								<th scope="row" colspan="2">ATP-firma</th>
+								<td colspan="2">-189,35</td>
+								<td colspan="2">-946,75</td>
+							</tr>
+							<tr>
+								<th scope="row" colspan="2">Værdi sundhedsforsikring</th>
+								<td colspan="2">161,45</td>
+								<td colspan="2">807,25</td>
+							</tr>
+							<tr>
+								<th scope="row" colspan="2">Værdi af fri telefon</th>
+								<td colspan="2">250,00</td>
+								<td colspan="2">1.250,00</td>
+							</tr>
+							<tr
+								data-id="info"
+								data-header-dk="Fritvalgskonto"
+								data-header-en="Flexible spending account"
+								data-info-en="“Fritvalgskonto” (Flexible spending account) is a savings of a percentage of your holiday-eligible salary, where a fixed percentage is paid every month. You can then freely choose if you want to spend the money in the account on e.g. more pension, salary or freedom / holiday. Whether you have a flexible spending account and how much is paid depends on your contract and collective agreement. Rules on flexible spending account are most often seen in employments covered by a collective agreement."
+								data-info-dk="Fritvalgskonto er en opsparing af din ferieberettiget løn, hvor der hver måned indbetales en fast procentdel. Pengene på kontoen kan du så frit vælge om du vil bruge på f.eks. mere pension, løn eller frihed/ferie. Hvorvidt du er opfattet af en fritvalgsordning, og hvor meget der indbetales, afhænger af din kontrakt og overenskomst. Regler om fritvalgskonto ses oftest ved overenskomstdækkede ansættelsesforhold."
+							>
+								<th scope="row" colspan="2">Fritvalgskonto 4%</th>
+								<td colspan="2">1.642,20</td>
+								<td colspan="2">8.211,00</td>
+							</tr>
+							<tr>
+								<th scope="row" colspan="2">Pension medarbejder</th>
+								<td colspan="2">2.052,75</td>
+								<td colspan="2">10.263,75</td>
+							</tr>
+							<tr>
+								<th scope="row" colspan="2">Pension firma</th>
+								<td colspan="2">4.516,05</td>
+								<td colspan="2">22.580,25</td>
+							</tr>
+							<tr>
+								<th scope="row" colspan="2">Pension samlet</th>
+								<td colspan="2">6.568,80</td>
+								<td colspan="2">32.844,00</td>
+							</tr>
+							<tr
+								data-id="info"
+								data-header-dk="Feriepenge grundlag"
+								data-header-en="Holiday pay basis"
+								data-info-en="This is the basis for calculating holiday pay and constitutes your holiday-eligible salary minus paid holiday taken during the period. Holidays taken are deducted with 4,8% of the holiday pay per. vacation day."
+								data-info-dk="Dette er grundlaget for beregning af feriepenge, og udgør din ferieberettiget løn fratrukket afholdt ferie med løn i perioden. Afholdt ferie fratrækkes med 4,8% af den ferieberettiget løn pr. feriedag."
+							>
+								<th scope="row" colspan="2">Feriepenge grundlag</th>
+								<td colspan="2">41.466,45</td>
+								<td colspan="2">357.274,93</td>
+							</tr>
+							<tbody
+								data-id="info"
+								data-header-dk="Feriedage"
+								data-header-en="Vacation days"
+								data-info-en="On your payslip there will typically also be a holiday account of some sort. Here you can see how many vacation days you have earned, how many you have held, and how many you have left right now. This way, you can continuously follow the use of your holidays. You earn 2,08 vacation days per month that you can use already the following month. The holiday year runs from September-August, where the actual holiday period runs all the way to December, ie. an extra 4 months."
+								data-info-dk="På din lønseddel vil der også være et ferieregnskab. Her kan du se hvor mange feriedage, du har optjent, hvor mange du har afholdt, og hvor mange du lige nu har tilbage. På den måde kan du løbende følge med i brugen af dine feriedage. Du optjener 2,08 feriedage pr. måned, som du kan bruge af allerede den efterfølgende måned. Ferieåret løber fra september-august, hvor selve ferieafholdelsesperioden løber helt frem til december, dvs. yderligere 4 måneder."
+							>
+								<tr>
+									<th scope="row" colspan="2">Feriedage optjent</th>
+									<td colspan="2">2,08</td>
+									<td colspan="2">18,72</td>
+								</tr>
+								<tr>
+									<th scope="row" colspan="2">Feriedage afholdt</th>
+									<td colspan="2">0</td>
+									<td colspan="2">5</td>
+								</tr>
+								<tr>
+									<th scope="row" colspan="2">Feriedage rest</th>
+									<td colspan="2">0</td>
+									<td colspan="2">13,72</td>
+								</tr>
+							</tbody>
+							<tr
+								data-id="info"
+								data-header-dk="Feriefritimer"
+								data-header-en="Paid vacation hours"
+								data-info-en="Feriefritimer also called feriefridage, are special holidays paid by your employer in addition to the 5 weeks holiday that follow from the Danish Holiday Act. They are also referred to as the 6th holiday week. If you have vacation days, then your current savings will typically appear on your payslip. Holidays are not regulated by law, but only by agreement. Therefore, it is important that you are aware of how the days are earned, settled, and what happens to them if you resign without them being held. In many companies, the holidays are lost if they are not used during the holiday year."
+								data-info-dk="Feriefritimer også kaldet feriefridage er betalte fridage ud over de 5 ugers ferie der følger af ferieloven. De omtales også som den 6. ferieuge. Hvis du har feriefridage, så vil din løbende opsparing typisk fremgå af din lønseddel. Feriefridage er ikke reguleret ved lov, men udelukkende ved aftale. Derfor er det vigtigt, at du er opmærksom på, hvordan dagene optjenes, afvikles, og hvad der sker med dem, hvis du fratræder uden at de er afholdt. I mange virksomheder går feriefridagene tabt, hvis ikke de bliver brugt i løbet af ferieåret."
+							>
+								<th scope="row" colspan="2">Feriefri timer</th>
 								<td colspan="2">5</td>
+								<td colspan="2">122,80</td>
 							</tr>
-							<tr>
-								<th scope="row" colspan="2">Feriedage rest</th>
+							<tr
+								data-id="info"
+								data-header-dk="G-dage"
+								data-header-en="G-days"
+								data-info-en="G-days is an unemployment benefit allowance for the 1st and 2nd day of unemployment, which your employer may have to pay upon termination, if you have not found a new job. The allowance corresponds to the unemployment benefit rate. The money must be paid out as soon as possible, and at the latest at the company's 2nd salary payment after you have stopped working. If your employer does not pay out the g-days, you must contact your unemployment insurance fund."
+								data-info-dk="G-dage står for dagpengegodtgørelse, og er en godtgørelse for 1. og 2. ledighedsdag, som din arbejdsgiver muligvis skal betale ved opsigelse, såfremt du ikke har fået nyt arbejde. Godtgørelsen svarer til dagpengesatsen. Pengene skal udbetales snarest muligt, og senest ved virksomhedens 2. lønudbetaling efter, at du er ophørt med at arbejde. Hvis ikke din arbejdsgiver udbetaler g-dagene skal du kontakte din a-kasse."
+							>
+								<th scope="row" colspan="2">G-dage (ledighedsdage)</th>
 								<td colspan="2">0</td>
-								<td colspan="2">13,72</td>
+								<td colspan="2">0</td>
 							</tr>
-						</tbody>
-						<tr
-							data-id="info"
-							data-header-dk="Feriefritimer"
-							data-header-en="Paid vacation hours"
-							data-info-en="Feriefritimer also called feriefridage, are special holidays paid by your employer in addition to the 5 weeks holiday that follow from the Danish Holiday Act. They are also referred to as the 6th holiday week. If you have vacation days, then your current savings will typically appear on your payslip. Holidays are not regulated by law, but only by agreement. Therefore, it is important that you are aware of how the days are earned, settled, and what happens to them if you resign without them being held. In many companies, the holidays are lost if they are not used during the holiday year."
-							data-info-dk="Feriefritimer også kaldet feriefridage er betalte fridage ud over de 5 ugers ferie der følger af ferieloven. De omtales også som den 6. ferieuge. Hvis du har feriefridage, så vil din løbende opsparing typisk fremgå af din lønseddel. Feriefridage er ikke reguleret ved lov, men udelukkende ved aftale. Derfor er det vigtigt, at du er opmærksom på, hvordan dagene optjenes, afvikles, og hvad der sker med dem, hvis du fratræder uden at de er afholdt. I mange virksomheder går feriefridagene tabt, hvis ikke de bliver brugt i løbet af ferieåret."
-						>
-							<th scope="row" colspan="2">Feriefri timer</th>
-							<td colspan="2">5</td>
-							<td colspan="2">122,80</td>
-						</tr>
-						<tr
-							data-id="info"
-							data-header-dk="G-dage"
-							data-header-en="G-days"
-							data-info-en="G-days is an unemployment benefit allowance for the 1st and 2nd day of unemployment, which your employer may have to pay upon termination, if you have not found a new job. The allowance corresponds to the unemployment benefit rate. The money must be paid out as soon as possible, and at the latest at the company's 2nd salary payment after you have stopped working. If your employer does not pay out the g-days, you must contact your unemployment insurance fund."
-							data-info-dk="G-dage står for dagpengegodtgørelse, og er en godtgørelse for 1. og 2. ledighedsdag, som din arbejdsgiver muligvis skal betale ved opsigelse, såfremt du ikke har fået nyt arbejde. Godtgørelsen svarer til dagpengesatsen. Pengene skal udbetales snarest muligt, og senest ved virksomhedens 2. lønudbetaling efter, at du er ophørt med at arbejde. Hvis ikke din arbejdsgiver udbetaler g-dagene skal du kontakte din a-kasse."
-						>
-							<th scope="row" colspan="2">G-dage (ledighedsdage)</th>
-							<td colspan="2">0</td>
-							<td colspan="2">0</td>
-						</tr>
-					</table>
-					<!-- Privat Loenseddel End -->
-					<!-- Stat Loenseddel - 1 -->
-					<table
-						class="w-full text-[45%] sm:text-sm border-collapse break-words blur-[0.4px] hidden"
-						data-id="loenseddel-staten"
+						</table>
+					</div>
+					<!-- Privat Paycheck End -->
+					<!-- Stat Paycheck - 1 -->
+					<div
+						class="hidden blur-[0.4px] text-[45%] sm:text-sm"
+						data-id="paycheck"
+						data-type="staten"
 						data-pagination="true"
 						data-page="1"
 					>
-						<tbody class="no-border text-right">
-							<tr>
-								<th class="text-2xl font-bold text-left" colspan="3">
-									Lønseddel
-								</th>
-								<td class="text-2xl font-bold text-right" colspan="2">
-									Anders And
-								</td>
+						<table
+							class="w-full border-collapse break-words"
+							data-id="paycheck-table"
+						>
+							<tbody class="cell-border-none text-right">
+								<tr>
+									<th class="text-2xl font-bold text-left" colspan="3">
+										Lønseddel
+									</th>
+									<td class="text-2xl font-bold text-right" colspan="2">
+										Anders And
+									</td>
+								</tr>
+								<tr>
+									<th scope="row" colspan="4" class="text-right">Lønnummer</th>
+									<td class="text-right">100480-0487 000</td>
+								</tr>
+								<tr>
+									<td>28/04/2022</td>
+								</tr>
+								<tr>
+									<td colspan="5">&nbsp;</td>
+								</tr>
+								<tr>
+									<td colspan="3">IT-medarbejder</td>
+									<td>Løngruppe 414</td>
+									<td>SE-nr 12345678</td>
+								</tr>
+								<tr>
+									<td colspan="3">Anders And</td>
+									<th scope="col">Arbejdsplads</th>
+									<td></td>
+								</tr>
+								<tr>
+									<td colspan="3">Paradisæblevej 111</td>
+									<td colspan="2">Andeby Margarinefabrik</td>
+								</tr>
+								<tr>
+									<td colspan="3"></td>
+									<td colspan="2">Æblevænget 10</td>
+								</tr>
+								<tr>
+									<td colspan="3">DK-1010 Andeby</td>
+									<td colspan="2">1010 Andeby</td>
+								</tr>
+								<tr>
+									<td colspan="5">&nbsp;</td>
+								</tr>
+								<tr>
+									<td colspan="3"></td>
+									<th>Kontakt</th>
+									<td>Margarinefabrik</td>
+								</tr>
+								<tr>
+									<td colspan="3"></td>
+									<th>Telefon</th>
+									<td>31446713</td>
+								</tr>
+								<tr>
+									<td colspan="3"></td>
+									<th>Mail</th>
+									<td>and@margarine.dk</td>
+								</tr>
+							</tbody>
+							<tbody
+								class="border-y border-solid border-black text-center cell-border-none"
+							>
+								<tr
+									class="active"
+									data-id="info"
+									data-header-dk="Nemkento"
+									data-header-en="!"
+									data-info-en="!"
+									data-info-dk="Her fremgår datoen for, hvornår dine penge er til rådighed"
+								>
+									<th scope="row">Nettoløn til disposition</th>
+									<td colspan="4">30/07/2021</td>
+								</tr>
+								<tr
+									data-id="info"
+									data-header-dk="Nettoløn disposition"
+									data-header-en="!"
+									data-info-en="!"
+									data-info-dk="Her angives det endelige beløb som overføres til din bank. Beløbet udgør den totale forskel af beregningen nedenfor mellem '(+) beløb' og '(-) beløb'."
+								>
+									<th scope="row">via NemKonto</th>
+									<td colspan="4">34.076,00 kr.</td>
+								</tr>
+							</tbody>
+							<tbody
+								class="border-y border-solid border-black cell-border-none"
+							>
+								<tr>
+									<th colspan="6" scope="col">Lønoplysninger</th>
+								</tr>
+								<tr>
+									<th scope="col">Kode</th>
+									<th scope="col">Løndelstekst</th>
+									<th scope="col">Antal enh</th>
+									<th scope="col">Sats</th>
+									<th scope="col">(+) Beløb</th>
+									<th scope="col">(-) Beløb</th>
+								</tr>
+							</tbody>
+
+							<tr class="cell-border-none">
+								<td></td>
+								<td colspan="4">Vedr. April 2022</td>
 							</tr>
-							<tr>
-								<th scope="row" colspan="4" class="text-right">Lønnummer</th>
-								<td class="text-right">100480-0487 000</td>
-							</tr>
-							<tr>
-								<td>28/04/2022</td>
-							</tr>
-							<tr>
-								<td colspan="5">&nbsp;</td>
-							</tr>
-							<tr>
-								<td colspan="3">IT-medarbejder</td>
-								<td>Løngruppe 414</td>
-								<td>SE-nr 12345678</td>
-							</tr>
-							<tr>
-								<td colspan="3">Anders And</td>
-								<th scope="col">Arbejdsplads</th>
+							<tr
+								class="cell-border-none"
+								data-id="info"
+								data-header-dk="Basisløn"
+								data-header-en="!"
+								data-info-en="!"
+								data-info-dk="Her kan du se, hvad din basisløn er. Din basisløn er en minimumsløn aftalt i akademikeroverenskomsten. Størrelsen på din basisløn kan afhænge af din anciennitet og stillingstype.<br/><br/>Niveauet for din basisløn reguleres typisk 1-3 gange årligt afhængig af, hvad overenskomstens parter har aftalt for den givne overenskomstperiode. Hvornår der sker en regulering næste gang, kan du se her i vores <a href='#'>faktaark for OK21</a>. Hver gang der sker en regulering af lønniveauerne i det offentlige, så opdateres det i vores <a href='#'>løntabeller</a>. Din basisløn bør derfor være magen til lønniveauet i vores løntabeller."
+							>
+								<td>2000</td>
+								<td>Løn</td>
+								<td></td>
+								<td></td>
+								<td>30.335,08</td>
 								<td></td>
 							</tr>
-							<tr>
-								<td colspan="3">Paradisæblevej 111</td>
-								<td colspan="2">Andeby Margarinefabrik</td>
-							</tr>
-							<tr>
-								<td colspan="3"></td>
-								<td colspan="2">Æblevænget 10</td>
-							</tr>
-							<tr>
-								<td colspan="3">DK-1010 Andeby</td>
-								<td colspan="2">1010 Andeby</td>
-							</tr>
-							<tr>
-								<td colspan="5">&nbsp;</td>
-							</tr>
-							<tr>
-								<td colspan="3"></td>
-								<th>Kontakt</th>
-								<td>Margarinefabrik</td>
-							</tr>
-							<tr>
-								<td colspan="3"></td>
-								<th>Telefon</th>
-								<td>31446713</td>
-							</tr>
-							<tr>
-								<td colspan="3"></td>
-								<th>Mail</th>
-								<td>and@margarine.dk</td>
-							</tr>
-						</tbody>
-						<tbody
-							class="border-y border-solid border-black text-center no-border"
-						>
-							<tr
-								class="active"
+							<tbody
+								class="cell-border-none"
 								data-id="info"
-								data-header-dk="Nemkento"
+								data-header-dk="Tillæg"
 								data-header-en="!"
 								data-info-en="!"
-								data-info-dk="Her fremgår datoen for, hvornår dine penge er til rådighed"
-							>
-								<th scope="row">Nettoløn til disposition</th>
-								<td colspan="4">30/07/2021</td>
-							</tr>
-							<tr
-								data-id="info"
-								data-header-dk="Nettoløn disposition"
-								data-header-en="!"
-								data-info-en="!"
-								data-info-dk="Her angives det endelige beløb som overføres til din bank. Beløbet udgør den totale forskel af beregningen nedenfor mellem '(+) beløb' og '(-) beløb'."
-							>
-								<th scope="row">via NemKonto</th>
-								<td colspan="4">34.076,00 kr.</td>
-							</tr>
-						</tbody>
-						<tbody class="border-y border-solid border-black no-border">
-							<tr>
-								<th colspan="6" scope="col">Lønoplysninger</th>
-							</tr>
-							<tr>
-								<th scope="col">Kode</th>
-								<th scope="col">Løndelstekst</th>
-								<th scope="col">Antal enh</th>
-								<th scope="col">Sats</th>
-								<th scope="col">(+) Beløb</th>
-								<th scope="col">(-) Beløb</th>
-							</tr>
-						</tbody>
-
-						<tr class="no-border">
-							<td></td>
-							<td colspan="4">Vedr. April 2022</td>
-						</tr>
-						<tr
-							class="no-border"
-							data-id="info"
-							data-header-dk="Basisløn"
-							data-header-en="!"
-							data-info-en="!"
-							data-info-dk="Her kan du se, hvad din basisløn er. Din basisløn er en minimumsløn aftalt i akademikeroverenskomsten. Størrelsen på din basisløn kan afhænge af din anciennitet og stillingstype.<br/><br/>Niveauet for din basisløn reguleres typisk 1-3 gange årligt afhængig af, hvad overenskomstens parter har aftalt for den givne overenskomstperiode. Hvornår der sker en regulering næste gang, kan du se her i vores <a href='#'>faktaark for OK21</a>. Hver gang der sker en regulering af lønniveauerne i det offentlige, så opdateres det i vores <a href='#'>løntabeller</a>. Din basisløn bør derfor være magen til lønniveauet i vores løntabeller."
-						>
-							<td>2000</td>
-							<td>Løn</td>
-							<td></td>
-							<td></td>
-							<td>30.335,08</td>
-							<td></td>
-						</tr>
-						<tbody
-							class="no-border"
-							data-id="info"
-							data-header-dk="Tillæg"
-							data-header-en="!"
-							data-info-en="!"
-							data-info-dk="Får du et tillæg udover din basisløn, så skal det fremgår her. Tillæggene kan opdeles i:<br>
+								data-info-dk="Får du et tillæg udover din basisløn, så skal det fremgår her. Tillæggene kan opdeles i:<br>
 						<span class='underline'>Lokalaftalte tillæg</span>: Værdien af disse tillæg fremgår ikke af overenskomsten, men er i stedet noget der er aftalt lokalt. Det er typisk kvalifikations- og/eller funktionstillæg, men det kan fx også være et vagttillæg.<br/><span class='underline'>Centralaftalte tillæg</span>:
 						Du kan også få et centralt aftalt tillæg, hvis du fx er fuldmægtig, Ph.d., underviser osv. Værdien af disse tillæg kan du ligeledes løbende finde i vores løntabeller 
 						"
-						>
-							<tr>
-								<td>3810</td>
-								<td>Funktionstillæg, pensg.</td>
-								<td></td>
-								<td></td>
-								<td>1.018,44</td>
-								<td></td>
-							</tr>
-							<tr>
-								<td>3821</td>
-								<td>Kvalifikationstillæg, pensg.</td>
-								<td></td>
-								<td></td>
-								<td>5.555,15</td>
-								<td></td>
-							</tr>
-						</tbody>
-						<tbody class="no-border">
-							<tr>
-								<td>7045</td>
-								<td>ATP Pension, sats A pensg.</td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td>94,67</td>
-							</tr>
-							<tr>
-								<td>9845</td>
-								<td>AM-bidrag</td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td>2.945,00</td>
-							</tr>
-							<tr>
-								<td>9850</td>
-								<td>AM-bidrag</td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td>9.793,00</td>
-							</tr>
-							<tr class="border-y border-solid border-black">
-								<td></td>
-								<th scope="row" colspan="3">Total</th>
-								<td>36.908,67</td>
-								<td>12.832,67</td>
-							</tr>
-						</tbody>
+							>
+								<tr>
+									<td>3810</td>
+									<td>Funktionstillæg, pensg.</td>
+									<td></td>
+									<td></td>
+									<td>1.018,44</td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>3821</td>
+									<td>Kvalifikationstillæg, pensg.</td>
+									<td></td>
+									<td></td>
+									<td>5.555,15</td>
+									<td></td>
+								</tr>
+							</tbody>
+							<tbody class="cell-border-none">
+								<tr>
+									<td>7045</td>
+									<td>ATP Pension, sats A pensg.</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td>94,67</td>
+								</tr>
+								<tr>
+									<td>9845</td>
+									<td>AM-bidrag</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td>2.945,00</td>
+								</tr>
+								<tr>
+									<td>9850</td>
+									<td>AM-bidrag</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td>9.793,00</td>
+								</tr>
+								<tr class="border-y border-solid border-black">
+									<td></td>
+									<th scope="row" colspan="3">Total</th>
+									<td>36.908,67</td>
+									<td>12.832,67</td>
+								</tr>
+							</tbody>
 
-						<tr>
-							<td class="font-bold pb-4 pt-2">Bemærk</td>
-						</tr>
-						<tbody class="border-y border-solid border-black">
 							<tr>
-								<th scope="col">Skatteoplysninger</th>
+								<td class="font-bold pb-4 pt-2">Bemærk</td>
 							</tr>
-							<tr>
-								<th scope="row">Skattekort</th>
-							</tr>
-							<tr
-								class="no-border"
+							<tbody class="border-y border-solid border-black">
+								<tr>
+									<th scope="col">Skatteoplysninger</th>
+								</tr>
+								<tr>
+									<th scope="row">Skattekort</th>
+								</tr>
+								<tr
+									class="cell-border-none"
+									data-id="info"
+									data-header-dk="Fradrag"
+									data-header-en="!"
+									data-info-en="!"
+									data-info-dk="Skattefradrag/månedsfradrag er dit personlige fradrag, som trækkes fra, lige inden din A-skat beregnes, og lægges herefter til igen. Dit fradrag er beregnet af SKAT på baggrund af din forskudsregistrering. Du kan tjekke dit fradrag på skat.dk."
+								>
+									<th scope="col">Fradrag</th>
+									<td>7.399</td>
+								</tr>
+								<tr
+									class="cell-border-none"
+									data-id="info"
+									data-header-dk="Træk Procent"
+									data-header-en="!"
+									data-info-en="!"
+									data-info-dk="A-skat er skatten, alle almindelige lønmodtagere betaler af deres primære indtægt. Hvor meget du betaler i A-skat, afhænger af din trækprocent. Vi har i Danmark et progressivt skattesystem, hvorefter jo højere din indtægt er, desto højere er din trækprocent. Din trækprocent bliver beregnet på baggrund af din forskudsopgørelse og afhænger af din indkomst, fradrag og hvilken kommune du bor i. Du kan se din trækprocent på skat.dk. A-skatten trækkes af din A-indkomst, som udgør din løn fratrukket pension, ATP og AM-bidrag. A-skat anføres uden ørebeløb på lønsedlen."
+								>
+									<th scope="row">Træk %</th>
+									<td>37</td>
+								</tr>
+							</tbody>
+							<tbody class="cell-border-none">
+								<tr>
+									<th scope="col">Ansættelseoplysninger</th>
+								</tr>
+								<tr>
+									<th scope="row">Personalekategori</th>
+									<td>44</td>
+									<td>Ingeniører</td>
+								</tr>
+								<tr>
+									<th scope="row">Personalekategori</th>
+									<td>74</td>
+									<td>Civilingeniører m.fl</td>
+								</tr>
+								<tr>
+									<th scope="row">Trin</th>
+									<td>3</td>
+								</tr>
+							</tbody>
+							<tbody
+								class="cell-border-none"
 								data-id="info"
-								data-header-dk="Fradrag"
+								data-header-dk="Basisløntrin/Skalatrin"
 								data-header-en="!"
 								data-info-en="!"
-								data-info-dk="Skattefradrag/månedsfradrag er dit personlige fradrag, som trækkes fra, lige inden din A-skat beregnes, og lægges herefter til igen. Dit fradrag er beregnet af SKAT på baggrund af din forskudsregistrering. Du kan tjekke dit fradrag på skat.dk."
+								data-info-dk="Hvilket basisløntrin/skalatrin du indplaceres på afgøres typisk af 2 faktorer: uddannelsesmæssige baggrund og tid med akademisk arbejde efter endt uddannelse. Hold derfor øje med, at der står det rigtige trin (1-8) ud foran ”Skalatrin” på din lønseddel.<br/>Hvis og hvornår du skal stige yderligere bør fremgå ud foran ”Oprykningsdato”.<br/>Du kan også være ansat i en stilling, hvor det ikke er din uddannelse og erhvervserfaring, der er afgørende for basislønnen. Det kan fx være som specialkonsulent, chefkonsulent, Ph.d. osv. Hvis du er ansat i en stilling udenfor de normale løntrin, så vil der fx kunne stå 19 eller 20 foran ”Skalatrin” . Der vil i disse tilfælde ikke fremgå en ”Oprykningsdato”.<br/>Hvis du vil vide mere om, hvilket løntrin du bør blive indplaceret på, så fremgår det både af vores <a href='#'>løntabeller</a>, og du kan også finde det i vores <a href='#'>artikel</a>, der ligeledes beskriver de basale elementer i det offentlige lønsystem."
 							>
-								<th scope="col">Fradrag</th>
-								<td>7.399</td>
-							</tr>
-							<tr
-								class="no-border"
-								data-id="info"
-								data-header-dk="Træk Procent"
-								data-header-en="!"
-								data-info-en="!"
-								data-info-dk="A-skat er skatten, alle almindelige lønmodtagere betaler af deres primære indtægt. Hvor meget du betaler i A-skat, afhænger af din trækprocent. Vi har i Danmark et progressivt skattesystem, hvorefter jo højere din indtægt er, desto højere er din trækprocent. Din trækprocent bliver beregnet på baggrund af din forskudsopgørelse og afhænger af din indkomst, fradrag og hvilken kommune du bor i. Du kan se din trækprocent på skat.dk. A-skatten trækkes af din A-indkomst, som udgør din løn fratrukket pension, ATP og AM-bidrag. A-skat anføres uden ørebeløb på lønsedlen."
-							>
-								<th scope="row">Træk %</th>
-								<td>37</td>
-							</tr>
-						</tbody>
-						<tbody class="no-border">
-							<tr>
-								<th scope="col">Ansættelseoplysninger</th>
-							</tr>
-							<tr>
-								<th scope="row">Personalekategori</th>
-								<td>44</td>
-								<td>Ingeniører</td>
-							</tr>
-							<tr>
-								<th scope="row">Personalekategori</th>
-								<td>74</td>
-								<td>Civilingeniører m.fl</td>
-							</tr>
-							<tr>
-								<th scope="row">Trin</th>
-								<td>3</td>
-							</tr>
-						</tbody>
-						<tbody
-							class="no-border"
-							data-id="info"
-							data-header-dk="Basisløntrin/Skalatrin"
-							data-header-en="!"
-							data-info-en="!"
-							data-info-dk="Hvilket basisløntrin/skalatrin du indplaceres på afgøres typisk af 2 faktorer: uddannelsesmæssige baggrund og tid med akademisk arbejde efter endt uddannelse. Hold derfor øje med, at der står det rigtige trin (1-8) ud foran ”Skalatrin” på din lønseddel.<br/>Hvis og hvornår du skal stige yderligere bør fremgå ud foran ”Oprykningsdato”.<br/>Du kan også være ansat i en stilling, hvor det ikke er din uddannelse og erhvervserfaring, der er afgørende for basislønnen. Det kan fx være som specialkonsulent, chefkonsulent, Ph.d. osv. Hvis du er ansat i en stilling udenfor de normale løntrin, så vil der fx kunne stå 19 eller 20 foran ”Skalatrin” . Der vil i disse tilfælde ikke fremgå en ”Oprykningsdato”.<br/>Hvis du vil vide mere om, hvilket løntrin du bør blive indplaceret på, så fremgår det både af vores <a href='#'>løntabeller</a>, og du kan også finde det i vores <a href='#'>artikel</a>, der ligeledes beskriver de basale elementer i det offentlige lønsystem."
-						>
-							<tr>
-								<th scope="row">Skalatrin</th>
-								<td>6</td>
-							</tr>
-							<tr>
-								<th scope="row">Oprykningsdato</th>
-								<td>01-04-2022</td>
-							</tr>
-						</tbody>
-					</table>
-					<!-- Stat Loenseddel - 1 End -->
-					<!-- Stat Loenseddel - 2 -->
-					<table
-						class="w-full text-[45%] sm:text-sm border-collapse break-words blur-[0.4px] hidden"
-						data-id="loenseddel-staten"
+								<tr>
+									<th scope="row">Skalatrin</th>
+									<td>6</td>
+								</tr>
+								<tr>
+									<th scope="row">Oprykningsdato</th>
+									<td>01-04-2022</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!-- Stat Paycheck - 1 End -->
+					<!-- Stat Paycheck - 2 -->
+					<div
+						class="hidden blur-[0.4px] text-[45%] sm:text-sm"
+						data-id="paycheck"
+						data-type="staten"
 						data-pagination="true"
 						data-page="2"
 					>
-						<tbody class="no-border">
-							<tr>
-								<th class="text-2xl font-bold text-left" colspan="3">
-									Lønseddel
-								</th>
-								<td class="text-2xl font-bold text-right" colspan="2">
-									Anders And
-								</td>
-							</tr>
-							<tr>
-								<th scope="row" colspan="4" class="text-right">Lønnummer</th>
-								<td class="text-right">100480-0487 000</td>
-							</tr>
-							<tr>
-								<td>28/04/2022</td>
-							</tr>
-							<tr>
-								<td colspan="5">&nbsp;</td>
-							</tr>
-							<tr>
-								<th scope="col">Pensionsbidrag</th>
-							</tr>
-							<tr>
-								<th colspan="2" scope="col">Pensionsbetaling</th>
-								<th scope="col">Procent</th>
-								<th scope="col">Salmet pens</th>
-								<th scope="col">Indbetalt pens</th>
-							</tr>
-						</tbody>
-						<tbody
-							class="active border-b border-solid border-black no-border"
-							data-id="info"
-							data-header-dk="Pensionsbidrag"
-							data-header-en="Pension Contribution"
-							data-info-dk="Pensionsprocenten er fastlagt i den til enhver tid gældende overenskomst, og den opdateres i vores <a href='#'>løntabel</a>, hvis/når der sker en regulering. I 2022 er pensionsprocenten på 17,10% af alle løndele med få undtagelser som fx rådighedstillægget, der har 12,50%.<br/>
+						<table
+							class="w-full border-collapse break-words"
+							data-id="paycheck-table"
+						>
+							<tbody class="cell-border-none">
+								<tr>
+									<th class="text-2xl font-bold text-left" colspan="3">
+										Lønseddel
+									</th>
+									<td class="text-2xl font-bold text-right" colspan="2">
+										Anders And
+									</td>
+								</tr>
+								<tr>
+									<th scope="row" colspan="4" class="text-right">Lønnummer</th>
+									<td class="text-right">100480-0487 000</td>
+								</tr>
+								<tr>
+									<td>28/04/2022</td>
+								</tr>
+								<tr>
+									<td colspan="5">&nbsp;</td>
+								</tr>
+								<tr>
+									<th scope="col">Pensionsbidrag</th>
+								</tr>
+								<tr>
+									<th colspan="2" scope="col">Pensionsbetaling</th>
+									<th scope="col">Procent</th>
+									<th scope="col">Salmet pens</th>
+									<th scope="col">Indbetalt pens</th>
+								</tr>
+							</tbody>
+							<tbody
+								class="active border-b border-solid border-black cell-border-none"
+								data-id="info"
+								data-header-dk="Pensionsbidrag"
+								data-header-en="Pension Contribution"
+								data-info-dk="Pensionsprocenten er fastlagt i den til enhver tid gældende overenskomst, og den opdateres i vores <a href='#'>løntabel</a>, hvis/når der sker en regulering. I 2022 er pensionsprocenten på 17,10% af alle løndele med få undtagelser som fx rådighedstillægget, der har 12,50%.<br/>
 					Arbejdsgiveren betaler hele pensionsbeløbet uanset, at der står 1/3 i eget bidrag. Eget bidraget bruges i særlige tilfælde fx ved beregning af særlig feriegodtgørelse.<br/>
 					Fritvalgsordning: Der er fritvalgsordning, hvorved en begrænset del af pensionsbidraget (alt over 16,8% 2022-tal)  kan udbetales løbende som løn. Vil du vide mere, så kontakt HR eller IDA.
 					"
-							data-info-en="!"
-						>
-							<tr>
-								<td colspan="2">17,10% pensionsbidrag</td>
-								<td></td>
-								<td>6.311,42</td>
-								<td></td>
+								data-info-en="!"
+							>
+								<tr>
+									<td colspan="2">17,10% pensionsbidrag</td>
+									<td></td>
+									<td>6.311,42</td>
+									<td></td>
+								</tr>
+								<tr>
+									<td colspan="2">Heraf 1/3 eget bidrag</td>
+									<td></td>
+									<td>2.103,83</td>
+									<td></td>
+								</tr>
+								<tr>
+									<td colspan="2">Sendt til P+ Pension</td>
+									<td></td>
+									<td></td>
+									<td>6.311,42</td>
+								</tr>
+							</tbody>
+							<tr class="cell-border-none">
+								<th scope="row">Beløb oplyst til eIndkomst 2022</th>
 							</tr>
-							<tr>
-								<td colspan="2">Heraf 1/3 eget bidrag</td>
-								<td></td>
-								<td>2.103,83</td>
-								<td></td>
-							</tr>
-							<tr>
-								<td colspan="2">Sendt til P+ Pension</td>
-								<td></td>
-								<td></td>
-								<td>6.311,42</td>
-							</tr>
-						</tbody>
-						<tr class="no-border">
-							<th scope="row">Beløb oplyst til eIndkomst 2022</th>
-						</tr>
-						<tbody
-							class="border-b border-solid border-black no-border"
-							data-id="info"
-							data-info-dk="Dette afsnit bruges til løbende at summere for de vigtigste poster i løbet af året. Her kan du se, de forskellige posters værdi for den givne måned og akkumleret.
+							<tbody
+								class="border-b border-solid border-black cell-border-none"
+								data-id="info"
+								data-info-dk="Dette afsnit bruges til løbende at summere for de vigtigste poster i løbet af året. Her kan du se, de forskellige posters værdi for den givne måned og akkumleret.
 						Disse værdier oplyses til SKAT.
 						"
-							data-info-en="!"
-						>
-							<tr>
-								<th></th>
-								<th scope="col">Perioden</th>
-								<th scope="col">År til dato</th>
+								data-info-en="!"
+							>
+								<tr>
+									<th></th>
+									<th scope="col">Perioden</th>
+									<th scope="col">År til dato</th>
+								</tr>
+								<tr>
+									<th scope="row">A-indkomst</th>
+									<td>36.814,00</td>
+									<td>251.229,36</td>
+								</tr>
+								<tr>
+									<th scope="row">A-skat</th>
+									<td>9.793,00</td>
+									<td>66.443,00</td>
+								</tr>
+								<tr>
+									<th scope="row">AM-bidrag</th>
+									<td>2.945,00</td>
+									<td>20.099,00</td>
+								</tr>
+								<tr>
+									<th scope="row">ATP Pension, sats A</th>
+									<td>284,01</td>
+									<td>1.988,07</td>
+								</tr>
+								<tr>
+									<th scope="row">Lønmodtager pension</th>
+									<td>2.103,83</td>
+									<td>14.071,74</td>
+								</tr>
+								<tr>
+									<th scope="row">Arbejdsgiver pension</th>
+									<td>4.207,59</td>
+									<td>28.143,51</td>
+								</tr>
+								<tr>
+									<th scope="row">Løntimer</th>
+									<td>160,33</td>
+									<td>1.122,31</td>
+								</tr>
+							</tbody>
+							<tr class="cell-border-none">
+								<th scope="row">Ferie & Omsorg</th>
 							</tr>
-							<tr>
-								<th scope="row">A-indkomst</th>
-								<td>36.814,00</td>
-								<td>251.229,36</td>
-							</tr>
-							<tr>
-								<th scope="row">A-skat</th>
-								<td>9.793,00</td>
-								<td>66.443,00</td>
-							</tr>
-							<tr>
-								<th scope="row">AM-bidrag</th>
-								<td>2.945,00</td>
-								<td>20.099,00</td>
-							</tr>
-							<tr>
-								<th scope="row">ATP Pension, sats A</th>
-								<td>284,01</td>
-								<td>1.988,07</td>
-							</tr>
-							<tr>
-								<th scope="row">Lønmodtager pension</th>
-								<td>2.103,83</td>
-								<td>14.071,74</td>
-							</tr>
-							<tr>
-								<th scope="row">Arbejdsgiver pension</th>
-								<td>4.207,59</td>
-								<td>28.143,51</td>
-							</tr>
-							<tr>
-								<th scope="row">Løntimer</th>
-								<td>160,33</td>
-								<td>1.122,31</td>
-							</tr>
-						</tbody>
-						<tr class="no-border">
-							<th scope="row">Ferie & Omsorg</th>
-						</tr>
-						<tbody
-							class="border-b border-solid border-black no-border"
-							data-id="info"
-							data-info-dk="Dette afsnit er kun synligt på din lønseddel, hvis din arbejdsgiver har valgt, at det skal fremgå. Oftest fremgår det ikke.<br/> 
+							<tbody
+								class="border-b border-solid border-black cell-border-none"
+								data-id="info"
+								data-info-dk="Dette afsnit er kun synligt på din lønseddel, hvis din arbejdsgiver har valgt, at det skal fremgå. Oftest fremgår det ikke.<br/> 
 							Feriedage med løn: Der optjenes 2,08 dages ferie med løn for hver fulde måneds ansættelse.<br/>
 							Særlige feriedage: Der optjenes 5 særlige feriedage pr. kalenderår til afvikling i den efterfølgende periode fra 1. maj til 30. april.<br/>
 							Omsorgsdage: Der ydes 2 omsorgsdage pr. barn pr. kalenderår til og med barnest 7 år.  							
 						"
-							data-info-en="!"
+								data-info-en="!"
+							>
+								<tr>
+									<th></th>
+									<th scope="col">Ferieår</th>
+									<th scope="col">Afholdelsesperiode</th>
+									<th scope="col">Optj.</th>
+									<th scope="col">Afh.</th>
+									<th scope="col">Planl.</th>
+									<th scope="col">Rest.</th>
+								</tr>
+								<tr>
+									<th scope="row">Feriedage m/løn</th>
+									<td>2022</td>
+									<td>01/09/2021 - 31/12/2022</td>
+									<td>14,56</td>
+									<td>2,00</td>
+									<td></td>
+									<td>12,56</td>
+								</tr>
+								<tr>
+									<th scope="row">Særlige feriedage</th>
+									<td>2021/2022</td>
+									<td>01/05/2021 - 30/04/2022</td>
+									<td>2,00</td>
+									<td>2,00</td>
+									<td></td>
+									<td>0,00</td>
+								</tr>
+								<tr>
+									<th scope="row">Særlige feriedage</th>
+									<td>2022/2023</td>
+									<td>01/05/2022 - 30/04/2023</td>
+									<td>5,00</td>
+									<td></td>
+									<td></td>
+									<td>5,00</td>
+								</tr>
+								<tr>
+									<th scope="row">Omsorgsdage</th>
+									<td></td>
+									<td></td>
+									<td>2,00</td>
+									<td>1,00</td>
+									<td></td>
+									<td>1,00</td>
+								</tr>
+							</tbody>
+							<tr>
+								<td class="italic py-4" colspan="6">
+									<span class="font-bold not-italic">Nyt</span><br />Husk at
+									tilmelde dig sommerfesten hos Heidi.<br /><span
+										>Deadline d.17 juni.</span
+									>
+								</td>
+							</tr>
+							<tr>
+								<td class="italic text-center" colspan="6">
+									<span class="font-bold not-italic"
+										>Få mere information om lønsedlen</span
+									><br /><a href="#" class="underline"
+										>https://oes.dk/systemer/loenudbetaling</a
+									>
+								</td>
+							</tr>
+						</table>
+					</div>
+					<!-- Stat Paycheck - 2 End -->
+					<!-- Silkeborg Paycheck - 1 -->
+					<div
+						class="hidden blur-[0.4px] text-[45%] sm:text-sm"
+						data-id="paycheck"
+						data-type="silkeborg"
+						data-pagination="true"
+						data-page="1"
+					>
+						<table
+							class="w-full border-collapse break-words"
+							data-id="paycheck-table"
 						>
-							<tr>
-								<th></th>
-								<th scope="col">Ferieår</th>
-								<th scope="col">Afholdelsesperiode</th>
-								<th scope="col">Optj.</th>
-								<th scope="col">Afh.</th>
-								<th scope="col">Planl.</th>
-								<th scope="col">Rest.</th>
-							</tr>
-							<tr>
-								<th scope="row">Feriedage m/løn</th>
-								<td>2022</td>
-								<td>01/09/2021 - 31/12/2022</td>
-								<td>14,56</td>
-								<td>2,00</td>
-								<td></td>
-								<td>12,56</td>
-							</tr>
-							<tr>
-								<th scope="row">Særlige feriedage</th>
-								<td>2021/2022</td>
-								<td>01/05/2021 - 30/04/2022</td>
-								<td>2,00</td>
-								<td>2,00</td>
-								<td></td>
-								<td>0,00</td>
-							</tr>
-							<tr>
-								<th scope="row">Særlige feriedage</th>
-								<td>2022/2023</td>
-								<td>01/05/2022 - 30/04/2023</td>
-								<td>5,00</td>
-								<td></td>
-								<td></td>
-								<td>5,00</td>
-							</tr>
-							<tr>
-								<th scope="row">Omsorgsdage</th>
-								<td></td>
-								<td></td>
-								<td>2,00</td>
-								<td>1,00</td>
-								<td></td>
-								<td>1,00</td>
-							</tr>
-						</tbody>
-						<tr>
-							<td class="italic py-4" colspan="6">
-								<span class="font-bold not-italic">Nyt</span><br />Husk at
-								tilmelde dig sommerfesten hos Heidi.<br /><span
-									>Deadline d.17 juni.</span
+							<tr class="border-b-2 border-solid border-black">
+								<th
+									class="bg-black text-white text-xl text-center uppercase tracking-widest w-1/5"
 								>
-							</td>
-						</tr>
-						<tr>
-							<td class="italic text-center" colspan="6">
-								<span class="font-bold not-italic"
-									>Få mere information om lønsedlen</span
-								><br /><a href="#" class="underline"
-									>https://oes.dk/systemer/loenudbetaling</a
+									Lønseddel
+								</th>
+							</tr>
+							<tr>
+								<td colspan="3" class="text-right">Tjenestenr. xxxxx</td>
+							</tr>
+							<tr>
+								<th>Lønseddelnr. 03/2022</th>
+							</tr>
+							<!-- <tbody class="border-t border-solid border-black cell-border-none">
+							<tr>
+								<th class="uppercase">Digitalisering</th>
+							</tr>
+							<tr>
+								<th>Inst.:</th>
+								<th>Tjnr.:</th>
+								<th>Afd.:</th>
+							</tr>
+						</tbody> -->
+							<tbody
+								class="border-t border-solid border-black cell-border-none"
+							>
+								<tr
+									class="active"
+									data-id="info"
+									data-info-dk="Her fremgår, hvilken måned lønsedlen gælder for."
+									data-info-en="!"
 								>
-							</td>
-						</tr>
-					</table>
-					<!-- Stat Loenseddel - 2 End -->
+									<th>Periode:</th>
+									<td>Marts 2022</td>
+								</tr>
+								<tr>
+									<th>CPR-nr.:</th>
+									<td></td>
+								</tr>
+								<tr>
+									<th>Overenskomstopl.:</th>
+									<td>Akademikere</td>
+								</tr>
+								<tr
+									data-id="info"
+									data-info-dk='”Ancienni.dato” viser, fra hvilken dato din arbejdsgiver antager, at du har lavet akademisk arbejde efter endt studie. 
+							Det er vigtigt at tjekke, om datoen er rigtig, da din indplacering på et grundlønstrin efter akademikeroverenskomsten sker på baggrund af denne dato. 
+							Ligeledes vil eventuelle yderligere stigninger af grundlønstrin ske på baggrund af datoen, og fremgå ud foran "Næste løntrinsstigning".'
+									data-info-en="!"
+								>
+									<th>Ancienni dato:</th>
+									<td>01.08.2020</td>
+								</tr>
+								<tr
+									data-id="info"
+									data-info-dk='"Jubilæumsdatoen" viser typisk, hvor lang tid, du har været ansat det pågældende sted. Datoen er vigtig, da fx længden af dit opsigelsesvarsel og mulighed for evt. at kunne søge godtgørelse ved usaglig afskedigelse regnes på baggrund af denne dato.'
+									data-info-en="!"
+								>
+									<th>Jubliæumsdato:</th>
+									<td>14.03.2018</td>
+								</tr>
+							</tbody>
+							<tbody
+								class="cell-border-none"
+								data-id="info"
+								data-info-dk='Hvis du vil vide mere om, hvilket løntrin du bør blive indplaceret på, så fremgår det både af vores <a href="#">løntabeller</a>, og du kan også finde det i denne <a href="#">artikel</a>, der beskriver de basale elementer i det offentlige lønsystem.'
+								data-info-en="!"
+							>
+								<tr>
+									<th>Område:</th>
+									<td>4</td>
+								</tr>
+								<tr>
+									<th>Næste løntrinstigning:</th>
+									<td>01.08.2022</td>
+								</tr>
+							</tbody>
+							<tbody>
+								<tr>
+									<th
+										colspan="3"
+										class="text-center tracking-widest text-xl pt-4"
+									>
+										Silkeborg Løn
+									</th>
+								</tr>
+								<tr>
+									<td colspan="3" class="text-center pb-4">
+										Tlf. man-tors 8-15. fre 8-14 på 3866
+									</td>
+								</tr>
+							</tbody>
+							<tr class="cell-border-none">
+								<th>Periode<br /><span class="text-xs">uge/md/år</span></th>
+								<th>Tekst</th>
+								<th>Beløb</th>
+							</tr>
+							<tbody class="cell-border-none">
+								<tr>
+									<td></td>
+									<td>Fast løn for 01.03-31.03.2022</td>
+									<td></td>
+								</tr>
+								<tr
+									data-id="info"
+									data-info-dk="Størstedelen af din løn vil udgøres af din basisløn/grundløn, som er en fastsat minimumsløn via akademikeroverenskomsten.<br/><br/>Som akademiker indplaceres du på et basisløntrin/grundlønstrin mellem 1-8. Hvilket trin du indplaceres på afgøres af 2 faktorer: uddannelsesmæssige baggrund og tid med akademisk arbejde efter endt uddannelse. Hold derfor øje med, at der står det rigtige trin (1-8) ud foran ”Grundløntrin” på din lønseddel.<br/><br/>Du kan også være ansat i en stilling som special- eller chefkonsulent. Er det tilfældet, så vil det ikke være din uddannelse og erhvervserfaring, der er afgørende for din basisløn, da der ikke er forskellige trin i disse stillinger.<br/><br/>Hold øje med reguleringerne: Niveauet for din basisløn/grundløn og evt. tillæg reguleres typisk 1-3 gange årligt afhængig af, hvad overenskomstens parter har aftalt for den givne overenskomstperiode. Hvornår der sker en regulering næste gang afhænger af, om du er ansat i regionen eller kommunen. Se evt. mere herom i vores faktaark for OK21 for det kommunale område og det regionale område.<br/>Hver gang der sker en regulering af lønniveauerne, så opdateres det i vores løntabeller. Din basisløn/grundløn på din lønseddel bør derfor være magen til lønniveauet i løntabellen."
+									data-info-en="!"
+								>
+									<td>--/03/22</td>
+									<td>Grundløn trin 04 - 37 timer pr. uge</td>
+									<td>28.041,17</td>
+									<td>P</td>
+								</tr>
+								<tr
+									data-id="info"
+									data-info-dk="SUdover din basisløn/grundløn kan du have et eller flere tillæg. De kan opdeles i:
+								<br/><br/><span class='font-bold'>Lokalaftalte tillæg</span>: Værdien af disse tillæg fremgår ikke af overenskomsten, men er i stedet noget der er aftalt lokalt. Det er typisk kvalifikations- og/eller funktionstillæg, men det kan fx også være et vagttillæg.<br/><span class='font-bold'>Centralaftalte tillæg</span>: Du kan også få et centralt aftalt tillæg, hvis du fx er administrativ generalist. Værdien af disse tillæg kan du løbende finde i vores <a href='#'>løntabeller</a>."
+									data-info-en="!"
+								>
+									<td>--/03/22</td>
+									<td>Engagement og kvalitet</td>
+									<td>1.010,72</td>
+									<td>P</td>
+								</tr>
+								<tr class="border-y border-solid border-black cell-border-none">
+									<td></td>
+									<td>Fast løn i alt</td>
+									<td class="font-bold">29.051,89</td>
+								</tr>
+							</tbody>
+							<tbody
+								class="border-y border-solid border-black cell-border-none"
+							>
+								<tr>
+									<td></td>
+									<td>Diverse skattepligtige tillæg/fradrag</td>
+									<td class="font-bold">29.051,89</td>
+								</tr>
+								<tr
+									data-id="info"
+									data-info-dk="ATP, står for Arbejdsmarkedets tillægspension, og er en lovpligtig pensionsordning, som betales af alle lønmodtagere over 16 år, der arbejder over 9 timer om ugen. Din arbejdsgiver indbetaler 2/3 af beløbet, mens du selv betaler 1/3. Du kan se den aktuelle sats på borger.dk. Her kan du også se meget du har indbetalt, og hvor meget du kan forvente at få i pension fra ATP."
+									data-info-en="!"
+								>
+									<td>--03/22</td>
+									<td>ATP bidrag A-ordning</td>
+									<td>-94,65</td>
+								</tr>
+							</tbody>
+							<tr
+								class="border-y border-solid border-black cell-border-none"
+								data-id="info"
+								data-info-dk="Samlet løn før skat kan også kaldes AM-indkomst.
+							AM-indkomst er den del af lønnen, som der skal betales AM-bidrag af, hvilket er din månedsløn inkl. tillæg og skattepligtige goder, og efter at ATP er trukket fra."
+								data-info-en="!"
+							>
+								<td></td>
+								<td>Samlet løn før skat</td>
+								<td>28.957,24</td>
+							</tr>
+							<tbody class="cell-border-none">
+								<tr>
+									<td></td>
+									<th scope="col">Skatteberegning mv.</th>
+									<td></td>
+								</tr>
+								<tr
+									data-id="info"
+									data-info-dk="AM-bidrag står for arbejdsmarkedsbidrag, og er en lovpligtig 8% skat, som alle lønmodtagere og selvstændige skal betale. AM-bidraget beregnes af AM-indkomsten. AM-bidraget går til at betale statens udgifter til arbejdsmarkedet, og går f.eks. til sygedagpenge og barselsdagpenge mv. AM-bidraget anføres uden ørebeløb på lønsedlen."
+									data-info-en="!"
+								>
+									<td>--03/22</td>
+									<td>Arbejdsmarkedsbidrag 8% af kr. 29.957,24</td>
+									<td>-2.316,00</td>
+								</tr>
+								<tr>
+									<td>--03/22</td>
+									<td>
+										Skat: Lønidk. 26.641,24 - fradrag 6.308 = 20.333,24 x 36%
+									</td>
+									<td>-7.319,00</td>
+								</tr>
+							</tbody>
+							<tbody class="cell-border-none">
+								<tr
+									data-id="info"
+									data-info-dk="Her fremgår datoen for, hvor din nettoløn overføres til din konto. Ligeledes fremgår det endelige beløb, som du får overført."
+									data-info-en="!"
+								>
+									<td class="uppercase font-bold" colspan="2">
+										Overføres til nemkento den 31.03.2022
+									</td>
+									<td class="font-bold">19.322,24</td>
+								</tr>
+								<tr>
+									<td class="font-bold text-right py-12" colspan="4">
+										P Specifikation af pension/timer - se bagsiden
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<div>
+							<h3 class="font-bold">Akkumuleret år til dato</h3>
+							<table
+								class="w-full"
+								data-id="info"
+								data-info-dk="Her kan du løbende holde øje med akkumuleringen af bestemte poster henover året"
+								data-info-en="!"
+							>
+								<tbody class="border border-solid border-black">
+									<tr class="text-[70%]">
+										<th scope="col">Lønindkomst</th>
+										<th scope="col">Pensionbidrag</th>
+										<th scope="col">Samlet indbetalt pension</th>
+										<th scope="col">Skat</th>
+										<th scope="col">Arbejdsmarkedsbidrag</th>
+										<th scope="col">Antal kilometer</th>
+										<th scope="col">ATP-bidrag</th>
+									</tr>
+									<tr class="cell-text-right">
+										<td>84.332,70</td>
+										<td>5362,89</td>
+										<td>16088,67</td>
+										<td>21.116</td>
+										<td>6.745</td>
+										<td></td>
+										<td>283,95</td>
+									</tr>
+								</tbody>
+								<tbody class="border border-solid border-black">
+									<tr class="text-[70%]">
+										<th scope="col">Ferieberettiget løn</th>
+										<th scope="col"></th>
+										<th scope="col">Feriegodtgørelse til fond</th>
+										<th scope="col">Feriegodtg. af ekstra tj.</th>
+										<th scope="col"></th>
+										<th scope="col">Forhøjet ferietillæg april</th>
+										<th scope="col">Ledighedsdage i år</th>
+									</tr>
+									<tr class="cell-text-right">
+										<td>74.014,49</td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td>803,85</td>
+										<td></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<!-- Silkeborg Paycheck - 1 End -->
+					<!-- Silkeborg Paycheck - 2 -->
+					<div
+						class="hidden active blur-[0.4px] text-[45%] sm:text-sm"
+						data-id="paycheck"
+						data-type="silkeborg"
+						data-pagination="true"
+						data-page="2"
+					>
+						<table
+							class="w-full border-collapse break-words"
+							data-id="paycheck-table"
+						>
+							<tr class="border-b-2 border-solid border-black cell-border-none">
+								<td colspan="10">Lønseddelnr. 03/2022</td>
+								<td class="text-right">Bagside 1 af 1</td>
+							</tr>
+							<tr class="cell-border-none">
+								<td colspan="10">CPR-nr.</td>
+								<td class="text-right">Tjenestenr.</td>
+							</tr>
+							<tbody
+								class="cell-border-none"
+								data-id="info"
+								data-info-dk="Her kan du løbende se din ferie- og omsorgssaldo.<br/>Feriedage med løn: Der optjenes 2,08 dages ferie med løn for hver fulde måneds ansættelse.<br/>Særlige feriedage: Der optjenes 5 særlige feriedage pr. kalenderår til afvikling i den efterfølgende periode fra 1. maj til 30. april.<br/>Omsorgsdage: Der ydes 2 omsorgsdage pr. barn pr. kalenderår til og med barnest 7 år.<br/>Du skal være opmærksom på at få afholdt de forskellige typer ferier, feriefritimer og omsorgsdage inden for de nævnte datoer, da du ellers risikerer at miste dem."
+								data-info-en="!"
+							>
+								<tr>
+									<th scope="col" colspan="11" class="text-[135%]">
+										Ferieregnskab mb. 07.02.-06.03.2022 (ugerne 06-09)
+									</th>
+								</tr>
+								<tr class="cell-border-none">
+									<th scope="col">Periode</th>
+									<th scope="col">Tekst</th>
+									<th scope="col">Saldo pr.</th>
+									<th scope="col">And.per.</th>
+									<th scope="col">06/02</th>
+									<th scope="col">07/02</th>
+									<th scope="col">08/02</th>
+									<th scope="col">09/02</th>
+									<th scope="col">09/03</th>
+									<th scope="col">Antal</th>
+									<th scope="col">Saldo pr.</th>
+								</tr>
+								<tr>
+									<td></td>
+									<td></td>
+									<td class="font-bold">06.02.22</td>
+									<td colspan="7"></td>
+									<td class="font-bold">06.03.22</td>
+								</tr>
+								<tr>
+									<td></td>
+									<td>Overført ferie *</td>
+									<td>16,03</td>
+									<td colspan="7"></td>
+									<td>16,03</td>
+								</tr>
+								<tr>
+									<td></td>
+									<td>Ferie m/løn *</td>
+									<td>77,08</td>
+									<td colspan="7"></td>
+									<td>92,50</td>
+								</tr>
+								<tr>
+									<td></td>
+									<td>6.Uge overført ***</td>
+									<td>14,80</td>
+									<td colspan="7"></td>
+									<td>F 14,80</td>
+								</tr>
+								<tr>
+									<td></td>
+									<td>Ferie. 6.uge ***</td>
+									<td>37,00</td>
+									<td colspan="7"></td>
+									<td>37,00</td>
+								</tr>
+								<tr>
+									<td colspan="11">
+										F = Planlagt ferie efter 06.03.2022: - 14,80 timer
+									</td>
+								</tr>
+								<tr>
+									<td colspan="11">
+										* Afvikles inden 01.01.2023 ** Afvikles inden 01.01.2024
+									</td>
+								</tr>
+								<tr>
+									<td colspan="11">
+										*** Afvikles inden 01.05.2022 **** Afvikles inden 01.05.2023
+									</td>
+								</tr>
+							</tbody>
+							<tbody class="cell-border-none">
+								<tr>
+									<th scope="col" colspan="11" class="text-[135%]">
+										Optælling af timer 07.02.-06.03.2022 (ugerne 06-09)
+									</th>
+								</tr>
+								<tr>
+									<th scope="col" colspan="3">Tekst</th>
+									<th scope="col">And.per</th>
+									<th scope="col">06/02</th>
+									<th scope="col">07/02</th>
+									<th scope="col">08/02</th>
+									<th scope="col">09/02</th>
+									<th scope="col">09/03</th>
+									<th scope="col"></th>
+									<th scope="col">Antal</th>
+								</tr>
+								<tr>
+									<td colspan="3">Arbejdstimer</td>
+									<td></td>
+									<td>37,00</td>
+									<td>37,00</td>
+									<td>37,00</td>
+									<td>7,40</td>
+									<td>29,60</td>
+									<td></td>
+									<td>148,00</td>
+								</tr>
+								<tr>
+									<td colspan="3">Normaltimer</td>
+									<td></td>
+									<td>37,00</td>
+									<td>37,00</td>
+									<td>37,00</td>
+									<td>7,40</td>
+									<td>29,60</td>
+									<td></td>
+									<td>148,00</td>
+								</tr>
+							</tbody>
+							<tbody class="cell-border-none">
+								<tr>
+									<th scope="col" colspan="11" class="text-[135%]">
+										Feriegodtgørelser:
+									</th>
+								</tr>
+								<tr>
+									<th scope="col" colspan="2">
+										Optjening sep. 2021 - aug. 2022
+									</th>
+								</tr>
+								<tr>
+									<th scope="row" colspan="2">
+										12,50% feriegodtgørelse af kr.
+									</th>
+									<td>192.275,52</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td>24.659,45</td>
+								</tr>
+							</tbody>
+							<tbody
+								class="border-y border-solid border-black cell-border-none"
+							>
+								<tr>
+									<th scope="col" colspan="2">
+										Optjening sep. 2021 - aug. 2022
+									</th>
+								</tr>
+								<tr>
+									<th scope="row" colspan="2">
+										12,50% feriegodtgørelse af kr.
+									</th>
+									<td>328.843,29</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td>41.105,44</td>
+								</tr>
+								<tr>
+									<th scope="row" colspan="2">Heraf anvendt</th>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td>41.105,44</td>
+								</tr>
+							</tbody>
+							<tr class="cell-border-none">
+								<th scope="row" colspan="2">Ferietillæg Maj.</th>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td>2.007,33</td>
+							</tr>
+							<tr class="cell-border-none">
+								<th class="text-[135%]" colspan="10">
+									Samlet pensionsbidrag til pensionskasse
+								</th>
+								<td class="font-bold text-[135%]">5.362,89</td>
+							</tr>
+							<tbody
+								class="cell-border-none"
+								data-id="info"
+								data-info-dk="Pensionsprocenten er fastlagt i den til enhver tid gældende overenskomst, og den opdateres i vores <a href='#'>løntabel</a>, hvis/når der sker en regulering. I 2022 er pensionssatsen på 18,78 på det kommunale område og 18,58% på det regionale område.<br/>Arbejdsgiveren betaler hele pensionsbeløbet uanset, at der står 1/3 i eget bidrag. Eget bidraget bruges i særlige tilfælde fx ved beregning af særlig feriegodtgørelse.<br/><br/>Obs: Det gælder både på det kommunale- og regionaleområde, at der er en fritvalgsordning, hvorved en begrænset del af pensionsbidraget kan udbetales løbende som løn. Vil du vide mere, så kontakt HR eller IDA."
+								data-info-en="!"
+							>
+								<tr>
+									<th colspan="10">Pensionsbidrag af løn</th>
+									<td>5.362,89</td>
+								</tr>
+								<tr>
+									<th colspan="9">Heraf 1/3 eget bidrag</th>
+									<td>1.787,63</td>
+								</tr>
+								<tr>
+									<th colspan="9">Pensionsprocent</th>
+									<td>18,46</td>
+								</tr>
+							</tbody>
+						</table>
+						<h3 class="font-medium mt-10 mb-4">Yderligere information:</h3>
+						<div class="flex flex-col gap-4">
+							<p>
+								Hvis du ønsker en detaljeret gennemgang af alle elementerne på
+								lønsedlen, så kan du finde det via følgende
+								<a
+									class="underline text-blue"
+									href="https://www.silkeborgdata.dk/sites/default/files/files/sd.dk/vejledning_loenseddel.pdf"
+									target="_blank"
+									rel="nofollow"
+									>vejledning</a
+								>
+								fra Silkeborg Data.
+							</p>
+							<p>
+								Derudover kan du ofte med fordel rette henvendelse til HR, hvis
+								du har spørgsmål til din lønseddel. De vil ofte være gode til at
+								kunne forklare, hvorfor de har registreret, som de har gjort.
+							</p>
+							<p>
+								Du er selvfølgelig også velkommen til at kontakte IDA vedrørende
+								spørgsmål til din lønseddel.
+							</p>
+						</div>
+					</div>
+					<!-- Silkeborg Paycheck - 2 End -->
 					<aside
 						data-id="info-box"
 						class="absolute bg-blue text-white rounded-lg sm:right-[8%] sm:left-auto top-0 z-10 p-4 max-w-sm transition-all duration-500 shadow-md left-0 right-0"

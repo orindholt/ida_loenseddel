@@ -1,10 +1,18 @@
+// TODO
+// - Change pagination functionality
+// - Infobox max width pagination
+// - Infobox max width tall info element bug
+// - Mobile touch - Infobox max width functionality / pagination
+
 document.addEventListener("DOMContentLoaded", () => {
 	const wrapper = document.querySelector("[data-id='table-wrapper']");
 	const langButtonElements = document.querySelectorAll(
 		"[data-id='lang-button']"
 	);
-	let activeTable = wrapper.querySelector("table.active");
+
+	let activeTable = wrapper.querySelector("[data-id='paycheck'].active");
 	let infoElements = activeTable.querySelectorAll("[data-id='info']");
+
 	const typeSelectElement = document.querySelector("[data-id='select-type']");
 	const infoBoxElement = wrapper.querySelector("[data-id='info-box']");
 	const infoTextElement = infoBoxElement.querySelector("[data-id='info-text']");
@@ -24,14 +32,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	// Updates the active tables
 	function updateInfoElements() {
-		activeTable = wrapper.querySelector("table.active");
+		activeTable = wrapper.querySelector("[data-id='paycheck'].active");
 		infoElements = activeTable.querySelectorAll("[data-id='info']");
 	}
 	// Type select
 	typeSelectElement.addEventListener("input", e => {
 		let target = e.target;
 		currentType = target.value.toLowerCase();
-		changeTable(`loenseddel-${currentType}`);
+		changeTable(currentType);
 	});
 
 	// Sets pagination page numbers
@@ -40,9 +48,9 @@ document.addEventListener("DOMContentLoaded", () => {
 			"[data-id='page-current']"
 		);
 		const maxElement = pageNumberElement.querySelector("[data-id='page-max']");
-		const activeTableId = activeTable.getAttribute("data-id");
-		const selectedTables = document.querySelectorAll(
-			`[data-id='${activeTableId}']`
+		const activeTableType = activeTable.getAttribute("data-type");
+		const selectedTables = wrapper.querySelectorAll(
+			`[data-type='${activeTableType}']`
 		);
 		maxElement.textContent = selectedTables.length;
 		currentElement.textContent = (pageIndex + 1).toString();
@@ -61,19 +69,22 @@ document.addEventListener("DOMContentLoaded", () => {
 		}
 	}
 
-	// Changes the current loenseddel table
+	// Changes the current paycheck table
 	function changeTable(type, page = 0) {
-		const selectedTables = document.querySelectorAll(`[data-id='${type}']`);
+		const selectedTables = wrapper.querySelectorAll(`[data-type='${type}']`);
 		if (selectedTables) {
-			let prevTableId = activeTable.getAttribute("data-id");
+			let prevTableType = activeTable.getAttribute("data-type");
 
 			updateInfoElements();
 			activeTable.classList.remove("active");
 			selectedTables[page].classList.add("active");
 			updateInfoElements();
 
-			const activeTableId = activeTable.getAttribute("data-id");
-			if (prevTableId !== activeTableId) pageIndex = 0;
+			const activeTableType = activeTable.getAttribute("data-type");
+			console.log(activeTableType);
+			if (prevTableType !== activeTableType) {
+				pageIndex = 0;
+			} else scrollToTarget(infoElements[0]);
 			togglePagination();
 			moveInfoBox(infoElements[0]);
 		}
@@ -244,23 +255,23 @@ document.addEventListener("DOMContentLoaded", () => {
 			infoHeaderAltElement.textContent = infoHeaderAlt;
 		} else infoHeaderAltElement.style.display = "none";
 	}
+
+	const infoBoxMaxWidth = parseInt(
+		getComputedStyle(infoBoxElement).maxWidth.replace("px", "")
+	);
 	// Moves the info box
 	function moveInfoBox(target) {
 		changeInfoText(target);
-		const infoBoxHeight = infoBoxElement.clientHeight;
-		const windowHeight = window.innerHeight;
+
 		const targetHeight = target.clientHeight;
-		// Potential bug..
-		const isOverflowing =
-			infoBoxHeight > windowHeight / (deviceType() === "tablet" ? 4 : 1.5);
-		const infoBoxMaxWidth = parseInt(
-			getComputedStyle(infoBoxElement).maxWidth.replace("px", "")
-		);
+		const isOverflowing = target.getAttribute("data-info-dk").length > 650;
+
 		if (isOverflowing) {
 			infoBoxElement.style.maxWidth = `${infoBoxMaxWidth * 1.75}px`;
 		} else if (infoBoxElement.style.maxWidth)
 			infoBoxElement.style.removeProperty("max-width");
-		// Absolutely a bug..
+
+		// Moves the actual infobox
 		const elementPosY = Math.floor(target.offsetTop + targetHeight + 20);
 		infoBoxElement.style.top = `${elementPosY}px`;
 
@@ -303,15 +314,14 @@ document.addEventListener("DOMContentLoaded", () => {
 		});
 	}
 
-	paginationButtons.forEach(el => {
-		el.addEventListener("click", e => {
-			let target = e.currentTarget;
+	function turnPage(target) {
+		if (target) {
 			if (target.classList.contains("inactive")) return;
 
 			const direction = target.getAttribute("data-direction");
-			const activeTableId = activeTable.getAttribute("data-id");
+			const activeTableType = activeTable.getAttribute("data-type");
 			const selectedTables = document.querySelectorAll(
-				`[data-id='${activeTableId}']`
+				`[data-type='${activeTableType}']`
 			);
 
 			if (direction === "next") {
@@ -328,7 +338,12 @@ document.addEventListener("DOMContentLoaded", () => {
 				target.classList.add("inactive");
 			}
 
-			changeTable(activeTableId, pageIndex);
-		});
-	});
+			changeTable(activeTableType, pageIndex);
+		}
+	}
+
+	// Pagination click event
+	paginationButtons.forEach(el =>
+		el.addEventListener("click", e => turnPage(e.currentTarget))
+	);
 });

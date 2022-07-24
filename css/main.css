@@ -18,29 +18,26 @@
   tr > *:last-child {
     @apply border-r-0;
   }
+}
+
+@layer components {
   [data-id="info"] {
     @apply cursor-pointer relative after:content-[""] after:rounded-md after:bg-info after:absolute after:left-0 after:right-0 after:top-[3px] after:bottom-0.5 after:transition-colors after:duration-200 after:pointer-events-none md:after:hover:bg-hover;
   }
   [data-id="info-box"] a {
     @apply underline;
   }
-}
-
-@layer components {
+  [data-id="paycheck-table"] .active::after {
+    @apply !bg-active;
+  }
+  [data-id="paycheck"].active {
+    @apply !block;
+  }
   .grid-template-select {
     grid-template-areas: "select";
   }
   .grid-area-select {
     grid-area: select;
-  }
-  .no-border * {
-    @apply border-none;
-  }
-  table .active::after {
-    @apply !bg-active;
-  }
-  table.active {
-    @apply !table;
   }
   .dropdown-triangle::after {
     @apply content-[""] w-3 h-2 bg-white grid-area-select justify-self-end pointer-events-none mr-2;
@@ -48,5 +45,28 @@
   }
   .inactive {
     @apply opacity-20 cursor-not-allowed;
+  }
+}
+
+@layer utilities {
+  .cell-border-none * {
+    @apply border-none;
+  }
+  .cell-text-right td, .cell-text-right th {
+    @apply text-right;
+  }
+  .cell-text-left td, .cell-text-left th {
+    @apply text-left;
+  }
+  .cell-text-center td, .cell-text-center th {
+    @apply text-center;
+  }
+  .cell-py-1 td,.cell-py-1 th {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+  }
+  .cell-py-2 td,.cell-py-2 th {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
   }
 }
