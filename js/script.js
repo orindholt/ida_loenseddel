@@ -3,6 +3,7 @@
 // - Infobox max width pagination
 // - Infobox max width tall info element bug
 // - Mobile touch - Infobox max width functionality / pagination
+// - Infobox arrow movement
 
 document.addEventListener("DOMContentLoaded", () => {
 	const wrapper = document.querySelector("[data-id='table-wrapper']");

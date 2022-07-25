@@ -27,7 +27,7 @@
   [data-id="info-box"] a {
     @apply underline;
   }
-  [data-id="paycheck-table"] .active::after {
+  [data-id="paycheck"] .active::after {
     @apply !bg-active;
   }
   [data-id="paycheck"].active {
