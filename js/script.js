@@ -57,24 +57,37 @@ document.addEventListener("DOMContentLoaded", () => {
 		currentElement.textContent = activeTable.getAttribute("data-page");
 	}
 
-	function togglePagination() {
-		const hasPagination =
-			activeTable.getAttribute("data-pagination") === "true";
-		if (hasPagination) {
-			paginationElement.style.display = "flex";
-			pageNumberElement.style.display = "block";
-			setPageNumbers();
-		} else {
+	const paginationButtons = wrapper.querySelectorAll(
+		"[data-id='pagination-button']"
+	);
+
+	function clearPagination() {
+		paginationButtons.forEach(el => {
+			el.classList.remove("inactive");
+		});
+	}
+
+	function togglePaginationElements(isNewTable, hasPagination) {
+		if (!hasPagination) {
 			pageNumberElement.style.display = "none";
 			paginationElement.style.display = "none";
+			return;
 		}
+		if (isNewTable) {
+			// Resets the pagination buttons to default
+			clearPagination();
+			paginationButtons[0].classList.add("inactive");
+			paginationElement.style.display = "flex";
+			pageNumberElement.style.display = "block";
+		}
+		setPageNumbers();
 	}
 
 	// Changes the current paycheck table
 	function changeTable(type, page = 0) {
 		const selectedTables = wrapper.querySelectorAll(`[data-type='${type}']`);
 		if (selectedTables) {
-			let prevTableType = activeTable.getAttribute("data-type");
+			const prevTableType = activeTable.getAttribute("data-type");
 
 			updateInfoElements();
 			activeTable.classList.remove("active");
@@ -82,10 +95,13 @@ document.addEventListener("DOMContentLoaded", () => {
 			updateInfoElements();
 
 			const activeTableType = activeTable.getAttribute("data-type");
-			if (prevTableType !== activeTableType) {
+			const isNewTable = prevTableType !== activeTableType;
+			const hasPagination =
+				activeTable.getAttribute("data-pagination") === "true";
+			if (isNewTable) {
 				pageIndex = 0;
 			} else if (deviceType() === "desktop") scrollToTarget(infoElements[0]);
-			togglePagination();
+			togglePaginationElements(isNewTable, hasPagination);
 			moveInfoBox(infoElements[0]);
 		}
 	}
@@ -319,42 +335,50 @@ document.addEventListener("DOMContentLoaded", () => {
 		});
 	});
 
-	const paginationButtons = wrapper.querySelectorAll(
-		"[data-id='pagination-button']"
-	);
-
-	function clearPaginationClass() {
-		paginationButtons.forEach(el => {
-			el.classList.remove("inactive");
-		});
+	function updatePaginationButtons(max) {
+		const currentPage = pageIndex + 1;
+		const prevButton = paginationElement.querySelector(
+			"[data-direction='prev']"
+		);
+		const nextButton = paginationElement.querySelector(
+			"[data-direction='next']"
+		);
+		clearPagination();
+		if (currentPage === max) {
+			nextButton.classList.add("inactive");
+		} else if (currentPage === 1) {
+			prevButton.classList.add("inactive");
+		}
 	}
 
-	function turnPage(target) {
-		if (target) {
-			if (target.classList.contains("inactive")) return;
+	// Turns the pages via the pagination buttons
+	function turnPage(clickedArrowElement) {
+		// Disables the inactive button
+		if (clickedArrowElement.classList.contains("inactive")) return;
 
-			const direction = target.getAttribute("data-direction");
-			const activeTableType = activeTable.getAttribute("data-type");
-			const selectedTables = document.querySelectorAll(
-				`[data-type='${activeTableType}']`
-			);
+		const direction = clickedArrowElement.getAttribute("data-direction");
+		const activeTableType = activeTable.getAttribute("data-type");
+		const selectedTables = wrapper.querySelectorAll(
+			`[data-type='${activeTableType}']`
+		);
+		let maxPagination = selectedTables.length;
 
-			if (direction === "next") {
-				pageIndex++;
-			} else if (direction === "prev") {
-				pageIndex--;
-			}
-
-			if (pageIndex === selectedTables.length - 1) {
-				clearPaginationClass();
-				target.classList.add("inactive");
-			} else if (pageIndex === 0) {
-				clearPaginationClass();
-				target.classList.add("inactive");
-			}
-
-			changeTable(activeTableType, pageIndex);
+		if (direction === "next") {
+			pageIndex++;
+		} else if (direction === "prev") {
+			pageIndex--;
 		}
+
+		if (pageIndex === selectedTables.length - 1) {
+			clearPagination();
+			updatePaginationButtons(maxPagination);
+		} else if (pageIndex === 0) {
+			clearPagination();
+			updatePaginationButtons(maxPagination);
+		}
+
+		// Turns the actual page
+		changeTable(activeTableType, pageIndex);
 	}
 
 	// Pagination click event
