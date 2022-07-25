@@ -1,9 +1,8 @@
 // TODO
-// - Change pagination functionality
-// - Infobox max width pagination
-// - Infobox max width tall info element bug
-// - Mobile touch - Infobox max width functionality / pagination
 // - Infobox arrow movement
+// - Infobox mobile bug
+// - Check browser compatibility
+// - Infobox max width issue
 
 document.addEventListener("DOMContentLoaded", () => {
 	const wrapper = document.querySelector("[data-id='table-wrapper']");
@@ -23,6 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	const infoHeaderAltElement = infoBoxElement.querySelector(
 		"[data-id='info-header-alt']"
 	);
+	const infoArrow = infoBoxElement.querySelector("[data-id='info-arrow']");
 	const paginationElement = document.querySelector("[data-id='pagination']");
 	const pageNumberElement = document.querySelector("[data-id='page-number']");
 
@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			`[data-type='${activeTableType}']`
 		);
 		maxElement.textContent = selectedTables.length;
-		currentElement.textContent = (pageIndex + 1).toString();
+		currentElement.textContent = activeTable.getAttribute("data-page");
 	}
 
 	function togglePagination() {
@@ -82,10 +82,9 @@ document.addEventListener("DOMContentLoaded", () => {
 			updateInfoElements();
 
 			const activeTableType = activeTable.getAttribute("data-type");
-			console.log(activeTableType);
 			if (prevTableType !== activeTableType) {
 				pageIndex = 0;
-			} else scrollToTarget(infoElements[0]);
+			} else if (deviceType() === "desktop") scrollToTarget(infoElements[0]);
 			togglePagination();
 			moveInfoBox(infoElements[0]);
 		}
@@ -176,7 +175,7 @@ document.addEventListener("DOMContentLoaded", () => {
 				if (
 					window.scrollY >
 					el.offsetTop +
-						window.innerHeight / (deviceType() === "tablet" ? 4 : 1.25)
+						window.innerHeight / (deviceType() === "tablet" ? 10 : 1)
 				) {
 					if (!elementsInView.includes(el)) elementsInView.push(el);
 					if (elementsInView.length)
@@ -188,6 +187,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		}
 		document.addEventListener("touchmove", handleTouch);
 	}
+	console.log(deviceType());
 	// Infobox logic
 	// Initial info box position
 	moveInfoBox(infoElements[0]);
@@ -264,16 +264,29 @@ document.addEventListener("DOMContentLoaded", () => {
 	function moveInfoBox(target) {
 		changeInfoText(target);
 
+		if (deviceType() === "mobile") {
+			const targetLeft = target.offsetLeft;
+			const targetWidth = target.clientWidth;
+			if (targetLeft) {
+				infoArrow.style.left = `${targetLeft + targetWidth / 2}px`;
+			} else {
+				infoArrow.style.removeProperty("left");
+				if (!infoArrow.style.length) infoArrow.removeAttribute("style");
+			}
+		}
+
 		const targetHeight = target.clientHeight;
 		const isOverflowing = target.getAttribute("data-info-dk").length > 650;
 
 		if (isOverflowing) {
-			infoBoxElement.style.maxWidth = `${infoBoxMaxWidth * 1.75}px`;
+			infoBoxElement.style.maxWidth = `${infoBoxMaxWidth * 2}px`;
 		} else if (infoBoxElement.style.maxWidth)
 			infoBoxElement.style.removeProperty("max-width");
 
 		// Moves the actual infobox
-		const elementPosY = Math.floor(target.offsetTop + targetHeight + 20);
+		const elementPosY = Math.floor(
+			target.offsetTop + targetHeight / (targetHeight > 50 ? 2 : 1) + 20
+		);
 		infoBoxElement.style.top = `${elementPosY}px`;
 
 		clearActive();
@@ -285,12 +298,13 @@ document.addEventListener("DOMContentLoaded", () => {
 	document
 		.querySelector("[data-id='info-close']")
 		.addEventListener("click", closeInfoBox);
-	// Initial move
+
+	// Click event on info fields
 	wrapper.querySelectorAll("[data-id='info']").forEach(el =>
 		el.addEventListener("click", e => {
 			let target = e.currentTarget;
 			moveInfoBox(target);
-			scrollToTarget(target);
+			if (deviceType === "desktop") scrollToTarget(target);
 		})
 	);
 

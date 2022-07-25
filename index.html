@@ -110,7 +110,7 @@
 				<div class="relative">
 					<!-- Privat Paycheck -->
 					<div
-						class="hidden blur-[0.4px] text-[45%] sm:text-sm"
+						class="hidden active blur-[0.4px] text-[45%] sm:text-sm"
 						data-id="paycheck"
 						data-type="privat"
 						data-pagination="false"
@@ -540,10 +540,10 @@
 						<table class="w-full border-collapse break-words">
 							<tbody class="cell-border-none text-right">
 								<tr>
-									<th class="text-2xl font-bold text-left" colspan="3">
+									<th class="text-[160%] font-bold text-left" colspan="3">
 										Lønseddel
 									</th>
-									<td class="text-2xl font-bold text-right" colspan="2">
+									<td class="text-[160%] font-bold text-right" colspan="2">
 										Anders And
 									</td>
 								</tr>
@@ -598,6 +598,8 @@
 									<td>and@margarine.dk</td>
 								</tr>
 							</tbody>
+						</table>
+						<table class="w-full border-collapse break-words">
 							<tbody
 								class="border-y border-solid border-black text-center cell-border-none"
 							>
@@ -863,7 +865,7 @@
 								<th scope="row">Beløb oplyst til eIndkomst 2022</th>
 							</tr>
 							<tbody
-								class="border-b border-solid border-black cell-border-none"
+								class="cell-border-none"
 								data-id="info"
 								data-info-dk="Dette afsnit bruges til løbende at summere for de vigtigste poster i løbet af året. Her kan du se, de forskellige posters værdi for den givne måned og akkumleret.
 						Disse værdier oplyses til SKAT.
@@ -1126,7 +1128,7 @@
 								<tr class="border-y border-solid border-black cell-border-none">
 									<td></td>
 									<td>Fast løn i alt</td>
-									<td class="font-bold">29.051,89</td>
+									<td>29.051,89</td>
 								</tr>
 							</tbody>
 							<tbody
@@ -1135,7 +1137,7 @@
 								<tr>
 									<td></td>
 									<td>Diverse skattepligtige tillæg/fradrag</td>
-									<td class="font-bold">29.051,89</td>
+									<td>29.051,89</td>
 								</tr>
 								<tr
 									data-id="info"
@@ -1190,7 +1192,7 @@
 									<td class="uppercase font-bold" colspan="2">
 										Overføres til nemkento den 31.03.2022
 									</td>
-									<td class="font-bold">19.322,24</td>
+									<td>19.322,24</td>
 								</tr>
 								<tr>
 									<td class="font-bold text-right py-12" colspan="4">
@@ -1200,7 +1202,7 @@
 							</tbody>
 						</table>
 						<div>
-							<h3 class="font-bold">Akkumuleret år til dato</h3>
+							<h3>Akkumuleret år til dato</h3>
 							<table
 								class="w-full"
 								data-id="info"
@@ -1295,9 +1297,9 @@
 								<tr>
 									<td></td>
 									<td></td>
-									<td class="font-bold">06.02.22</td>
+									<td>06.02.22</td>
 									<td colspan="7"></td>
-									<td class="font-bold">06.03.22</td>
+									<td>06.03.22</td>
 								</tr>
 								<tr>
 									<td></td>
@@ -1502,7 +1504,7 @@
 					<!-- Silkeborg Paycheck - 2 End -->
 					<!-- KMD Paycheck - 1 -->
 					<div
-						class="hidden active blur-[0.4px] text-[45%] sm:text-sm"
+						class="hidden blur-[0.4px] text-[45%] sm:text-sm"
 						data-id="paycheck"
 						data-type="kmd"
 						data-pagination="true"
@@ -1513,7 +1515,7 @@
 								<tr>
 									<td>
 										<img
-											class="w-1/5 mb-1"
+											class="w-1/3 sm:w-1/4 md:w-1/5 mb-1"
 											src="./assets/aarhus_logo.png"
 											alt="Aarhus Kommune logo"
 										/>
@@ -1546,17 +1548,17 @@
 								<h2 class="uppercase font-bold text-[175%] leading-5 mt-6">
 									Lønspecifikation
 								</h2>
-								<h3 class="font-bold">KMD Opus Løn og Personale</h3>
+								<h3>KMD Opus Løn og Personale</h3>
 								<h4 class="mt-4 mb-1">Anføres ved henvendelser</h4>
 								<table class="border-collapse break-words w-full">
 									<tr
-										class="cell-border-none border-t-2 border-solid border-black text-xs opacity-50 border-opacity-30"
+										class="cell-border-none border-t-2 border-solid border-black text-[80%] opacity-50 border-opacity-30"
 									>
 										<th class="pb-4">Medarbejdernummer</th>
 										<th class="pb-4">Personnummer</th>
 									</tr>
 									<tr
-										class="cell-border-none border-t-2 border-solid border-black text-xs opacity-50 border-opacity-30"
+										class="cell-border-none border-t-2 border-solid border-black text-[80%] opacity-50 border-opacity-30"
 									>
 										<th
 											scope="col"
@@ -1579,7 +1581,7 @@
 						<table
 							class="w-full border-collapse break-words border-y-2 border-solid border-black border-opacity-30"
 						>
-							<tr class="cell-border-none text-xs opacity-50">
+							<tr class="cell-border-none text-[80%] opacity-50">
 								<th scope="col" class="pb-0">Stilling</th>
 								<th scope="col" class="pb-0">Afdelingsbetegnelse</th>
 								<th scope="col" class="pb-0">Systemdato</th>
@@ -1603,7 +1605,12 @@
 									<th scope="col">*</th>
 									<th scope="col" class="text-right">**</th>
 								</tr>
-								<tr class="cell-border-none">
+								<tr
+									class="cell-border-none"
+									data-id="info"
+									data-info-dk="Hvis du får efterreguleret et beløb fra en tidligere måned, står det på denne linje. Dette forekommer sjældent."
+									data-info-en="!"
+								>
 									<td></td>
 									<td>28 02 2022</td>
 									<td>Rådighedsvagt</td>
@@ -1614,7 +1621,13 @@
 									<td>1</td>
 									<td class="text-right">1</td>
 								</tr>
-								<tr class="cell-border-none">
+								<tr
+									class="cell-border-none"
+									data-id="info"
+									data-info-dk="Dette er din samlede løn, som består af henholdsvis din grundløn og evt. tillæg. 
+								Du kan se en udspecificering heraf på side 2 i din lønseddel."
+									data-info-en="!"
+								>
 									<td>P</td>
 									<td>01 03 2022</td>
 									<td>Månedsløn</td>
@@ -1625,7 +1638,12 @@
 									<td>1</td>
 									<td class="text-right">1</td>
 								</tr>
-								<tr class="cell-border-none">
+								<tr
+									class="cell-border-none"
+									data-id="info"
+									data-info-dk="ATP, står for Arbejdsmarkedets tillægspension, og er en lovpligtig pensionsordning, som betales af alle lønmodtagere over 16 år, der arbejder over 9 timer om ugen. Din arbejdsgiver indbetaler 2/3 af beløbet, mens du selv betaler 1/3. Du kan se den aktuelle sats på borger.dk. Her kan du også se meget du har indbetalt, og hvor meget du kan forvente at få i pension fra ATP."
+									data-info-en="!"
+								>
 									<td></td>
 									<td>31 03 2022</td>
 									<td>ATP MA-bidrag (A)</td>
@@ -1636,7 +1654,12 @@
 									<td>1</td>
 									<td class="text-right">1</td>
 								</tr>
-								<tr class="cell-border-none">
+								<tr
+									class="cell-border-none"
+									data-id="info"
+									data-info-dk="AM-bidrag står for arbejdsmarkedsbidrag, og er en lovpligtig 8% skat, som alle lønmodtagere og selvstændige skal betale. AM-bidraget beregnes af AM-indkomsten. AM-bidraget går til at betale statens udgifter til arbejdsmarkedet, og går f.eks. til sygedagpenge og barselsdagpenge mv. AM-bidraget anføres uden ørebeløb på lønsedlen."
+									data-info-en="!"
+								>
 									<td></td>
 									<td>31 03 2022</td>
 									<td>Arbejdsmarkedsbidrag AM</td>
@@ -1647,7 +1670,13 @@
 									<td>1</td>
 									<td class="text-right"></td>
 								</tr>
-								<tr class="cell-border-none">
+								<tr
+									class="cell-border-none"
+									data-id="info"
+									data-id="info"
+									data-info-dk="A-skat er skatten, alle almindelige lønmodtagere betaler af deres primære indtægt. Hvor meget du betaler i A-skat, afhænger af din trækprocent. Vi har i Danmark et progressivt skattesystem, hvorefter jo højere din indtægt er, desto højere er din trækprocent. Din trækprocent bliver beregnet på baggrund af din forskudsopgørelse og afhænger af din indkomst, fradrag og hvilken kommune du bor i. Du kan se din trækprocent på skat.dk.<br/>A-skatten trækkes af din A-indkomst, som udgør din løn fratrukket pension, ATP og AM-bidrag. A-skat anføres uden ørebeløb på lønsedlen."
+									data-info-en="!"
+								>
 									<td></td>
 									<td>31 03 2022</td>
 									<td>Træk-%, grundlag, A-skat</td>
@@ -1669,7 +1698,7 @@
 								<tr class="cell-border-none">
 									<td colspan="2"></td>
 									<th scope="row">Til udbetaling</th>
-									<td class="font-bold">(55.115,39 - 21.593,65) =</td>
+									<td>(55.115,39 - 21.593,65) =</td>
 									<td></td>
 									<td class="font-bold">33.521,74</td>
 								</tr>
@@ -1683,27 +1712,472 @@
 								<tr>
 									<th colspan="3">Evt. henvendelse til</th>
 								</tr>
+								<tbody
+									class="border-y-2 border-solid border-black cell-border-none cell-p-0 row-pt-3 row-pb-3"
+								>
+									<tr>
+										<td></td>
+									</tr>
+									<tr
+										data-id="info"
+										data-info-dk="AM-indkomst er den del af lønnen, som der skal betales AM-bidrag af, hvilket er din månedsløn inkl. tillæg og skattepligtige goder, efter at ATP og eget pensionsbidrag er trukket fra."
+										data-info-en="!"
+									>
+										<th scope="row" colspan="5">
+											AM-indkomst, A-indkomst, hvoraf der beregnes AM-bidrag
+											<span class="text-[85%] font-normal"
+												>(periodens, årets)</span
+											>
+										</th>
+										<td>55.020,74</td>
+										<td>155.258,60</td>
+									</tr>
+									<tr>
+										<th scope="row" colspan="5">
+											AM-bidrag
+											<span class="text-[85%] font-normal">(årets)</span>
+										</th>
+										<td></td>
+										<td>12.421,00</td>
+									</tr>
+									<tr
+										data-id="info"
+										data-info-dk="Skattefradrag/månedsfradrag er dit personlige fradrag, som trækkes fra, lige inden din A-skat beregnes, og lægges herefter til igen. Dit fradrag er beregnet af SKAT på baggrund af din forskudsregistrering. Du kan tjekke dit fradrag på skat.dk."
+										data-info-en="!"
+									>
+										<th scope="row" colspan="5">
+											Skattefradrag
+											<span class="text-[85%] font-normal"
+												>(anvendt i perioden)</span
+											>
+										</th>
+										<td>8.918,00</td>
+									</tr>
+									<tr>
+										<th scope="row" colspan="5">
+											A-skat
+											<span class="text-[85%] font-normal">(årets)</span>
+										</th>
+										<td></td>
+										<td>47.594,00</td>
+									</tr>
+									<tr>
+										<th scope="row" colspan="5">
+											Samlet ATP-bidrag
+											<span class="text-[85%] font-normal"
+												>(perioden, årets)</span
+											>
+										</th>
+										<td>284,00</td>
+										<td>852,00</td>
+									</tr>
+									<tr>
+										<th scope="row" colspan="5">
+											Feriegodtgørelse
+											<span class="text-[85%] font-normal"
+												>(årsgrundlag pr. ferieår)</span
+											>
+										</th>
+										<td></td>
+										<td>234.875,42</td>
+									</tr>
+									<tr>
+										<th scope="row" colspan="5">
+											Ferietillæg
+											<span class="text-[85%] font-normal"
+												>(årsgrundlag pr. ferieår)</span
+											>
+										</th>
+										<td></td>
+										<td>248.212,43</td>
+									</tr>
+									<tr>
+										<th scope="row" colspan="5">Feriegodtgørelse merarbejde</th>
+										<td></td>
+										<td>6.127,27</td>
+									</tr>
+									<tr>
+										<th scope="row" colspan="5">
+											Feriegodtgørelse
+											<span class="text-[85%] font-normal"
+												>(årsgrundlag pr. kalenderår)</span
+											>
+										</th>
+										<td></td>
+										<td>113.139,57</td>
+									</tr>
+									<tr>
+										<th scope="row" colspan="5">
+											Ferietillæg
+											<span class="text-[85%] font-normal"
+												>(årsgrundlag pr. kalenderår)</span
+											>
+										</th>
+										<td></td>
+										<td>106.524,42</td>
+									</tr>
+								</tbody>
+								<tbody
+									class="cell-border-none cell-p-0 row-pt-3 row-pb-3"
+									data-id="info"
+									data-info-dk="Pensionsprocenten er fastlagt i den til enhver tid gældende overenskomst, og den opdateres i vores løntabel, hvis/når der sker en regulering. I 2022 er pensionssatsen på 18,78 på det kommunale område og 18,58% på det regionale område.<br/>Arbejdsgiveren betaler hele pensionsbeløbet uanset, at der står 1/3 i eget bidrag. Eget bidraget bruges i særlige tilfælde fx ved beregning af særlig feriegodtgørelse.<br/>Obs: Det gælder både på det kommunale- og regionaleområde, at der er en fritvalgsordning, hvorved en begrænset del af pensionsbidraget kan udbetales løbende som løn. Derfor er pensionsprocenten 16,40, da 2,23% er fraregnet til frivalgsordningen. Vil du vide mere, så kontakt HR eller IDA"
+									data-info-en="!"
+								>
+									<tr>
+										<th scope="col" colspan="3">Pension</th>
+										<th scope="col">% / Beløb</th>
+										<th scope="col">Grundlag</th>
+										<th scope="col">Periodens</th>
+										<th scope="col">Årets</th>
+									</tr>
+									<tr>
+										<td colspan="3">Hovedpensionsordning</td>
+										<td>16,40 %</td>
+										<td>35.508,14</td>
+										<td>5.823,24</td>
+										<td>17.470,02</td>
+									</tr>
+									<tr>
+										<td colspan="3">FV-pension</td>
+										<td>2,23 %</td>
+										<td>35.508,14</td>
+										<td>791,83</td>
+										<td>2.375,49</td>
+									</tr>
+									<tr class="font-bold">
+										<td colspan="5">
+											Pension total. Egetbidraget udgør 1/3 af det samlede
+											bidrag.
+										</td>
+										<td>6.615,17</td>
+										<td>19.845,51</td>
+									</tr>
+								</tbody>
 							</table>
+							<p
+								class="text-[100%] sm:text-[80%] md:text-[70%] leading-[10px] md:leading-3 pb-4 mt-20"
+							>
+								P = Pensionsgivende løndele, se også "Lønsammensætning". Dele af
+								Månedslønnen kan være ikke-pensionsgivende.<br />*: 1 -
+								A-indkomst, 2 - A-indkomst med special A-skatteberegning, 3 -
+								A-indkomst uden fradrag, 4 - B-indkomst, 5 - Overgangsordning, 6
+								- Særlig indkomst.<br />**: 1 - AM-beregningsgrundlag, 2
+								AM-beregningsgrundlag med special beregning, 3 -
+								AM-beregningsgrundlag for B-indkomst.
+							</p>
 						</div>
 					</div>
 					<!-- KMD Paycheck - 1 End -->
+					<!-- KMD Paycheck - 2 -->
+					<div
+						class="hidden blur-[0.4px] text-[45%] sm:text-sm"
+						data-id="paycheck"
+						data-type="kmd"
+						data-pagination="true"
+						data-page="2"
+					>
+						<table class="w-full border-collapse break-words">
+							<tbody
+								class="cell-border-none border-y border-solid border-black"
+							>
+								<tr>
+									<th scope="col">Personnummer</th>
+									<th scope="col">Navn</th>
+									<th scope="col">Lønperiode</th>
+								</tr>
+								<tr>
+									<td></td>
+									<td></td>
+									<td>Marts 2022</td>
+								</tr>
+							</tbody>
+							<tr class="border-y border-solid border-black">
+								<td class="font-bold pt-10" colspan="4">
+									Gyldighedsperiode: 01.03 - 31.03
+								</td>
+							</tr>
+							<tbody
+								class="cell-border-none border-y border-solid border-black text-[95%]"
+							>
+								<tr>
+									<th scope="col">Lønklasse</th>
+									<th scope="col" colspan="4">Besk.timer (md.løn)</th>
+								</tr>
+								<tr>
+									<td></td>
+									<td colspan="4">160,33</td>
+								</tr>
+							</tbody>
+							<tbody
+								class="cell-border-none border-y border-solid border-black text-[95%]"
+								data-id="info"
+								data-info-dk="Som ansat akademiker indplaceres du på et grundløntrin mellem 1-8. Hvilket trin du indplaceres på afgøres typisk af 2 faktorer: uddannelsesmæssige baggrund og tid med akademisk arbejde efter endt uddannelse.
+								Hold derfor øje med, hvad der står nedenunder ”lønanciennitetsdato”. Datoen skal gerne vise den samlede længde du har arbejdet med akademisk arbejde efter endt uddannelse. Det er på den baggrund, at du bliver indplaceret på et grundlønstrin, som vises ved siden af under ”Løntrin”. 
+								<br/><br/>
+								I takt med at du får akademisk erfaring stiger du i trinene, indtil du når trin 8. Hvornår du stiger næste gang, det skal du gerne kunne se nedenunder ”Oprykningsdato”.
+								<br/><br/>
+								Du kan også være ansat i en stilling som special- eller chefkonsulent. Er det tilfældet, så vil det ikke være din uddannelse og erhvervserfaring, der er afgørende for din basisløn, da der ikke er forskellige trin i disse stillinger.  Derfor vil du heller ikke se et tal ved løntrin eller en oprykningsdato. 
+								<br/><br/>
+								Hvis du vil vide mere om, hvilket løntrin du bør blive indplaceret på, så fremgår det både af vores <a href='#'>løntabeller</a>, og du kan også finde det i vores <a href='#'>artikel</a>, der ligeledes beskriver de basale elementer i det offentlige lønsystem."
+								data-info-en="!"
+							>
+								<tr>
+									<th scope="col">Kommunegruppe</th>
+									<th scope="col" colspan="4">Beskæftigelsesgrad (løn)</th>
+									<th scope="col">Løntrin</th>
+									<th scope="col">Lønanciennitetsdato</th>
+									<th scope="col">Opkrydningsdato</th>
+								</tr>
+								<tr>
+									<td>00</td>
+									<td colspan="4">37,00/37,00</td>
+									<td>08</td>
+									<td>01 08 2015</td>
+									<td>Er på sluttrin</td>
+								</tr>
+							</tbody>
+						</table>
+						<table class="w-full border-collapse break-words">
+							<tbody class="cell-border-none">
+								<tr>
+									<th scope="col">*</th>
+									<th scope="col">Tekst</th>
+									<th scope="col">Trin</th>
+									<th scope="col">Månedsløn</th>
+									<th scope="col">Årligt<br />grundbeløb</th>
+									<th scope="col">Årsgrundlag</th>
+									<th scope="col">Aftale</th>
+									<th scope="col">Beregnet<br />trin</th>
+									<th scope="col">**</th>
+								</tr>
+							</tbody>
+							<tbody
+								class="cell-border-none"
+								data-id="info"
+								data-info-dk="Din grundløn er en overenskomstfastsat minimumsløn, som du skal have på baggrund af uddannelse og erfaring eller stillingstype. 
+							<br/>
+							Udover din basisløn/grundløn kan du have et eller flere tillæg. De kan opdeles i:
+							<br/><br/>
+							<span class='underline'>Lokalaftalte tillæg</span>: Værdien af disse tillæg fremgår ikke af overenskomsten, men er i stedet noget der er aftalt lokalt. Det er typisk kvalifikations- og/eller funktionstillæg, men det kan fx også være et vagttillæg. 
+							<br/><br/>
+							<span class='underline'>Centralaftalte tillæg</span>:
+							Du kan også få et centralt aftalt tillæg, hvis du fx er administrativ generalist. Værdien af disse tillæg kan du løbende finde i vores <a href='#'>løntabeller</a>.
+							<br/><br/>
+							<span class='underline'>Lønreguleringer</span>:
+							Niveauet for din basisløn/grundløn og evt. tillæg reguleres typisk 1-3 gange årligt afhængig af, hvad overenskomstens parter har aftalt for den givne overenskomstperiode. Hvornår der sker en regulering næste gang afhænger af, om du er ansat i regionen eller kommunen. Se evt. mere herom i vores faktaark for OK21 for det <a href='#'>kommunale område</a> og det <a href='#'>regionale område</a>.
+							<br/><br/>
+							Hver gang der sker en regulering af lønniveauerne, så opdateres det i vores løntabeller. Din grundløn bør derfor være magen til lønniveauet i <a href='#'>løntabeller</a>.
+							"
+								data-info-en="!"
+							>
+								<tr>
+									<td>G</td>
+									<td>Grundløn</td>
+									<td>08</td>
+									<td>34.901,08</td>
+									<td></td>
+									<td>418.813,00</td>
+									<td>Central</td>
+									<td>08</td>
+									<td>P</td>
+								</tr>
+								<tr>
+									<td>K</td>
+									<td>Kvalifikationsløn</td>
+									<td></td>
+									<td>507,05</td>
+									<td>5.000,00</td>
+									<td>7.284,567</td>
+									<td>Individuel</td>
+									<td></td>
+									<td>P</td>
+								</tr>
+							</tbody>
+							<tbody class="cell-border-none row-pt-3 row-pb-3">
+								<tr>
+									<td></td>
+									<th scope="row" class="uppercase pb-2">I alt</th>
+									<td></td>
+									<td class="font-bold pb-2">35.508,14</td>
+									<td></td>
+									<td class="font-bold pb-2">426.097,67</td>
+								</tr>
+								<tr>
+									<th scope="row" colspan="2">
+										Timeløn (overtid / normaltimer):
+									</th>
+									<td>221,46</td>
+								</tr>
+								<tr>
+									<th scope="row" colspan="2">Timeløn (lønfradrag):</th>
+									<td>235,22</td>
+								</tr>
+								<tr>
+									<td colspan="2">Er på sluttrin</td>
+								</tr>
+							</tbody>
+						</table>
+						<div
+							data-id="info"
+							data-info-dk="Her kan du løbende se din ferie- og omsorgssaldo.
+						<br/><br/>
+						<span class='underline'>Feriedage med løn</span>: Der optjenes 2,08 dages ferie med løn for hver fulde måneds ansættelse.
+						<br/>
+						<span class='underline'>Særlige feriedage</span>: Der optjenes 5 særlige feriedage pr. kalenderår til afvikling i den efterfølgende periode fra 1. maj til 30. april. 
+						<br/>
+						<span class='underline'>Omsorgsdage</span>: Der ydes 2 omsorgsdage pr. barn pr. kalenderår til og med barnest 7 år. 
+						<br/><br/>
+						Du skal være opmærksom på at få afholdt de forskellige typer ferier, feriefritimer og omsorgsdage inden for deres tidsperiode, da du ellers risikerer at miste dem."
+							data-info-en="!"
+						>
+							<p class="font-semibold pb-2 pt-6">
+								Feriesaldi er pr. 31.03.2022 og inkluderer lønperiodens
+								optjening.<br />Bemærk at ferie indberret efter 18.03.2022 ikke
+								er inkluderet i opgørelsen.<br />Restsadi er beregnet med den
+								beskæftigelsesgrad, der gælder ved lønperiodens slutning.
+							</p>
+							<h3 class="font-bold">Ferietimer (01.09.2021 - 31.12.2022)</h3>
+							<table class="w-full border-collapse break-words">
+								<tbody
+									class="cell-border-none border-y border-solid border-black"
+								>
+									<tr>
+										<td></td>
+										<th scope="col">Optjening</th>
+										<th scope="col">Afholdt</th>
+										<th scope="col">Planlagt</th>
+										<th scope="col">Restsaldo</th>
+									</tr>
+									<tr>
+										<td>Optjent</td>
+										<td>107,92</td>
+										<td>0,00</td>
+										<td>0,00</td>
+										<td>107,92</td>
+									</tr>
+									<tr>
+										<td>Forventet optjening</td>
+										<td>77,08</td>
+										<td>0,00</td>
+										<td>0,00</td>
+										<td>77,08</td>
+									</tr>
+									<tr>
+										<td>I alt</td>
+										<td>185,00</td>
+										<td>0,00</td>
+										<td>0,00</td>
+										<td>185,00</td>
+									</tr>
+								</tbody>
+								<tbody
+									class="cell-border-none border-y border-solid border-black"
+								>
+									<tr>
+										<td></td>
+										<th scope="col">Optjening</th>
+										<th scope="col">Afholdt</th>
+										<th scope="col">Planlagt</th>
+										<th scope="col">Restsaldo</th>
+									</tr>
+									<tr>
+										<td>Overførte Ferietimer 01.01.2022 - 31.08.2024</td>
+										<td>0,08</td>
+										<td>0,00</td>
+										<td>0,00</td>
+										<td>0,08</td>
+									</tr>
+									<tr>
+										<td>6. ferieuge timer 01.05.2021 - 30.04.2022</td>
+										<td>37,00</td>
+										<td>0,00</td>
+										<td>0,00</td>
+										<td>37,00</td>
+									</tr>
+								</tbody>
+							</table>
+							<table class="w-full border-collapse break-words">
+								<tbody
+									class="cell-border-none border-b border-solid border-black"
+								>
+									<tr class="font-bold">
+										<th scope="row">Omsorgsdage</th>
+										<td></td>
+										<td class="text-right">4,00</td>
+									</tr>
+									<tr class="font-bold">
+										<th scope="row">
+											Løntimer
+											<span class="text-[85%] font-normal"
+												>(periodens, årets)</span
+											>
+										</th>
+										<td class="text-right">160,33</td>
+										<td class="text-right">480,99</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<p class="py-4">
+							Ingen automatisk beregning af befordringsfradrag.
+						</p>
+						<p
+							class="text-[100%] sm:text-[80%] md:text-[70%] leading-[10px] md:leading-3 pb-4 mt-20"
+						>
+							P = Pensionsgivende løndele, se også "Lønsammensætning". Dele af
+							Månedslønnen kan være ikke-pensionsgivende.<br />*: 1 -
+							A-indkomst, 2 - A-indkomst med special A-skatteberegning, 3 -
+							A-indkomst uden fradrag, 4 - B-indkomst, 5 - Overgangsordning, 6 -
+							Særlig indkomst.<br />**: 1 - AM-beregningsgrundlag, 2
+							AM-beregningsgrundlag med special beregning, 3 -
+							AM-beregningsgrundlag for B-indkomst.
+						</p>
+						<h3 class="font-medium mt-10 mb-4">Yderligere information:</h3>
+						<div class="flex flex-col gap-4">
+							<p>
+								Hvis du ønsker en detaljeret gennemgang af alle elementerne på
+								lønsedlen, så kan du finde det via følgende
+								<a
+									class="underline text-blue"
+									href="https://www.silkeborgdata.dk/sites/default/files/files/sd.dk/vejledning_loenseddel.pdf"
+									target="_blank"
+									rel="nofollow"
+									>vejledning</a
+								>
+								fra Silkeborg Data.
+							</p>
+							<p>
+								Derudover kan du ofte med fordel rette henvendelse til HR, hvis
+								du har spørgsmål til din lønseddel. De vil ofte være gode til at
+								kunne forklare, hvorfor de har registreret, som de har gjort.
+							</p>
+							<p>
+								Du er selvfølgelig også velkommen til at kontakte IDA vedrørende
+								spørgsmål til din lønseddel.
+							</p>
+						</div>
+					</div>
+					<!-- KMD Paycheck - 2 End -->
 					<aside
 						data-id="info-box"
-						class="absolute bg-blue text-white rounded-lg sm:right-[8%] sm:left-auto top-0 z-10 p-4 max-w-sm transition-all duration-500 shadow-md left-0 right-0"
+						class="absolute bg-blue text-white rounded-lg sm:right-[8%] sm:left-auto top-0 z-10 p-4 md:max-w-sm transition-all duration-500 shadow-md left-0 right-0"
 					>
 						<div class="relative flex flex-col">
+							<!-- Arrow -->
 							<div
 								class="w-0 h-0 border-l-[20px] border-r-[20px] border-b-[20px] border-solid border-x-transparent border-b-blue absolute top-[calc(20px_*_1.75_*_-1)] left-[10%]"
+								data-id="info-arrow"
 							></div>
+							<!-- Close Button -->
 							<button
 								type="button"
-								class="bg-transparent border-none pointer text-white absolute -right-[10px] -top-[12px]"
+								class="bg-transparent border-none pointer text-white absolute -right-[12px] -top-[13px] opacity-50"
 								data-id="info-close"
 							>
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
-									width="24px"
-									height="24px"
+									width="20px"
+									height="20px"
 									viewBox="0 0 24 24"
 									fill="currentColor"
 								>
@@ -1713,17 +2187,20 @@
 									/>
 								</svg>
 							</button>
+							<!-- Main Header -->
 							<h2
 								data-id="info-header"
 								class="font-bold text-sm sm:text-base md:text-lg"
 							></h2>
+							<!-- Alt Lang Header -->
 							<h3
 								data-id="info-header-alt"
 								class="font-medium opacity-50 text-xs sm:text-sm md:text-base"
 							></h3>
+							<!-- Main Text -->
 							<p
 								data-id="info-text"
-								class="text-xs sm:text-sm md:text-base"
+								class="text-xs sm:text-sm md:text-base max-h-80 overflow-y-scroll md:overflow-auto md:max-h-[unset]"
 							></p>
 						</div>
 					</aside>

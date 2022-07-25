@@ -52,6 +52,15 @@
   .cell-border-none * {
     @apply border-none;
   }
+  .cell-p-0 td, .cell-p-0 th {
+    @apply p-0
+  }
+  .row-pt-3 tr:first-child td,.row-pt-3 tr:first-child th {
+    @apply pt-3;
+  }
+  .row-pb-3 tr:last-child td,.row-pb-3 tr:last-child th {
+    @apply pb-3;
+  }
   .cell-text-right td, .cell-text-right th {
     @apply text-right;
   }
