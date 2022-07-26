@@ -1,8 +1,6 @@
 // TODO
-// - Infobox arrow movement
-// - Infobox mobile bug
-// - Check browser compatibility
-// - Infobox max width issue
+// - Infobox mobile in view bug (cant scroll to last element)
+// - Mobile page pagination arrows covered infobox
 
 document.addEventListener("DOMContentLoaded", () => {
 	const wrapper = document.querySelector("[data-id='table-wrapper']");
