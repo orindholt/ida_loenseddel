@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply bg-tan font-montserrat;
+    @apply bg-gray font-montserrat;
   }
   th, td {
     @apply border-x border-solid border-black py-1 text-left;
@@ -21,14 +21,25 @@
 }
 
 @layer components {
-  [data-id="info"] {
-    @apply cursor-pointer relative after:content-[""] after:rounded-md after:bg-info after:absolute after:left-0 after:right-0 after:top-[3px] after:bottom-0.5 after:transition-colors after:duration-200 after:pointer-events-none md:after:hover:bg-hover;
+  @supports (-webkit-touch-callout: none) {
+    [data-id="info"] {
+      @apply cursor-pointer relative bg-info transition-colors duration-200 md:hover:bg-hover !border-2 !border-solid !border-active;
+    }
+    [data-id="paycheck"] [data-id="info"].active {
+      @apply !bg-active;
+    }
+  }
+  
+  @supports not (-webkit-touch-callout: none) {
+    [data-id="info"] {
+      @apply cursor-pointer relative after:content-[""] after:rounded-md after:bg-info after:absolute after:left-0 after:right-0 after:top-[3px] after:bottom-0.5 after:transition-colors after:duration-200 after:pointer-events-none md:after:hover:bg-hover;
+    }
+    [data-id="paycheck"] .active::after {
+      @apply !bg-active;
+    }
   }
   [data-id="info-box"] a {
     @apply underline;
-  }
-  [data-id="paycheck"] .active::after {
-    @apply !bg-active;
   }
   [data-id="paycheck"].active {
     @apply !block;
@@ -69,5 +80,17 @@
   }
   .cell-py-2 td,.cell-py-2 th {
     @apply py-2;
+  }
+  .cell-px-1 td,.cell-px-1 th {
+    @apply px-1;
+  }
+  .cell-px-2 td,.cell-px-2 th {
+    @apply px-2;
+  }
+  .cell-py-0 td,.cell-py-0 th {
+    @apply py-0;
+  }
+  .cell-px-0 td,.cell-px-0 th {
+    @apply px-0;
   }
 }
