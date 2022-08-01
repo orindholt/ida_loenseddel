@@ -318,7 +318,9 @@ document.addEventListener("DOMContentLoaded", () => {
 		el.addEventListener("click", e => {
 			let target = e.currentTarget;
 			moveInfoBox(target);
-			if (deviceType === "desktop") scrollToTarget(target);
+			if (deviceType() === "desktop") {
+				scrollToTarget(target);
+			}
 		})
 	);
 
