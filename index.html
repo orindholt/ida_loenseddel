@@ -68,7 +68,7 @@
 					</svg>
 				</button>
 			</div>
-			<h1 class="text-blue uppercase text-5xl text-center font-bold">
+			<!-- <h1 class="text-blue uppercase text-5xl text-center font-bold">
 				Tjek din lønseddel
 			</h1>
 			<h2 class="font-medium text-center mt-2">Før du starter</h2>
@@ -85,7 +85,7 @@
 				lige netop din lønseddel. Opstår der derimod tvist omkring din
 				lønseddel, så er du meget velkommen til at sende den ind til IDA, og så
 				vil vores dygtige juridiske rådgivere stå klar til at hjælpe dig
-			</p>
+			</p> -->
 			<h2 class="font-medium text-center my-2">Vælg lønseddel type</h2>
 			<div
 				class="relative items-center max-w-xs dropdown-triangle mx-auto z-20"
@@ -121,16 +121,23 @@
 						<table class="w-full border-collapse break-words cell-px-1">
 							<tbody class="cell-border-none">
 								<tr
-									class="active"
 									data-id="info"
 									data-header-dk="Vigtig info"
 									data-header-en="Important info"
 									data-info-en="Like other important documents, remember to store your payslips somewhere where you can find them for the next 5 years. They may be necessary documentation if you later have a claim against the company."
 									data-info-dk="Ligesom andre vigtige dokumenter skal huske at gemme dine lønsedler et sted, hvor du kan finde dem de næste 5 år. De kan være nødvendig dokumentation, såfremt du senere har et krav mod virksomheden, eller hvis du har en sag ved kommunen eller en anden offentlig myndighed."
 								>
+									<td
+										colspan="6"
+										class="font-semibold text-center opacity-60 pb-1"
+									>
+										Vigtig info
+									</td>
+								</tr>
+								<tr>
 									<th>
-										Virksomhedens Navn<br />
-										Virksomhedens adresse
+										Firma A/S<br />
+										Firmagade 10B, 0000
 									</th>
 									<td></td>
 									<td></td>
@@ -153,14 +160,14 @@
 									<td></td>
 								</tr>
 								<tr>
-									<td>Fornavn Efternavn</td>
+									<td>Ole Frederiksen</td>
 									<td></td>
 									<td></td>
 									<td>mv.</td>
 									<td></td>
 								</tr>
 								<tr>
-									<td>Din adresse</td>
+									<td>Olegade 5A, 1. tv</td>
 									<td></td>
 									<td></td>
 									<td></td>
@@ -230,12 +237,12 @@
 							</tr>
 							<tr
 								data-id="info"
-								data-header-dk="Ferietilæg"
+								data-header-dk="Ferietillæg"
 								data-header-en="Holiday Supplement"
 								data-info-en="When you get your salary paid monthly, you have a right to salary during holiday in accordance to the Danish Holiday act. And in addition to that you are also entitled to a holiday supplement. As a private employee, your holiday supplement amounts to 1% of your holiday-eligible salary during the holiday year, which is your salary and all other taxable salary components. The supplement may also be agreed higher, which will be stated in your contract or collective agreement. The employer can pay the holiday supplement in two ways: either on an ongoing basis when you are on holiday, or twice a year, which is the most used way. Here the holiday supplement is paid with the salary for May for holiday allowance earned September 1-31. May and holiday allowance for the last part of the holiday year with the August salary."
 								data-info-dk="Som månedslønnet har du udover løn under ferie, også ret til et ferietillæg. Som privatansat udgør dit ferietillæg 1 % af din ferieberettiget løn i ferieåret, hvilket er din løn samt alle øvrige skattepligtige løndele. Tillægget kan også være aftalt højere, hvilket vil fremgå af din kontrakt eller overenskomst. Arbejdsgiver kan udbetale ferietillægget på to måder: enten løbende, når du holder ferien, eller 2 gange om året, hvilket er den mest anvendte måde. Her udbetales det: med lønnen for maj for ferietillæg optjent 1. september-31. maj og ferietillæg for den sidste del af ferieåret med lønnen for august."
 							>
-								<th scope="row">Ferietilæg</th>
+								<th scope="row">Ferietillæg</th>
 								<td></td>
 								<td></td>
 								<td></td>
@@ -540,47 +547,44 @@
 						data-pagination="true"
 						data-page="1"
 					>
+						<table
+							class="w-full border-collapse break-words cell-border-none mb-4"
+						>
+							<tr>
+								<th class="text-2xl font-bold text-left">Lønseddel</th>
+								<td class="text-2xl font-bold text-right">Ole Frederiksen</td>
+							</tr>
+							<tr>
+								<td>28/03/2022</td>
+								<td class="text-right">
+									<span class="font-bold text-right">Lønnummer. </span>
+									100480-0487 000
+								</td>
+							</tr>
+						</table>
 						<table class="w-full border-collapse break-words">
 							<tbody class="cell-border-none text-right">
-								<tr>
-									<th class="text-[160%] font-bold text-left" colspan="3">
-										Lønseddel
-									</th>
-									<td class="text-[160%] font-bold text-right" colspan="2">
-										Anders And
-									</td>
-								</tr>
-								<tr>
-									<th scope="row" colspan="4" class="text-right">Lønnummer</th>
-									<td class="text-right">100480-0487 000</td>
-								</tr>
-								<tr>
-									<td>28/04/2022</td>
-								</tr>
-								<tr>
-									<td colspan="5">&nbsp;</td>
-								</tr>
 								<tr>
 									<td colspan="3">IT-medarbejder</td>
 									<td>Løngruppe 414</td>
 									<td>SE-nr 12345678</td>
 								</tr>
 								<tr>
-									<td colspan="3">Anders And</td>
+									<td colspan="3">Ole Frederiksen</td>
 									<th scope="col">Arbejdsplads</th>
 									<td></td>
 								</tr>
 								<tr>
-									<td colspan="3">Paradisæblevej 111</td>
-									<td colspan="2">Andeby Margarinefabrik</td>
+									<td colspan="3">Olegade 5A, 1. tv</td>
+									<td colspan="2">Firma A/S</td>
 								</tr>
 								<tr>
 									<td colspan="3"></td>
-									<td colspan="2">Æblevænget 10</td>
+									<td colspan="2">Firmavej 10</td>
 								</tr>
 								<tr>
-									<td colspan="3">DK-1010 Andeby</td>
-									<td colspan="2">1010 Andeby</td>
+									<td colspan="3">DK-0000 Firmaby</td>
+									<td colspan="2">0000 Firmaby</td>
 								</tr>
 								<tr>
 									<td colspan="5">&nbsp;</td>
@@ -588,7 +592,7 @@
 								<tr>
 									<td colspan="3"></td>
 									<th>Kontakt</th>
-									<td>Margarinefabrik</td>
+									<td>Firma Kontor</td>
 								</tr>
 								<tr>
 									<td colspan="3"></td>
@@ -598,7 +602,7 @@
 								<tr>
 									<td colspan="3"></td>
 									<th>Mail</th>
-									<td>and@margarine.dk</td>
+									<td>firma@firmaby.dk</td>
 								</tr>
 							</tbody>
 						</table>
@@ -607,7 +611,6 @@
 								class="border-y border-solid border-black text-center cell-border-none"
 							>
 								<tr
-									class="active"
 									data-id="info"
 									data-header-dk="Nemkento"
 									data-header-en="!"
@@ -820,47 +823,43 @@
 						data-pagination="true"
 						data-page="2"
 					>
+						<table
+							class="w-full border-collapse break-words cell-border-none mb-4"
+						>
+							<tr>
+								<th class="text-2xl font-bold text-left">Lønseddel</th>
+								<td class="text-2xl font-bold text-right">Ole Frederiksen</td>
+							</tr>
+							<tr>
+								<td>28/03/2022</td>
+								<td class="text-right">
+									<span class="font-bold text-right">Lønnummer. </span>
+									100480-0487 000
+								</td>
+							</tr>
+						</table>
 						<table class="w-full border-collapse break-words">
-							<tbody class="cell-border-none">
-								<tr>
-									<th class="text-2xl font-bold text-left" colspan="3">
-										Lønseddel
-									</th>
-									<td class="text-2xl font-bold text-right" colspan="2">
-										Anders And
-									</td>
-								</tr>
-								<tr>
-									<th scope="row" colspan="4" class="text-right">Lønnummer</th>
-									<td class="text-right">100480-0487 000</td>
-								</tr>
-								<tr>
-									<td>28/04/2022</td>
-								</tr>
-								<tr>
-									<td colspan="5">&nbsp;</td>
-								</tr>
-								<tr>
-									<th scope="col">Pensionsbidrag</th>
-								</tr>
+							<tr class="cell-border-none">
+								<th scope="col">Pensionsbidrag</th>
+							</tr>
+							<tbody
+								class="border-b border-solid border-black cell-border-none"
+								data-id="info"
+								data-header-dk="Pensionsbidrag"
+								data-header-en="Pension Contribution"
+								data-info-dk="Pensionsprocenten er fastlagt i den til enhver tid gældende overenskomst, og den opdateres i vores <a href='#'>løntabel</a>, hvis/når der sker en regulering. I 2022 er pensionsprocenten på 17,10% af alle løndele med få undtagelser som fx rådighedstillægget, der har 12,50%.<br/>
+						Arbejdsgiveren betaler hele pensionsbeløbet uanset, at der står 1/3 i eget bidrag. Eget bidraget bruges i særlige tilfælde fx ved beregning af særlig feriegodtgørelse.<br/>
+						Fritvalgsordning: Der er fritvalgsordning, hvorved en begrænset del af pensionsbidraget (alt over 16,8% 2022-tal)  kan udbetales løbende som løn. Vil du vide mere, så kontakt HR eller IDA.
+						"
+								data-info-en="!"
+							>
 								<tr>
 									<th colspan="2" scope="col">Pensionsbetaling</th>
 									<th scope="col">Procent</th>
 									<th scope="col" colspan="2">Salmet pens</th>
 									<th scope="col" colspan="2">Indbetalt pens</th>
 								</tr>
-							</tbody>
-							<tbody
-								class="active border-b border-solid border-black cell-border-none"
-								data-id="info"
-								data-header-dk="Pensionsbidrag"
-								data-header-en="Pension Contribution"
-								data-info-dk="Pensionsprocenten er fastlagt i den til enhver tid gældende overenskomst, og den opdateres i vores <a href='#'>løntabel</a>, hvis/når der sker en regulering. I 2022 er pensionsprocenten på 17,10% af alle løndele med få undtagelser som fx rådighedstillægget, der har 12,50%.<br/>
-					Arbejdsgiveren betaler hele pensionsbeløbet uanset, at der står 1/3 i eget bidrag. Eget bidraget bruges i særlige tilfælde fx ved beregning af særlig feriegodtgørelse.<br/>
-					Fritvalgsordning: Der er fritvalgsordning, hvorved en begrænset del af pensionsbidraget (alt over 16,8% 2022-tal)  kan udbetales løbende som løn. Vil du vide mere, så kontakt HR eller IDA.
-					"
-								data-info-en="!"
-							>
+
 								<tr>
 									<td colspan="2">17,10% pensionsbidrag</td>
 									<td></td>
@@ -884,7 +883,7 @@
 								<th scope="row">Beløb oplyst til eIndkomst 2022</th>
 							</tr>
 							<tbody
-								class="cell-border-none"
+								class="cell-border-none border-b border-solid border-black"
 								data-id="info"
 								data-info-dk="Dette afsnit bruges til løbende at summere for de vigtigste poster i løbet af året. Her kan du se, de forskellige posters værdi for den givne måned og akkumleret.
 						Disse værdier oplyses til SKAT.
@@ -966,7 +965,7 @@
 								<tr>
 									<th scope="row">Særlige feriedage</th>
 									<td>2021/2022</td>
-									<td>01/05/2021 - 30/04/2022</td>
+									<td>01/05/2021 - 30/03/2022</td>
 									<td>2,00</td>
 									<td>2,00</td>
 									<td></td>
@@ -975,7 +974,7 @@
 								<tr>
 									<th scope="row">Særlige feriedage</th>
 									<td>2022/2023</td>
-									<td>01/05/2022 - 30/04/2023</td>
+									<td>01/05/2022 - 30/03/2023</td>
 									<td>5,00</td>
 									<td></td>
 									<td></td>
@@ -1020,7 +1019,7 @@
 						data-page="1"
 					>
 						<table class="w-full border-collapse break-words">
-							<tr class="border-b-2 border-solid border-black">
+							<tr class="border-b border-solid border-black">
 								<th
 									class="bg-black text-white text-xl text-center uppercase tracking-widest w-1/5"
 								>
@@ -1028,7 +1027,7 @@
 								</th>
 							</tr>
 							<tr>
-								<td colspan="3" class="text-right">Tjenestenr. xxxxx</td>
+								<td colspan="3" class="text-right">Tjenestenr.</td>
 							</tr>
 							<tr>
 								<th>Lønseddelnr. 03/2022</th>
@@ -1047,7 +1046,6 @@
 								class="border-t border-solid border-black cell-border-none"
 							>
 								<tr
-									class="active"
 									data-id="info"
 									data-info-dk="Her fremgår, hvilken måned lønsedlen gælder for."
 									data-info-en="!"
@@ -1237,7 +1235,7 @@
 								<tbody class="border-b border-solid border-black">
 									<tr class="text-[70%]">
 										<th scope="col">Lønindkomst</th>
-										<th scope="col">Pensionbidrag</th>
+										<th scope="col">Pensionsbidrag</th>
 										<th scope="col">Samlet indbetalt pension</th>
 										<th scope="col">Skat</th>
 									</tr>
@@ -1289,22 +1287,23 @@
 						data-page="2"
 					>
 						<table class="w-full border-collapse break-words">
-							<tr class="border-b-2 border-solid border-black cell-border-none">
-								<td colspan="10">Lønseddelnr. 03/2022</td>
-								<td class="text-right">Bagside 1 af 1</td>
-							</tr>
-							<tr class="cell-border-none">
-								<td colspan="10">CPR-nr.</td>
-								<td class="text-right">Tjenestenr.</td>
-							</tr>
+							<tbody class="border-b border-solid border-black">
+								<tr class="cell-border-none">
+									<td colspan="10">Lønseddelnr. 03/2022</td>
+								</tr>
+								<tr class="cell-border-none">
+									<td colspan="10">CPR-nr.</td>
+									<td class="text-right">Tjenestenr.</td>
+								</tr>
+							</tbody>
 							<tbody
-								class="cell-border-none"
+								class="cell-border-none border-b border-solid border-black"
 								data-id="info"
 								data-info-dk="Her kan du løbende se din ferie- og omsorgssaldo.<br/>Feriedage med løn: Der optjenes 2,08 dages ferie med løn for hver fulde måneds ansættelse.<br/>Særlige feriedage: Der optjenes 5 særlige feriedage pr. kalenderår til afvikling i den efterfølgende periode fra 1. maj til 30. april.<br/>Omsorgsdage: Der ydes 2 omsorgsdage pr. barn pr. kalenderår til og med barnest 7 år.<br/>Du skal være opmærksom på at få afholdt de forskellige typer ferier, feriefritimer og omsorgsdage inden for de nævnte datoer, da du ellers risikerer at miste dem."
 								data-info-en="!"
 							>
 								<tr>
-									<th scope="col" colspan="11" class="text-[135%]">
+									<th scope="col" colspan="11">
 										Ferieregnskab mb. 07.02.-06.03.2022 (ugerne 06-09)
 									</th>
 								</tr>
@@ -1374,7 +1373,7 @@
 							</tbody>
 							<tbody class="cell-border-none">
 								<tr>
-									<th scope="col" colspan="11" class="text-[135%]">
+									<th scope="col" colspan="11">
 										Optælling af timer 07.02.-06.03.2022 (ugerne 06-09)
 									</th>
 								</tr>
@@ -1414,9 +1413,7 @@
 							</tbody>
 							<tbody class="cell-border-none">
 								<tr>
-									<th scope="col" colspan="11" class="text-[135%]">
-										Feriegodtgørelser:
-									</th>
+									<th scope="col" colspan="11">Feriegodtgørelser:</th>
 								</tr>
 								<tr>
 									<th scope="col" colspan="2">
@@ -1478,10 +1475,8 @@
 								<td>2.007,33</td>
 							</tr>
 							<tr class="cell-border-none">
-								<th class="text-[135%]" colspan="10">
-									Samlet pensionsbidrag til pensionskasse
-								</th>
-								<td class="font-bold text-[135%]">5.362,89</td>
+								<th colspan="10">Samlet pensionsbidrag til pensionskasse</th>
+								<td class="font-bold">5.362,89</td>
 							</tr>
 							<tbody
 								class="cell-border-none"
@@ -1539,10 +1534,12 @@
 						data-pagination="true"
 						data-page="1"
 					>
-						<div class="flex gap-5">
-							<table class="w-full border-collapse break-words flex-1">
+						<div class="flex gap-5 items-start">
+							<table
+								class="w-full border-collapse break-words flex-1 cell-py-0"
+							>
 								<tr>
-									<td>
+									<td class="!pb-2">
 										<svg
 											class="w-1/3 sm:w-1/4 md:w-1/5 mb-1"
 											xmlns="http://www.w3.org/2000/svg"
@@ -1555,27 +1552,60 @@
 										</svg>
 									</td>
 								</tr>
-								<tr class="border-t border-solid border-black">
-									<td>Afsender</td>
-								</tr>
-								<tr class="border-t border-solid border-black">
-									<td>Modtager</td>
-								</tr>
+								<tbody class="border-t border-solid border-black">
+									<tr>
+										<th
+											class="text-[75%] font-medium !pt-1 leading-3"
+											scope="col"
+										>
+											Afsender
+										</th>
+									</tr>
+									<tr>
+										<td>Firma A/S</td>
+									</tr>
+									<tr>
+										<td class="!pb-1">Firmagade 10B, 0000</td>
+									</tr>
+								</tbody>
+								<tbody class="border-t border-solid border-black">
+									<th
+										class="text-[75%] font-medium !pt-1 leading-3"
+										scope="col"
+									>
+										Modtager
+									</th>
+									<tr>
+										<td>Ole Frederiksen</td>
+									</tr>
+									<tr>
+										<td>Olegade 5A, 1. tv</td>
+									</tr>
+									<tr>
+										<td>0000, Oleby</td>
+									</tr>
+								</tbody>
 							</table>
 							<div class="flex-1">
 								<table class="border-collapse break-words">
-									<tbody class="cell-text-right cell-border-none">
+									<tbody class="cell-border-none">
 										<tr>
-											<td>Afdeling:</td>
+											<th scope="row" class="text-right">Afdeling:</th>
+											<td class="pl-2">0000</td>
 										</tr>
 										<tr>
-											<td>CVR-nr.:</td>
+											<th scope="row" class="text-right">CVR-nr.:</th>
+											<td class="pl-2">XXXXXXXX</td>
 										</tr>
 										<tr>
-											<td>SE-nr.:</td>
+											<th scope="row" class="text-right">SE-nr.:</th>
+											<td class="pl-2">XXXXXXXX</td>
 										</tr>
 										<tr>
-											<td>Sorteorden afdeling:</td>
+											<th scope="row" class="text-right">
+												Sorteorden afdeling:
+											</th>
+											<td class="pl-2">0000</td>
 										</tr>
 									</tbody>
 								</table>
@@ -1586,13 +1616,13 @@
 								<h4 class="mt-4 mb-1">Anføres ved henvendelser</h4>
 								<table class="border-collapse break-words w-full">
 									<tr
-										class="cell-border-none border-t-2 border-solid border-black text-[80%] opacity-50 border-opacity-30"
+										class="cell-border-none border-t border-solid border-black text-[80%] opacity-50"
 									>
 										<th class="pb-4">Medarbejdernummer</th>
 										<th class="pb-4">Personnummer</th>
 									</tr>
 									<tr
-										class="cell-border-none border-t-2 border-solid border-black text-[80%] opacity-50 border-opacity-30"
+										class="cell-border-none border-t border-solid border-black text-[80%] opacity-50"
 									>
 										<th
 											scope="col"
@@ -1613,7 +1643,7 @@
 							</div>
 						</div>
 						<table
-							class="w-full border-collapse break-words border-y-2 border-solid border-black border-opacity-30"
+							class="w-full border-collapse break-words border-y border-solid border-black"
 						>
 							<tr class="cell-border-none text-[80%] opacity-50">
 								<th scope="col" class="pb-0">Stilling</th>
@@ -1747,7 +1777,7 @@
 									<th colspan="3">Evt. henvendelse til</th>
 								</tr>
 								<tbody
-									class="border-y-2 border-solid border-black cell-border-none cell-p-0 row-pt-3 row-pb-3"
+									class="border-y border-solid border-black cell-border-none cell-p-0 row-pt-3 row-pb-3"
 								>
 									<tr>
 										<td></td>
@@ -1912,7 +1942,7 @@
 					>
 						<table class="w-full border-collapse break-words">
 							<tbody
-								class="cell-border-none border-y border-solid border-black"
+								class="cell-border-none border-b border-solid border-black"
 							>
 								<tr>
 									<th scope="col">Personnummer</th>
@@ -1920,13 +1950,13 @@
 									<th scope="col">Lønperiode</th>
 								</tr>
 								<tr>
-									<td></td>
-									<td></td>
+									<td>xxxxxx-xxxx</td>
+									<td>Ole Frederiksen</td>
 									<td>Marts 2022</td>
 								</tr>
 							</tbody>
 							<tr class="border-y border-solid border-black">
-								<td class="font-bold md:pt-10" colspan="4">
+								<td class="font-bold" colspan="4">
 									Gyldighedsperiode: 01.03 - 31.03
 								</td>
 							</tr>
@@ -1971,7 +2001,9 @@
 								</tr>
 							</tbody>
 						</table>
-						<table class="w-full border-collapse break-words">
+						<table
+							class="w-full border-collapse break-words border-b border-solid border-black"
+						>
 							<tbody class="cell-border-none">
 								<tr>
 									<th scope="col">*</th>
@@ -2053,18 +2085,10 @@
 						</table>
 						<div
 							data-id="info"
-							data-info-dk="Her kan du løbende se din ferie- og omsorgssaldo.
-						<br/><br/>
-						<span class='underline'>Feriedage med løn</span>: Der optjenes 2,08 dages ferie med løn for hver fulde måneds ansættelse.
-						<br/>
-						<span class='underline'>Særlige feriedage</span>: Der optjenes 5 særlige feriedage pr. kalenderår til afvikling i den efterfølgende periode fra 1. maj til 30. april. 
-						<br/>
-						<span class='underline'>Omsorgsdage</span>: Der ydes 2 omsorgsdage pr. barn pr. kalenderår til og med barnest 7 år. 
-						<br/><br/>
-						Du skal være opmærksom på at få afholdt de forskellige typer ferier, feriefritimer og omsorgsdage inden for deres tidsperiode, da du ellers risikerer at miste dem."
+							data-info-dk="Her kan du løbende se din ferie- og omsorgssaldo.<br/><br/><span class='underline'>Feriedage med løn</span>: Der optjenes 2,08 dages ferie med løn for hver fulde måneds ansættelse.<br/><span class='underline'>Særlige feriedage</span>: Der optjenes 5 særlige feriedage pr. kalenderår til afvikling i den efterfølgende periode fra 1. maj til 30. april.<br/><span class='underline'>Omsorgsdage</span>: Der ydes 2 omsorgsdage pr. barn pr. kalenderår til og med barnest 7 år.<br/><br/>Du skal være opmærksom på at få afholdt de forskellige typer ferier, feriefritimer og omsorgsdage inden for deres tidsperiode, da du ellers risikerer at miste dem."
 							data-info-en="!"
 						>
-							<p class="font-semibold pb-2 pt-6">
+							<p class="font-semibold py-2">
 								Feriesaldi er pr. 31.03.2022 og inkluderer lønperiodens
 								optjening.<br />Bemærk at ferie indberret efter 18.03.2022 ikke
 								er inkluderet i opgørelsen.<br />Restsadi er beregnet med den
@@ -2194,7 +2218,7 @@
 					<!-- KMD Paycheck - 2 End -->
 					<aside
 						data-id="info-box"
-						class="absolute bg-blue text-white rounded-lg sm:right-[8%] sm:left-auto top-0 z-10 p-4 md:max-w-sm transition-all duration-500 shadow-md left-0 right-0"
+						class="absolute bg-blue text-white rounded-lg sm:right-[8%] sm:left-auto top-0 z-10 p-4 md:max-w-sm transition-all duration-500 shadow-md left-0 right-0 hidden"
 					>
 						<div class="relative flex flex-col">
 							<!-- Arrow -->

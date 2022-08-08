@@ -100,7 +100,8 @@ document.addEventListener("DOMContentLoaded", () => {
 				pageIndex = 0;
 			} else if (deviceType() === "desktop") scrollToTarget(infoElements[0]);
 			togglePaginationElements(isNewTable, hasPagination);
-			moveInfoBox(infoElements[0]);
+			closeInfoBox();
+			/* moveInfoBox(infoElements[0]); */
 		}
 	}
 
@@ -146,18 +147,24 @@ document.addEventListener("DOMContentLoaded", () => {
 				const nextEl = infoElements[nextIndex];
 				const prevEl = infoElements[prevIndex];
 
-				if (e.deltaY > 0) {
-					if (nextEl) {
-						moveInfoBox(nextEl);
-						scrollToTarget(nextEl);
+				if (activeEl) {
+					if (e.deltaY > 0) {
+						if (nextEl) {
+							moveInfoBox(nextEl);
+							scrollToTarget(nextEl);
+						}
+					} else if (e.deltaY < 0) {
+						if (prevEl) {
+							moveInfoBox(prevEl);
+							scrollToTarget(prevEl);
+						}
 					}
-				} else if (e.deltaY < 0) {
-					if (prevEl) {
-						moveInfoBox(prevEl);
-						scrollToTarget(prevEl);
-					}
+				} else {
+					openInfoBox();
+					moveInfoBox(infoElements[0]);
 				}
 			}
+
 			e.preventDefault();
 			e.stopPropagation();
 			return false;
@@ -204,7 +211,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	console.log(deviceType());
 	// Infobox logic
 	// Initial info box position
-	moveInfoBox(infoElements[0]);
+	// moveInfoBox(infoElements[0]);
 
 	// Clears the active class off all the info fields
 	function clearActive() {
@@ -317,6 +324,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	wrapper.querySelectorAll("[data-id='info']").forEach(el =>
 		el.addEventListener("click", e => {
 			let target = e.currentTarget;
+			openInfoBox();
 			moveInfoBox(target);
 			if (deviceType() === "desktop") {
 				scrollToTarget(target);
