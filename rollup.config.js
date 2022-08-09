@@ -1,9 +1,9 @@
 import { terser } from "rollup-plugin-terser";
 
 export default {
-	input: "src/js/script.js",
+	input: "src/js/main.js",
 	output: {
-		file: "dist/script.min.js",
+		file: "dist/main.min.js",
 		format: "cjs",
 		plugins: [terser()],
 	},

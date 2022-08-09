@@ -1,6 +1,7 @@
 // TODO
 // - Infobox mobile in view bug (cant scroll to last element)
 // - Mobile page pagination arrows covered infobox
+// - Rewrite mobile scroll
 
 document.addEventListener("DOMContentLoaded", () => {
 	const wrapper = document.querySelector("[data-id='table-wrapper']");
@@ -101,6 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			} else if (deviceType() === "desktop") scrollToTarget(infoElements[0]);
 			togglePaginationElements(isNewTable, hasPagination);
 			closeInfoBox();
+			toggleAdditionalInfo();
 			/* moveInfoBox(infoElements[0]); */
 		}
 	}
@@ -393,4 +395,21 @@ document.addEventListener("DOMContentLoaded", () => {
 	paginationButtons.forEach(el =>
 		el.addEventListener("click", e => turnPage(e.currentTarget))
 	);
-});
+
+	// Additional Info toggle
+	const additionalBoxes = document.querySelectorAll(
+		"[data-id='additional-info']"
+	);
+
+	function toggleAdditionalInfo() {
+		additionalBoxes.forEach(box => {
+			if (box.style.display !== "none") box.style.display = "none";
+			const conditions = box
+				.getAttribute("data-conditions")
+				.replace(/\s/g, "")
+				.split(",");
+			let activeTableType = activeTable.getAttribute("data-type");
+			if (conditions.includes(activeTableType)) box.style.display = "block";
+		});
+	}
+}); // DOMContentLoaded Event End
