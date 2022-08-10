@@ -1,6 +1,7 @@
 // TODO
 // - Infobox mobile in view bug (cant scroll to last element)
 // - Mobile page pagination arrows covered infobox
+// - Rewrite mobile scroll
 
 document.addEventListener("DOMContentLoaded", () => {
 	const wrapper = document.querySelector("[data-id='table-wrapper']");
@@ -100,7 +101,9 @@ document.addEventListener("DOMContentLoaded", () => {
 				pageIndex = 0;
 			} else if (deviceType() === "desktop") scrollToTarget(infoElements[0]);
 			togglePaginationElements(isNewTable, hasPagination);
-			moveInfoBox(infoElements[0]);
+			closeInfoBox();
+			toggleAdditionalInfo();
+			/* moveInfoBox(infoElements[0]); */
 		}
 	}
 
@@ -146,18 +149,24 @@ document.addEventListener("DOMContentLoaded", () => {
 				const nextEl = infoElements[nextIndex];
 				const prevEl = infoElements[prevIndex];
 
-				if (e.deltaY > 0) {
-					if (nextEl) {
-						moveInfoBox(nextEl);
-						scrollToTarget(nextEl);
+				if (activeEl) {
+					if (e.deltaY > 0) {
+						if (nextEl) {
+							moveInfoBox(nextEl);
+							scrollToTarget(nextEl);
+						}
+					} else if (e.deltaY < 0) {
+						if (prevEl) {
+							moveInfoBox(prevEl);
+							scrollToTarget(prevEl);
+						}
 					}
-				} else if (e.deltaY < 0) {
-					if (prevEl) {
-						moveInfoBox(prevEl);
-						scrollToTarget(prevEl);
-					}
+				} else {
+					openInfoBox();
+					moveInfoBox(infoElements[0]);
 				}
 			}
+
 			e.preventDefault();
 			e.stopPropagation();
 			return false;
@@ -180,31 +189,7 @@ document.addEventListener("DOMContentLoaded", () => {
 				}
 			}
 		});
-	} else {
-		// Mobile touch events
-		const elementsInView = [];
-		function handleTouch() {
-			updateInfoElements();
-			infoElements.forEach(el => {
-				if (
-					window.scrollY >
-					el.offsetTop +
-						window.innerHeight / (deviceType() === "tablet" ? 10 : 1)
-				) {
-					if (!elementsInView.includes(el)) elementsInView.push(el);
-					if (elementsInView.length)
-						moveInfoBox(elementsInView[elementsInView.length - 1]);
-				} else {
-					if (elementsInView.includes(el)) elementsInView.pop(el);
-				}
-			});
-		}
-		document.addEventListener("touchmove", handleTouch);
 	}
-	console.log(deviceType());
-	// Infobox logic
-	// Initial info box position
-	moveInfoBox(infoElements[0]);
 
 	// Clears the active class off all the info fields
 	function clearActive() {
@@ -226,11 +211,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	// Closes the info box
 	function closeInfoBox() {
-		if (infoBoxElement.style.display === "block") {
-			clearActive();
+		clearActive();
+		infoBoxElement.style.display = "none";
+		if (infoBoxElement.style.opacity === "1")
 			infoBoxElement.style.opacity = "0";
+	}
+
+	function infoBoxFadeOut() {
+		if (infoBoxElement.style.display === "block") {
+			if (infoBoxElement.style.opacity === "1")
+				infoBoxElement.style.opacity = "0";
 			setTimeout(() => {
-				infoBoxElement.style.display = "none";
+				closeInfoBox();
 			}, 500);
 		}
 	}
@@ -274,10 +266,10 @@ document.addEventListener("DOMContentLoaded", () => {
 	const infoBoxMaxWidth = parseInt(
 		getComputedStyle(infoBoxElement).maxWidth.replace("px", "")
 	);
+	const infoboxStyleRight = getComputedStyle(infoBoxElement).right;
 	// Moves the info box
 	function moveInfoBox(target) {
 		changeInfoText(target);
-
 		if (deviceType() === "mobile") {
 			const targetLeft = target.offsetLeft;
 			const targetWidth = target.clientWidth;
@@ -287,6 +279,13 @@ document.addEventListener("DOMContentLoaded", () => {
 				infoArrow.style.removeProperty("left");
 				if (!infoArrow.style.length) infoArrow.removeAttribute("style");
 			}
+		} else if (deviceType() === "desktop" && window.innerWidth > 1280) {
+			const targetRight =
+				activeTable.offsetWidth - (target.offsetLeft + target.offsetWidth);
+			if (targetRight > 0) {
+				infoBoxElement.style.right = `calc(${infoboxStyleRight} + ${targetRight}px)`;
+			} else if (infoBoxElement.style.right)
+				infoBoxElement.style.removeProperty("right");
 		}
 
 		const targetHeight = target.clientHeight;
@@ -311,12 +310,13 @@ document.addEventListener("DOMContentLoaded", () => {
 	// Close info box click
 	document
 		.querySelector("[data-id='info-close']")
-		.addEventListener("click", closeInfoBox);
+		.addEventListener("click", infoBoxFadeOut);
 
 	// Click event on info fields
 	wrapper.querySelectorAll("[data-id='info']").forEach(el =>
 		el.addEventListener("click", e => {
 			let target = e.currentTarget;
+			openInfoBox();
 			moveInfoBox(target);
 			if (deviceType() === "desktop") {
 				scrollToTarget(target);
@@ -385,4 +385,21 @@ document.addEventListener("DOMContentLoaded", () => {
 	paginationButtons.forEach(el =>
 		el.addEventListener("click", e => turnPage(e.currentTarget))
 	);
-});
+
+	// Additional Info toggle
+	const additionalBoxes = document.querySelectorAll(
+		"[data-id='additional-info']"
+	);
+
+	function toggleAdditionalInfo() {
+		additionalBoxes.forEach(box => {
+			if (box.style.display !== "none") box.style.display = "none";
+			const conditions = box
+				.getAttribute("data-conditions")
+				.replace(/\s/g, "")
+				.split(",");
+			let activeTableType = activeTable.getAttribute("data-type");
+			if (conditions.includes(activeTableType)) box.style.display = "block";
+		});
+	}
+}); // DOMContentLoaded Event End
